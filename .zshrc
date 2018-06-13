@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-source ~/.fonts/lib/*.sh # Load all the icon vars from nerd fonts
+source ~/.fonts/lib/i_oct.sh # Load icon vars from nerd fonts
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -23,7 +23,8 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=""
 POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR="" # " $i_pl_right_soft_divider"
 #POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{${fg[blue]}%}> %{${fg[cyan]}%}$%{${reset_color}%} "
 #POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="$i_ple_pixelated_squares_big "
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$i_oct_triangle_right "
 
 # Context
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT="true"
