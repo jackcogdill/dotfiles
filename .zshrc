@@ -111,13 +111,14 @@ plugins=(
     extract
     zsh-autosuggestions
     zsh-syntax-highlighting
+    sublime
 )
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
 
 # User configuration
 
 export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
-export PATH="~/Library/Python/3.5/bin:$PATH"
+export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -171,6 +172,7 @@ alias ourlogin="ssh kiyoshi@ourlogin.space"
 alias hw="nvim ~/Education/Important\ Files/homework.md"
 alias repl="java -jar /opt/local/share/java/javarepl*.jar"
 alias gpf="git push -f"
+alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
 
 weather() {
     if [[ $# -eq 0 ]]; then
