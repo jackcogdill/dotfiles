@@ -174,6 +174,7 @@ alias hw="nvim ~/Education/Important\ Files/homework.md"
 alias repl="java -jar /opt/local/share/java/javarepl*.jar"
 alias gpf="git push -f"
 alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
+alias vs="open -a /Applications/Visual\ Studio\ Code.app"
 
 weather() {
     if [[ $# -eq 0 ]]; then
@@ -209,6 +210,11 @@ search() {
 glc() {
     commit_range="$1"
     git log --name-only --pretty=oneline --full-index "$commit_range" | grep -vE '^[0-9a-f]{40} ' | sort | uniq
+}
+
+squash() {
+    # Thank you https://stackoverflow.com/a/5201642/1313757
+    git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
 }
 
 ####### End oh-my-zsh #######
