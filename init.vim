@@ -45,7 +45,9 @@ set nowrap
 " Enable cursor line
 set cursorline
 " Enable true colors support
-set termguicolors
+if (has('termguicolors'))
+    set termguicolors
+endif
 " Enable italics for comments
 hi Comment cterm=italic
 " }}
