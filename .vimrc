@@ -4,10 +4,8 @@ call plug#begin('~/.vim/plugged')
 " Syntax highlighting {{
 " Rainbow parantheses
 Plug 'luochen1990/rainbow'
-" Better python syntax highlighting
-Plug 'hdima/python-syntax'
-" ES7 javascript highlighting
-Plug 'othree/yajs.vim'
+" Syntax highlighting for most languages
+Plug 'sheerun/vim-polyglot'
 " }}
 
 " Editing {{
@@ -21,8 +19,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Palenight color scheme
-Plug 'jackcogdill/palenight.vim'
+" Color scheme
+Plug 'KeitaNakamura/neodark.vim'
 
 " ============================
 " Initialize plugin system
@@ -33,7 +31,7 @@ call plug#end()
 " Specific Color scheme {{
 set background=dark
 " Set color scheme
-colorscheme palenight
+colorscheme neodark
 " Enable rainbow parantheses
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -51,18 +49,12 @@ set nowrap
 set cursorline
 " Enable highlighting search matches
 set hlsearch
-" Color depending on truecolor support
+" Enable truecolor support
 if has('termguicolors')
     set termguicolors
-    let g:airline_theme='base16_shell'
-else
-    let g:airline_theme='onedark'
 endif
 set showcmd " Show (partial) command in the last line of the screen
 " }}
-
-" Python syntax
-let python_highlight_all = 1
 
 " Airline config {{
 let g:airline#extensions#tabline#enabled = 1
