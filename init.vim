@@ -24,20 +24,17 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Palenight color scheme
-Plug 'jackcogdill/palenight.vim'
+" Color scheme
+Plug 'KeitaNakamura/neodark.vim'
 
 " ============================
 " Initialize plugin system
 call plug#end()
 " }}
 
-" Specific Color scheme {{
-" Italics for my favorite color scheme
-let g:palenight_terminal_italics=1
-set background=dark
+" Color scheme {{
 " Set color scheme
-colorscheme palenight
+colorscheme neodark
 " Enable rainbow parantheses
 let g:rainbow_active = 1
 " }}
@@ -69,7 +66,6 @@ let g:airline#extensions#tabline#enabled = 1
 " }}
 
 " Airline theme config {{
-let g:airline_theme='base16_shell'
 let g:airline_powerline_fonts = 1 " Powerline symbols
 " }}
 
