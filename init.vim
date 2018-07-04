@@ -4,10 +4,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Syntax highlighting {{
 " Rainbow parantheses
 Plug 'luochen1990/rainbow'
-" Better python syntax highlighting
-Plug 'hdima/python-syntax'
-" ES7 javascript highlighting
-Plug 'othree/yajs.vim'
+" Syntax highlighting for most languages
+Plug 'sheerun/vim-polyglot'
 " }}
 
 " Editing {{
@@ -51,9 +49,6 @@ set termguicolors
 " Enable italics for comments
 hi Comment cterm=italic
 " }}
-
-" Python syntax
-let python_highlight_all = 1
 
 " YCM config {{
 let g:ycm_add_preview_to_completeopt = 1
