@@ -16,7 +16,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " }}
 
 " Auto completion
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
 
 " Status bar
 Plug 'vim-airline/vim-airline'
