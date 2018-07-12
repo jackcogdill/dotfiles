@@ -79,6 +79,7 @@ set smartcase
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " 2 spaces for JavaScript
 autocmd FileType javascript setlocal shiftwidth=2
+autocmd FileType css setlocal shiftwidth=2
 
 " Don't use Ibeam cursor in insert mode
 set guicursor=
