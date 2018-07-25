@@ -175,6 +175,7 @@ alias repl="java -jar /opt/local/share/java/javarepl*.jar"
 alias gpf="git push -f"
 alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
 alias vs="open -a /Applications/Visual\ Studio\ Code.app"
+alias vlc="open -a /Applications/VLC.app"
 
 weather() {
     if [[ $# -eq 0 ]]; then
