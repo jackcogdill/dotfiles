@@ -43,6 +43,8 @@ let g:rainbow_conf = {
 " General Color scheme {{
 " Enable line numbers
 set number
+" Relative line numbers
+set relativenumber
 " Disable wrapping
 set nowrap
 " Enable cursor line

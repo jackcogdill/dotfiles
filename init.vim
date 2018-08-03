@@ -40,6 +40,8 @@ let g:rainbow_active = 1
 " General Color scheme {{
 " Enable line numbers
 set number
+" Relative line numbers
+set relativenumber
 " Disable line wrapping
 set nowrap
 " Enable cursor line
