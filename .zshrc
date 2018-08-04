@@ -170,7 +170,8 @@ alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh
 alias portal="ssh jackcog@portal.cs.vt.edu"
 alias ourlogin="ssh kiyoshi@ourlogin.space"
 
-alias hw="nvim ~/Education/Important\ Files/homework.md"
+alias todo="$EDITOR ~/todo.md"
+alias hw="todo"
 alias repl="java -jar /opt/local/share/java/javarepl*.jar"
 alias gpf="git push -f"
 alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
