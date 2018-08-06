@@ -157,7 +157,7 @@ export VISUAL="$editor"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ip='curl icanhazip.com'
-alias gh='cd ~/Programming/Github\ Repos'
+alias gh='cd ~/Github_Repos'
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
 alias vimrc="$EDITOR ~/.vimrc"
 alias nvimrc="$EDITOR ~/.config/nvim/init.vim"
@@ -170,7 +170,7 @@ alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh
 alias portal="ssh jackcog@portal.cs.vt.edu"
 alias ourlogin="ssh kiyoshi@ourlogin.space"
 
-alias todo="$EDITOR ~/todo.md"
+alias todo="$EDITOR ~/Documents/todo.md"
 alias hw="todo"
 alias repl="java -jar /opt/local/share/java/javarepl*.jar"
 alias gpf="git push -f"
