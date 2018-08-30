@@ -219,6 +219,21 @@ squash() {
     git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
 }
 
+swap() {
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
+}
+
+# Restart wifi until connection detected
+rw() {
+    while true; do
+        sudo ifconfig en0 down >/dev/null
+        sudo ifconfig en0 up >/dev/null
+        sleep 5 && curl icanhazip.com && break
+    done
+    echo "$fg[green]Success!"
+}
+
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
