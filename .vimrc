@@ -15,10 +15,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'ntpeters/vim-better-whitespace'
 " }}
 
-" Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " Color scheme
 Plug 'KeitaNakamura/neodark.vim'
 
@@ -56,11 +52,6 @@ if has('termguicolors')
     set termguicolors
 endif
 set showcmd " Show (partial) command in the last line of the screen
-" }}
-
-" Airline config {{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1 " Powerline symbols
 " }}
 
 " Smart case

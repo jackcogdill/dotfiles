@@ -18,10 +18,6 @@ Plug 'ntpeters/vim-better-whitespace'
 " Auto completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
 
-" Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " Color scheme
 Plug 'KeitaNakamura/neodark.vim'
 
@@ -59,14 +55,6 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_server_python_interpreter = 'python'
 let g:ycm_python_binary_path = 'python'
-" }}
-
-" Airline config {{
-let g:airline#extensions#tabline#enabled = 1
-" }}
-
-" Airline theme config {{
-let g:airline_powerline_fonts = 1 " Powerline symbols
 " }}
 
 " Whitespace config {{
