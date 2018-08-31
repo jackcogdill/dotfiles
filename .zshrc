@@ -22,7 +22,10 @@ antigen bundle sindresorhus/pure
 antigen apply
 # End Antigen
 # ============
+
+# Plugin configs
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 
 # Path
 export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
