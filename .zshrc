@@ -32,9 +32,8 @@ export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X1
 export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 
 # Editor
-editor=`which nvim`
-export EDITOR="$editor"
-export VISUAL="$editor"
+export EDITOR=`which nvim`
+export VISUAL="$EDITOR"
 
 # Aliases
 
