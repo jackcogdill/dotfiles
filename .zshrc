@@ -14,6 +14,7 @@ antigen bundle sublime
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle unixorn/autoupdate-antigen.zshplugin # Auto updates for antigen
 
 # Theme
 antigen bundle mafredri/zsh-async
