@@ -14,6 +14,7 @@ antigen bundle sublime
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle b4b4r07/enhancd
 antigen bundle unixorn/autoupdate-antigen.zshplugin # Auto updates for antigen
 
 # Theme
@@ -27,6 +28,8 @@ antigen apply
 # Plugin configs
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
+export ENHANCD_FILTER=fzy
+export ENHANCD_DOT_SHOW_FULLPATH=1
 
 # Path
 export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
