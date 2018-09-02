@@ -1,5 +1,8 @@
 # Antigen
 # ============
+if [ ! -d "$HOME/.antigen" ]; then
+    git clone https://github.com/zsh-users/antigen ~/.antigen
+fi
 source ~/.antigen/antigen.zsh
 antigen use oh-my-zsh
 
