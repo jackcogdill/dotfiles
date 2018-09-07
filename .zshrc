@@ -64,6 +64,7 @@ alias gpf="git push -f"
 alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
 alias vs="open -a /Applications/Visual\ Studio\ Code.app"
 alias vlc="open -a /Applications/VLC.app"
+alias chrome="open -a /Applications/Google\ Chrome.app"
 
 # Functions
 weather() {
