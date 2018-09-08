@@ -124,13 +124,13 @@ rw() {
 }
 
 # Switch to light theme(s)
-dark() {
+D() {
     DARK_THEME="Matrix"
     echo -e "\033]50;SetProfile=$DARK_THEME\a"
 }
 
 # Switch to light theme(s)
-light() {
+L() {
     LIGHT_THEME="MatrixLight"
     echo -e "\033]50;SetProfile=$LIGHT_THEME\a"
 }

@@ -33,8 +33,8 @@ colorscheme neodark
 " Enable rainbow parantheses
 let g:rainbow_active = 1
 " Custom commands
-command Light colorscheme seoul256-light
-command Dark colorscheme neodark
+command L colorscheme seoul256-light
+command D colorscheme neodark
 " }}
 
 " General Color scheme {{
