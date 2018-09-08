@@ -18,8 +18,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " Auto completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
 
-" Color scheme
+" Color schemes
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'junegunn/seoul256.vim'
 
 " ============================
 " Initialize plugin system
@@ -31,6 +32,9 @@ call plug#end()
 colorscheme neodark
 " Enable rainbow parantheses
 let g:rainbow_active = 1
+" Custom commands
+command Light colorscheme seoul256-light
+command Dark colorscheme neodark
 " }}
 
 " General Color scheme {{
