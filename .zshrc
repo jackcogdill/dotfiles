@@ -123,6 +123,18 @@ rw() {
     echo "$fg[green]Success!"
 }
 
+# Switch to light theme(s)
+dark() {
+    DARK_THEME="Matrix"
+    echo -e "\033]50;SetProfile=$DARK_THEME\a"
+}
+
+# Switch to light theme(s)
+light() {
+    LIGHT_THEME="MatrixLight"
+    echo -e "\033]50;SetProfile=$LIGHT_THEME\a"
+}
+
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
