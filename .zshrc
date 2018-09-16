@@ -33,6 +33,7 @@ bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with C
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 export ENHANCD_FILTER=fzy
 export ENHANCD_DOT_SHOW_FULLPATH=1
+export ENHANCD_HOOK_AFTER_CD='l' # ls after each cd
 
 # Path
 export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
