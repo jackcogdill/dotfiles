@@ -48,8 +48,8 @@ export VISUAL="$EDITOR"
 alias ip='curl icanhazip.com'
 alias gh='cd ~/Github_Repos'
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
-alias vimrc="$EDITOR ~/.vimrc"
-alias nvimrc="$EDITOR ~/.config/nvim/init.vim"
+alias vimrc="vim ~/.vimrc"
+alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
 alias pm="psu && cutleaves && puo" # Port maintenance
 # SSH aliasas
