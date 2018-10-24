@@ -49,6 +49,8 @@ augroup numbertoggle
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+" Scroll limit 1/4
+autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4
 " Disable line wrapping
 set nowrap
 " Enable cursor line
