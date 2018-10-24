@@ -17,6 +17,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " Color scheme
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'junegunn/seoul256.vim'
 
 " ============================
 " Initialize plugin system
@@ -25,7 +26,6 @@ call plug#end()
 
 
 " Specific Color scheme {{
-set background=dark
 " Set color scheme
 colorscheme neodark
 " Enable rainbow parantheses
@@ -34,13 +34,25 @@ let g:rainbow_conf = {
 \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 \    'ctermfgs': ['blue', 'yellow', 'cyan', 'magenta']
 \}
+" Custom commands
+command L colorscheme seoul256-light
+command D colorscheme neodark
 " }}
 
 " General Color scheme {{
 " Enable line numbers
 set number
+
 " Relative line numbers
 set relativenumber
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" Scroll limit 1/4
+autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4
 " Disable wrapping
 set nowrap
 " Enable cursor line
