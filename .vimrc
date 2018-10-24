@@ -57,8 +57,9 @@ autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4
 set nowrap
 " Enable cursor line
 set cursorline
-" Enable highlighting search matches
-set hlsearch
+" Search
+set incsearch " Search as characters are entered
+set hlsearch " Highlight matches
 " Enable truecolor support
 if has('termguicolors')
     set termguicolors
