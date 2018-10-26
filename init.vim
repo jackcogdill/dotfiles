@@ -73,6 +73,7 @@ set cursorline " Enable cursor line
 set incsearch " Search as characters are entered
 set hlsearch " Highlight search matches
 set showcmd " Show (partial) command on the last line of the screen
+set ruler " Show current row, column, percent, etc.
 
 if NVIM
     hi Comment cterm=italic " Enable italics for comments
