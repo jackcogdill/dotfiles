@@ -1,5 +1,7 @@
+let NVIM = has('nvim')
+
 " Using vim-plug for plugins {{
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(NVIM ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
 " ============================
 " Syntax highlighting {{
 " Rainbow parantheses
@@ -16,7 +18,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " }}
 
 " Auto completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+if NVIM
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+endif
 
 " Color schemes
 Plug 'KeitaNakamura/neodark.vim'
@@ -55,24 +59,35 @@ autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4
 set nowrap
 " Enable cursor line
 set cursorline
-" Enable true colors support
-if (has('termguicolors'))
+set incsearch " Search as characters are entered
+set hlsearch " Highlight search matches
+" Normal backspace in insert mode
+set backspace=indent,eol,start
+set showcmd " Show (partial) command in the last line of the screen
+" True colors support
+if has('termguicolors')
     set termguicolors
+else
+    let g:rainbow_conf = {
+    \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \    'ctermfgs': ['blue', 'yellow', 'cyan', 'magenta']
+    \}
 endif
-" Enable italics for comments
-hi Comment cterm=italic
 " }}
 
-" YCM config {{
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_server_python_interpreter = 'python'
-let g:ycm_python_binary_path = 'python'
-" }}
+if NVIM
+    " Enable italics for comments
+    hi Comment cterm=italic
 
-" Whitespace config {{
+    " YCM config
+    let g:ycm_add_preview_to_completeopt = 1
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_server_python_interpreter = 'python'
+    let g:ycm_python_binary_path = 'python'
+endif
+
+" Whitespace config
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
-" }}
 
 " Smart case
 set ignorecase
@@ -87,8 +102,13 @@ autocmd FileType css setlocal shiftwidth=2
 " Don't use Ibeam cursor in insert mode
 set guicursor=
 
-" Remove search highlighting
-nnoremap <silent><Esc> :noh<CR>
+if NVIM
+    " Remove search highlighting
+    nnoremap <silent><Esc> :noh<CR>
+else
+    " Hit Esc twice to remove search highlighting from previous search
+    nnoremap <silent> <Esc><Esc> :noh<CR>
+endif
 " Press // in visual mode to search selected text
 vnoremap // y/<C-R>"<CR>
 " Redo macro with space
