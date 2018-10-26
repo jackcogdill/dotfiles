@@ -1,3 +1,4 @@
+set nocompatible " Disable backward compatibility with vi
 let NVIM = has('nvim')
 
 " Using vim-plug for plugins {{
