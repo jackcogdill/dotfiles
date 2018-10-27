@@ -21,3 +21,4 @@ To overwrite files when creating symlinks, use `~/.dotfiles/install.sh -f`.
 - [x] Create `install.sh` to create symlinks
 - [x] Make single vim config with `if has('nvim')` blocks
 - [x] Install [One Half](https://github.com/sonph/onehalf) theme
+- [ ] Find more suitable light theme
