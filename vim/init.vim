@@ -18,17 +18,25 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' } " Auto co
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+" Status line
+Plug 'itchyny/lightline.vim'
+
 call plug#end() " Initialize plugin system
 
 
 " Color schemes
 " ============================
 " Custom commands
-command L colorscheme onehalflight
-command D colorscheme neodark
+command -bar L colorscheme onehalflight | let g:lightline.colorscheme='onehalfdark'
+command -bar D colorscheme neodark | let g:lightline.colorscheme='neodark'
 
 " Set colorscheme
 colorscheme neodark
+
+" Lightline
+let g:lightline = {}
+let g:lightline.colorscheme = 'neodark'
+set laststatus=2
 
 
 " Plugin config
