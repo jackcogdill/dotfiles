@@ -4,8 +4,11 @@ My personal config files for (mostly) everything I use.
 ## Install
 
 ```bash
-git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles && ~/.dotfiles/install.sh
+git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles
+~/.dotfiles/install.sh
 ```
+
+To overwrite files when creating symlinks, use `~/.dotfiles/install.sh -f`.
 
 ## Contents
 - [Bash](home/.bashrc)
@@ -17,4 +20,4 @@ git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles && ~/.dotfiles/ins
 
 - [x] Create `install.sh` to create symlinks
 - [x] Make single vim config with `if has('nvim')` blocks
-- [ ] Install [One Half](https://github.com/sonph/onehalf) theme everywhere
+- [x] Install [One Half](https://github.com/sonph/onehalf) theme
