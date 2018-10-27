@@ -33,5 +33,7 @@ for file in $(ls -A "$dotfiles/home"); do
     ln "$ln_params" "$dotfiles/home/$file" "$HOME/$file"
 done
 
-ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim" # NeoVim
+if [ -d "$HOME/.config/nvim" ]; then
+    ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim" # NeoVim
+fi
 ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.vimrc" # Vim
