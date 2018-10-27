@@ -76,7 +76,8 @@ set showcmd " Show (partial) command on the last line of the screen
 set ruler " Show current row, column, percent, etc.
 
 if NVIM
-    hi Comment cterm=italic " Enable italics for comments
+    " Enable italics for comments
+    hi Comment cterm=italic
 endif
 
 
