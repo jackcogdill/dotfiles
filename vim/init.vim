@@ -16,7 +16,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' } " Auto co
 
 " Color schemes
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'junegunn/seoul256.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 call plug#end() " Initialize plugin system
 
@@ -24,8 +24,8 @@ call plug#end() " Initialize plugin system
 " Color schemes
 " ============================
 " Custom commands
-command L colorscheme seoul256-light
-command D colorscheme colorscheme_dark
+command L colorscheme onehalflight
+command D colorscheme neodark
 
 " Set colorscheme
 colorscheme neodark
