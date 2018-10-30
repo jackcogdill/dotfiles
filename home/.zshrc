@@ -25,16 +25,18 @@ antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 
 antigen apply
-# End Antigen
-# ============
+
 
 # Plugin configs
+# ============
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 export ENHANCD_FILTER=fzy
 export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_HOOK_AFTER_CD='l' # ls after each cd
 
+# Environment vars
+# ============
 # Path
 export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
 export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
@@ -43,8 +45,12 @@ export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.frame
 export EDITOR=`which nvim`
 export VISUAL="$EDITOR"
 
-# Aliases
+# Theme
+export THEME="dark"
 
+
+# Aliases
+# ============
 alias ip='curl icanhazip.com'
 alias gh='cd ~/Github_Repos'
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
@@ -67,7 +73,9 @@ alias vs="open -a /Applications/Visual\ Studio\ Code.app"
 alias vlc="open -a /Applications/VLC.app"
 alias chrome="open -a /Applications/Google\ Chrome.app"
 
+
 # Functions
+# ============
 weather() {
     if [[ $# -eq 0 ]]; then
         curl "wttr.in/~Blacksburg"
@@ -124,16 +132,18 @@ rw() {
     echo "$fg[green]Success!"
 }
 
-# Switch to light theme(s)
+# Switch to dark theme(s)
 D() {
     DARK_THEME="Matrix"
     echo -e "\033]50;SetProfile=$DARK_THEME\a"
+    export THEME="dark"
 }
 
 # Switch to light theme(s)
 L() {
     LIGHT_THEME="MatrixLight"
     echo -e "\033]50;SetProfile=$LIGHT_THEME\a"
+    export THEME="light"
 }
 
 # This speeds up pasting w/ autosuggest

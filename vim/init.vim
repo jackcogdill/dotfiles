@@ -28,23 +28,12 @@ endif
 call plug#end() " Initialize plugin system
 
 
-" Color schemes
-" ============================
-" Custom commands
-command -bar L colorscheme onehalflight | let g:lightline.colorscheme='onehalfdark'
-command -bar D colorscheme neodark | let g:lightline.colorscheme='neodark'
-
-" Set colorscheme
-colorscheme neodark
-
-" Lightline
-let g:lightline = {}
-let g:lightline.colorscheme = 'neodark'
-set laststatus=2
-
-
 " Plugin config
 " ============================
+" Lightline
+let g:lightline = {}
+set laststatus=2
+
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
 if !has('termguicolors') " If true color is not available, fix weird colors by setting defaults
@@ -62,6 +51,20 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_server_python_interpreter = 'python'
 let g:ycm_python_binary_path = 'python'
+
+
+" Color schemes
+" ============================
+" Custom commands
+command -bar L colorscheme onehalflight | let g:lightline.colorscheme='onehalfdark'
+command -bar D colorscheme neodark | let g:lightline.colorscheme='neodark'
+
+" Set colorscheme
+if match($THEME, "light") == 0
+    L
+else
+    D
+endif
 
 
 " Misc visual settings
