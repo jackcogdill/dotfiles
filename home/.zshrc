@@ -45,8 +45,10 @@ export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.frame
 export EDITOR=`which nvim`
 export VISUAL="$EDITOR"
 
-# Theme
-export THEME="dark"
+# Set theme if unset
+if ! [ -n "$THEME" ]; then
+    export THEME="dark"
+fi
 
 
 # Aliases
