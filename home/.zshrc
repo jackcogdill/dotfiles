@@ -58,16 +58,21 @@ alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
 alias pm="psu && cutleaves && puo" # Port maintenance
-# SSH aliasas
+
+# SSH
 alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
 alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh)
 alias portal="ssh jackcog@portal.cs.vt.edu"
 alias ourlogin="ssh kiyoshi@ourlogin.space"
 
+# Git
+alias gpf="git push -f"
+alias gla="git pull --all"
+alias gu="gta; gfa; gla"
+
 alias todo="$EDITOR ~/Documents/todo.md"
 alias hw="todo"
 alias javarepl="java -jar /opt/local/share/java/javarepl*.jar"
-alias gpf="git push -f"
 alias tapastic="python2 ~/Programming/Python/tapastic\ dl"
 alias vs="open -a /Applications/Visual\ Studio\ Code.app"
 alias vlc="open -a /Applications/VLC.app"
@@ -115,6 +120,11 @@ glc() {
 squash() {
     # Thank you https://stackoverflow.com/a/5201642/1313757
     git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
+}
+
+gta() {
+    # Thank you https://stackoverflow.com/a/10312587/1313757
+    git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 }
 
 swap() {
