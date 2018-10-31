@@ -55,15 +55,27 @@ let g:ycm_python_binary_path = 'python'
 
 " Color schemes
 " ============================
-" Custom commands
-command -bar L colorscheme onehalflight | let g:lightline.colorscheme='onehalfdark'
-command -bar D colorscheme neodark | let g:lightline.colorscheme='neodark'
+function Light_theme()
+    set background=light
+    colorscheme onehalflight
+    let g:lightline.colorscheme='onehalfdark'
+endfunction
+
+function Dark_theme()
+    set background=dark
+    colorscheme neodark
+    let g:lightline.colorscheme='neodark'
+endfunction
+
+" Commands to manually change color scheme
+command L call Light_theme()
+command D call Dark_theme()
 
 " Set colorscheme
 if match($THEME, "light") == 0
-    L
+    call Light_theme()
 else
-    D
+    call Dark_theme()
 endif
 
 
