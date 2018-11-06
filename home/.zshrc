@@ -54,7 +54,7 @@ fi
 # Aliases
 # ============
 alias ip='curl icanhazip.com'
-alias gh='cd ~/Github_Repos'
+alias gh='cd ~/Git_Repos'
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
