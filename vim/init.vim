@@ -1,6 +1,7 @@
 set nocompatible " Disable backward compatibility with vi
 let NVIM = has('nvim')
 
+
 " Using vim-plug for plugins
 " ============================
 call plug#begin(NVIM ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
@@ -12,7 +13,7 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 " Editing
 Plug 'Raimondi/delimitMate' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' } " Auto completion
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer' } " Auto completion
 
 " Color schemes
 Plug 'KeitaNakamura/neodark.vim'
@@ -26,6 +27,12 @@ if has('signs')
 endif
 
 call plug#end() " Initialize plugin system
+
+
+" Core Python config
+" ============================
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 " Plugin config
@@ -49,8 +56,8 @@ nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_server_python_interpreter = 'python'
-let g:ycm_python_binary_path = 'python'
+let g:ycm_server_python_interpreter = 'python3'
+let g:ycm_python_binary_path = 'python3'
 
 
 " Color schemes
