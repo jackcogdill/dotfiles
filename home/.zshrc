@@ -9,7 +9,7 @@ antigen use oh-my-zsh
 # Plugins
 antigen bundle git
 antigen bundle sudo
-antigen bundle macports
+antigen bundle brew
 antigen bundle history
 antigen bundle python
 antigen bundle extract
@@ -59,7 +59,7 @@ alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
-alias pm="psu && cutleaves && puo" # Port maintenance
+alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
 
 # SSH
 alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
@@ -90,17 +90,6 @@ weather() {
     else
         curl "wttr.in/\~$1"
     fi
-}
-
-cutleaves() {
-    sudo port uninstall inactive
-    sudo port clean --all installed
-
-    # (do while)
-    while : ; do
-        sudo port uninstall leaves
-        [ $? -eq 0 ] || break
-    done
 }
 
 search() {
