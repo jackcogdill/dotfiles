@@ -130,6 +130,7 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " Set tab to 4 space
 " Language specific tab size
 autocmd FileType javascript setlocal shiftwidth=2
 autocmd FileType css setlocal shiftwidth=2
+autocmd FileType vim setlocal shiftwidth=2
 
 " Enable mode shapes, 'Cursor' highlight, and blinking:
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
