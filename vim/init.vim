@@ -121,6 +121,10 @@ endif
 
 " Misc settings
 " ============================
+" Disable bells and flashing
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 set backspace=indent,eol,start " Normal backspace in insert mode
 set ignorecase
 set smartcase
