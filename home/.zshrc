@@ -38,8 +38,7 @@ export ENHANCD_HOOK_AFTER_CD='l' # ls after each cd
 # Environment vars
 # ============
 # Path
-export PATH="/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
-export PATH="~/Library/Python/3.5/bin:/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
 
 # Editor
 export EDITOR=`which nvim`
