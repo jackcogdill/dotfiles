@@ -52,6 +52,7 @@ fi
 
 # Aliases
 # ============
+alias lt='ls -halt' # human readable, show hidden, print details, sort by date
 alias ip='curl icanhazip.com'
 alias gh='cd ~/Git_Repos'
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
