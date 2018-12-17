@@ -11,10 +11,11 @@ git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles
 To overwrite files when creating symlinks, use `~/.dotfiles/install.sh -f`.
 
 ## Contents
-- [Bash](home/.bashrc)
+- [bash](home/.bashrc)
 - [iTerm2](iterm2/com.googlecode.iterm2.plist)
 - [(Neo)Vim](vim/init.vim)
-- [Zsh](home/.zshrc)
+- [tmux](home/.tmux.conf)
+- [zsh](home/.zshrc)
 
 ## Todo
 
