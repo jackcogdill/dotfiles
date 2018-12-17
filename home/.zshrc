@@ -84,6 +84,11 @@ alias jn="jupyter notebook"
 
 # Functions
 # ============
+# Random 4-byte number
+rand() {
+    od -An -D -N 4 /dev/urandom | tr -d ' '
+}
+
 verse() {
     local verses
     verses=(
@@ -113,8 +118,9 @@ verse() {
         "And so, from the day we heard, we have not ceased to pray for you, asking that you may be filled with the knowledge of his will in all spiritual wisdom and understanding, so as to walk in a manner worthy of the Lord, fully pleasing to him: bearing fruit in every good work and increasing in the knowledge of God; being strengthened with all power, according to his glorious might, for all endurance and patience with joy; giving thanks to the Father, who has qualified you to share in the inheritance of the saints in light. He has delivered us from the domain of darkness and transferred us to the kingdom of his beloved Son, in whom we have redemption, the forgiveness of sins.\n\nColossians 1:9-14"
         "Has the Lord as much delight in burnt offerings and sacrifices as in obeying the voice of the Lord? Behold to obey is better than sacrifice, and to heed than the fat of rams.\n\n1 Samuel 15:22"
     )
-    index=$[$RANDOM % ${#verses[@]}]
-    printf "$verses[$index]\n"
+    index=$(( `rand` % ${#verses[@]} ))
+    (( index++ )) # zsh arrays are 1-indexed
+    echo ${verses[ index ]}
 }
 
 weather() {
