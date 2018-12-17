@@ -33,10 +33,14 @@ for file in $(ls -A "$dotfiles/home"); do
     ln "$ln_params" "$dotfiles/home/$file" "$HOME/$file"
 done
 
-if [ -d "$HOME/.config/nvim" ]; then
-    ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim" # NeoVim
+# NeoVim
+if hash nvim 2>/dev/null; then
+    mkdir -p "$HOME/.config/nvim"
+    ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim"
 fi
-ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.vimrc" # Vim
+
+# Vim
+ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.vimrc"
 
 
 # macOS config
