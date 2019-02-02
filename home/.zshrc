@@ -37,6 +37,8 @@ export ENHANCD_HOOK_AFTER_CD='l' # ls after each cd
 
 # Environment vars
 # ============
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Thank you https://stackoverflow.com/a/52230415/1313757
+
 # Path
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
 
