@@ -170,9 +170,6 @@ if NVIM
     tnoremap <Leader><Esc> <C-\><C-n>
 endif
 
-" Create newline without entering insert mode
-nnoremap <C-O> o<Esc>
-
 " Navigate tabs
 nnoremap <silent> <C-M> :silent :tabnew<CR>
 nnoremap <silent> <C-Left> :silent :tabp<CR>
