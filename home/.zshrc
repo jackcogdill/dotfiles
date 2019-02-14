@@ -37,11 +37,10 @@ export ENHANCD_HOOK_AFTER_CD='l' # ls after each cd
 
 # Environment vars
 # ============
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Thank you https://stackoverflow.com/a/52230415/1313757
-
 # Path
 USR_FOLDER=`echo ~`
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:$USR_FOLDER/go/bin:$USR_FOLDER/Hacking/bin"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Editor
 export EDITOR=`which nvim`
@@ -201,3 +200,7 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# Additional config files
+# ============
+source ~/Hacking/zshrc
