@@ -13,7 +13,7 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 " Editing
 Plug 'Raimondi/delimitMate' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer' } " Auto completion
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
 
 " Color schemes
 Plug 'KeitaNakamura/neodark.vim'
