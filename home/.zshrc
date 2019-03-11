@@ -155,11 +155,6 @@ squash() {
     git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
 }
 
-gta() {
-    # Thank you https://stackoverflow.com/a/10312587/1313757
-    git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
-}
-
 swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
