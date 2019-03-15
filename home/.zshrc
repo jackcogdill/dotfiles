@@ -198,4 +198,4 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # Additional config files
 # ============
-source ~/Hacking/zshrc
+source ~/hacking/hackrc
