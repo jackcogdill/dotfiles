@@ -187,3 +187,6 @@ nnoremap <silent> <C-K> :silent :bd!<CR>
 
 " Spellcheck
 nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+
+" Paste from clipboard
+nnoremap <C-P> "*p
