@@ -3,7 +3,7 @@
 # Option handling
 # ================
 OPTIND=1 # Reset in case getopts has been used previously in the shell
-force=0
+overwrite=false
 
 # Use : to require argument, $OPTARG to access value
 while getopts "hf" opt; do
@@ -15,7 +15,7 @@ $0 -f           Overwrite files when creating symlinks\n\
 "
         exit 0
         ;;
-    f)  force=1
+    f)  overwrite=true
         ;;
     esac
 done
@@ -27,7 +27,7 @@ shift $((OPTIND-1))
 # Create Symlinks
 # ================
 dotfiles="$HOME/.dotfiles"
-if [ "$force" = true ]; then
+if [ "$overwrite" = true ]; then
     alias ln="ln -sf"
 else
     alias ln="ln -s"
