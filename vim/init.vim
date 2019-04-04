@@ -97,15 +97,15 @@ set ruler " Show current row, column, percent, etc.
 " ============================
 function Light_theme()
     set background=light
-    colorscheme gruvbox
     let g:gruvbox_contrast_light='medium'
+    colorscheme gruvbox
     let g:lightline.colorscheme='gruvbox'
 endfunction
 
 function Dark_theme()
     set background=dark
-    colorscheme gruvbox
     let g:gruvbox_contrast_dark='medium'
+    colorscheme gruvbox
     let g:lightline.colorscheme='gruvbox'
 endfunction
 
