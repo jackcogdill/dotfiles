@@ -14,6 +14,7 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 Plug 'Raimondi/delimitMate' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
+Plug 'Yggdroot/indentLine' " Display code indentation with lines
 
 " Color schemes
 Plug 'morhetz/gruvbox'
@@ -57,6 +58,9 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_python_binary_path = 'python3'
+
+" indentLine
+let g:indentLine_char = '┆'
 
 
 " Misc visual settings
