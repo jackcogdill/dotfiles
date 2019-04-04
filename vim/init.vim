@@ -16,8 +16,7 @@ Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
 
 " Color schemes
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'morhetz/gruvbox'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
@@ -60,34 +59,14 @@ let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_python_binary_path = 'python3'
 
 
-" Color schemes
-" ============================
-function Light_theme()
-    set background=light
-    colorscheme onehalflight
-    let g:lightline.colorscheme='onehalfdark'
-endfunction
-
-function Dark_theme()
-    set background=dark
-    colorscheme neodark
-    let g:lightline.colorscheme='neodark'
-endfunction
-
-" Commands to manually change color scheme
-command L call Light_theme()
-command D call Dark_theme()
-
-" Set colorscheme
-if match($THEME, "light") == 0
-    call Light_theme()
-else
-    call Dark_theme()
-endif
-
-
 " Misc visual settings
 " ============================
+if NVIM
+    " Enable italics for comments
+    hi Comment cterm=italic
+    let g:gruvbox_italic=1
+endif
+
 if has('termguicolors')
     set termguicolors
 endif
@@ -113,9 +92,32 @@ set hlsearch " Highlight search matches
 set showcmd " Show (partial) command on the last line of the screen
 set ruler " Show current row, column, percent, etc.
 
-if NVIM
-    " Enable italics for comments
-    hi Comment cterm=italic
+
+" Color schemes
+" ============================
+function Light_theme()
+    set background=light
+    colorscheme gruvbox
+    let g:gruvbox_contrast_light='medium'
+    let g:lightline.colorscheme='gruvbox'
+endfunction
+
+function Dark_theme()
+    set background=dark
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='medium'
+    let g:lightline.colorscheme='gruvbox'
+endfunction
+
+" Commands to manually change color scheme
+command L call Light_theme()
+command D call Dark_theme()
+
+" Set colorscheme
+if match($THEME, "light") == 0
+    call Light_theme()
+else
+    call Dark_theme()
 endif
 
 
