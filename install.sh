@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Misc Setup
+# ================
+shopt -s expand_aliases
+
 # Option handling
 # ================
 OPTIND=1 # Reset in case getopts has been used previously in the shell
