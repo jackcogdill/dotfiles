@@ -27,22 +27,26 @@ shift $((OPTIND-1))
 # Create Symlinks
 # ================
 dotfiles="$HOME/.dotfiles"
-ln_params=$( (( $force )) && echo "-sf" || echo "-s" )
+if [ "$force" = true ]; then
+    alias ln="ln -sf"
+else
+    alias ln="ln -s"
+fi
 
 for file in $(ls -A "$dotfiles/home"); do
-    ln "$ln_params" "$dotfiles/home/$file" "$HOME/$file"
+    ln "$dotfiles/home/$file" "$HOME/$file"
 done
 
 # NeoVim
 if hash nvim 2>/dev/null; then
     mkdir -p "$HOME/.config/nvim"
-    ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim"
+    ln "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim"
     # vim-plug
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # Vim
-ln "$ln_params" "$dotfiles/vim/init.vim" "$HOME/.vimrc"
+ln "$dotfiles/vim/init.vim" "$HOME/.vimrc"
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
