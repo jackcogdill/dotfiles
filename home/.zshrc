@@ -127,7 +127,7 @@ verse() {
 
 weather() {
     if [[ $# -eq 0 ]]; then
-        curl "wttr.in/~Blacksburg"
+        curl "wttr.in/~Charlotte"
     else
         curl "wttr.in/\~$1"
     fi
