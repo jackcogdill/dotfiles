@@ -1,5 +1,19 @@
+# Detect OS
+# ============
+LINUX=0
+MACOS=0
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    LINUX=1
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    MACOS=1
+fi
+# Usage: if (( LINUX ))
+# Thank you https://stackoverflow.com/a/8597411/1313757
+
+
 # Antigen
 # ============
+# Setup
 if [ ! -d "$HOME/.antigen" ]; then
     git clone https://github.com/zsh-users/antigen ~/.antigen
 fi
@@ -9,11 +23,15 @@ antigen use oh-my-zsh
 # Plugins
 antigen bundle git
 antigen bundle sudo
-antigen bundle brew
 antigen bundle history
 antigen bundle python
 antigen bundle extract
-antigen bundle sublime
+
+if (( LINUX )); then
+    antigen bundle debian
+elif (( MACOS )); then
+    antigen bundle brew
+fi
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
