@@ -195,7 +195,3 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-
-# Additional config files
-# ============
-source ~/hacking/hackrc
