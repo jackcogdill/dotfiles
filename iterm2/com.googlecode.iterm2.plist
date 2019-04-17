@@ -106167,6 +106167,13 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x44-0x60000</key>
+		<dict>
+			<key>Action</key>
+			<integer>40</integer>
+			<key>Text</key>
+			<string>Dark Background</string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -106259,6 +106266,8 @@
 			<string></string>
 		</dict>
 	</dict>
+	<key>HapticFeedbackForEsc</key>
+	<false/>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -107378,7 +107387,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>8BEB296A-1BE8-456B-84B8-2304D9C40743</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>43</integer>
+	<integer>44</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108056,7 +108065,7 @@
 	<key>SULastCheckTime</key>
 	<date>2019-04-17T01:32:53Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
-	<true/>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -108068,6 +108077,8 @@
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
+	<false/>
+	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.40000000596046448</real>
@@ -108103,6 +108114,8 @@
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
+	<key>VisualIndicatorForEsc</key>
+	<false/>
 	<key>WindowNumber</key>
 	<false/>
 	<key>WindowStyle</key>
@@ -108116,7 +108129,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.0beta2</string>
+	<string>3.3.0beta3</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
