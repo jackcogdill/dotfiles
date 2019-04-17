@@ -22,3 +22,4 @@ To overwrite files when creating symlinks, use `~/.dotfiles/install.sh -f`.
 - [x] Create `install.sh` to create symlinks
 - [x] Make single vim config with `if has('nvim')` blocks
 - [x] Find more suitable light theme
+- [ ] ssh: auto tmux (`tmux new -A -s ssh`)
