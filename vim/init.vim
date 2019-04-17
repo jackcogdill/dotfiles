@@ -118,11 +118,7 @@ command L call Light_theme()
 command D call Dark_theme()
 
 " Set colorscheme
-if match($THEME, "light") == 0
-    call Light_theme()
-else
-    call Dark_theme()
-endif
+call Dark_theme()
 
 
 " Misc settings

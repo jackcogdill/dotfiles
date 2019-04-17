@@ -64,11 +64,6 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export EDITOR=`which nvim`
 export VISUAL="$EDITOR"
 
-# Set theme if unset
-if ! [ -n "$THEME" ]; then
-    export THEME="dark"
-fi
-
 
 # Aliases
 # ============
@@ -176,30 +171,6 @@ squash() {
 swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
-}
-
-# Restart wifi until connection detected
-rw() {
-    while true; do
-        sudo ifconfig en0 down >/dev/null
-        sudo ifconfig en0 up >/dev/null
-        sleep 5 && curl icanhazip.com && break
-    done
-    echo "$fg[green]Success!"
-}
-
-# Switch to dark theme(s)
-D() {
-    DARK_THEME="Matrix"
-    echo -e "\033]50;SetProfile=$DARK_THEME\a"
-    export THEME="dark"
-}
-
-# Switch to light theme(s)
-L() {
-    LIGHT_THEME="MatrixLight"
-    echo -e "\033]50;SetProfile=$LIGHT_THEME\a"
-    export THEME="light"
 }
 
 # This speeds up pasting w/ autosuggest
