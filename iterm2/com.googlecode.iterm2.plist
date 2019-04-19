@@ -7,7 +7,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AnimateDimming</key>
@@ -106398,7 +106398,7 @@
 	<key>NSWindow Frame com.apple.typography_panel_SourceCodePro+Powerline+AwesomeRegular</key>
 	<string>476 405 260 136 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 884 800 0 0 1280 800 </string>
+	<string>0 0 1280 800 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1010 800 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -107387,7 +107387,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>8BEB296A-1BE8-456B-84B8-2304D9C40743</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>44</integer>
+	<integer>47</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108063,7 +108063,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-04-17T01:32:53Z</date>
+	<date>2019-04-19T03:31:30Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
