@@ -185,3 +185,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     tmux new -A -s ssh
 fi
+
+# auto tmux
+[ -z "$TMUX"  ] && tmux new -A -s default
