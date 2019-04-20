@@ -25,6 +25,7 @@ if has('signs')
     Plug 'airblade/vim-gitgutter' " Show git status of each line left of line number
     set updatetime=1000 " 1 second
 endif
+Plug 'edkolev/tmuxline.vim' " Tmux status line
 
 call plug#end() " Initialize plugin system
 
@@ -40,6 +41,9 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " Lightline
 let g:lightline = {}
 set laststatus=2
+
+" Tmuxline
+let g:tmuxline_powerline_separators = 0
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
