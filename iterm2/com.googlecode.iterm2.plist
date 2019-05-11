@@ -106405,7 +106405,7 @@
 	<key>NSWindow Frame com.apple.typography_panel_SourceCodePro+Powerline+AwesomeRegular</key>
 	<string>476 405 260 136 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 884 800 0 0 1280 800 </string>
+	<string>0 0 1280 800 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1010 800 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -107094,7 +107094,7 @@
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Matrix</string>
 			<key>Non Ascii Font</key>
@@ -107398,7 +107398,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>8BEB296A-1BE8-456B-84B8-2304D9C40743</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>57</integer>
+	<integer>61</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108087,7 +108087,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-05-04T05:58:11Z</date>
+	<date>2019-05-11T04:57:30Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -108153,7 +108153,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.0beta5</string>
+	<string>3.3.0beta6</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
