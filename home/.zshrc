@@ -63,6 +63,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 USR_FOLDER=`echo ~`
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:$USR_FOLDER/go/bin:$USR_FOLDER/Hacking/bin"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
 
 # Editor
 export EDITOR=`which nvim`
