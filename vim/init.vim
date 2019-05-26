@@ -107,14 +107,14 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-function Light_theme()
+function! Light_theme()
     set background=light
     let g:gruvbox_contrast_light='medium'
     colorscheme gruvbox
     let g:lightline.colorscheme='gruvbox'
 endfunction
 
-function Dark_theme()
+function! Dark_theme()
     set background=dark
     let g:gruvbox_contrast_dark='medium'
     colorscheme gruvbox
@@ -122,8 +122,8 @@ function Dark_theme()
 endfunction
 
 " Commands to manually change color scheme
-command L call Light_theme()
-command D call Dark_theme()
+command! L call Light_theme()
+command! D call Dark_theme()
 
 " Set colorscheme
 call Dark_theme()
