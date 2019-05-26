@@ -196,7 +196,7 @@ if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 fi
 
 # auto tmux
-[ -z "$TMUX"  ] && tmux new -A -s default
+# [ -z "$TMUX"  ] && tmux new -A -s default
 
 # NVM (Node Version Management)
 export NVM_DIR="$HOME/.nvm"
