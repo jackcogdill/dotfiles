@@ -31,6 +31,9 @@ Plug 'itchyny/lightline.vim' " Status line
 Plug 'mhinz/vim-signify' " Changes for version control systems
 Plug 'edkolev/tmuxline.vim' " Tmux status line
 
+" Sessions
+Plug 'thaerkh/vim-workspace'
+
 call plug#end() " Initialize plugin system
 
 
@@ -42,6 +45,11 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Plugin config
 " ============================
+" vim-workspace
+nnoremap <leader>w :ToggleWorkspace<CR>
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_autosave = 0 " Disable auto save
+
 " Lightline
 let g:lightline = {}
 set laststatus=2
