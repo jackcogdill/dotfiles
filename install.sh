@@ -45,14 +45,10 @@ done
 if hash nvim 2>/dev/null; then
     mkdir -p "$HOME/.config/nvim"
     ln "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim"
-    # vim-plug
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # Vim
 ln "$dotfiles/vim/init.vim" "$HOME/.vimrc"
-# vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 
 # macOS config

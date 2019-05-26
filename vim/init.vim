@@ -1,6 +1,13 @@
 set nocompatible " Disable backward compatibility with vi
 let NVIM = has('nvim')
 
+" Auto install vim-plug
+let s:vimplug_path = NVIM ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+if empty(glob(s:vimplug_path))
+  silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 
 " Using vim-plug for plugins
 " ============================
