@@ -25,7 +25,6 @@ antigen use oh-my-zsh
 
 # Plugins
 antigen bundle git
-antigen bundle sudo
 antigen bundle history
 antigen bundle python
 antigen bundle extract
