@@ -21,10 +21,7 @@ Plug 'morhetz/gruvbox'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
-if has('signs')
-    Plug 'airblade/vim-gitgutter' " Show git status of each line left of line number
-    set updatetime=1000 " 1 second
-endif
+Plug 'mhinz/vim-signify' " Changes for version control systems
 Plug 'edkolev/tmuxline.vim' " Tmux status line
 
 call plug#end() " Initialize plugin system
