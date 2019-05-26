@@ -47,6 +47,12 @@ antigen bundle sindresorhus/pure
 antigen apply
 
 
+# Misc
+# ============
+# Readline edit mode
+set -o vi
+
+
 # Plugin configs
 # ============
 # Pure theme
@@ -54,7 +60,6 @@ PURE_GIT_DOWN_ARROW=$i_oct_chevron_down
 PURE_GIT_UP_ARROW=$i_oct_chevron_up
 
 # Autosuggestions
-bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 
 # Environment vars
@@ -202,3 +207,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# Keybindings
+# ============
+# Auto suggestions
+bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
