@@ -191,16 +191,12 @@ endif
 
 " Navigate tabs
 nnoremap <silent> <C-M> :silent :tabnew<CR>
-nnoremap <silent> <C-Left> :silent :tabp<CR>
-nnoremap <silent> <C-Right> :silent :tabn<CR>
+nnoremap <silent> <C-H> :silent :tabp<CR>
+nnoremap <silent> <C-L> :silent :tabn<CR>
 
 " Navigate buffers
 nnoremap <silent> <Leader>[ :silent :bp<CR>
 nnoremap <silent> <Leader>] :silent :bn<CR>
-" Delete buffer
-nnoremap <silent> <C-L> :silent :bd<CR>
-" Delete buffer with !
-nnoremap <silent> <C-K> :silent :bd!<CR>
 
 " Spellcheck
 nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
