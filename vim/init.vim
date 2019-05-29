@@ -47,6 +47,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " ============================
 " vim-workspace
 nnoremap <leader>w :ToggleWorkspace<CR>
+let g:workspace_autocreate = 1
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave = 0 " Disable auto save
 
