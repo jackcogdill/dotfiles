@@ -191,8 +191,8 @@ endif
 
 " Navigate tabs
 nnoremap <silent> <C-M> :silent :tabnew<CR>
-nnoremap <silent> <C-H> :silent :tabp<CR>
-nnoremap <silent> <C-L> :silent :tabn<CR>
+nnoremap <silent> H :silent :tabp<CR>
+nnoremap <silent> L :silent :tabn<CR>
 
 " Navigate buffers
 nnoremap <silent> <Leader>[ :silent :bp<CR>
