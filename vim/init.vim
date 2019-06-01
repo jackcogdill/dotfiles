@@ -34,6 +34,9 @@ Plug 'edkolev/tmuxline.vim' " Tmux status line
 " Sessions
 Plug 'thaerkh/vim-workspace'
 
+" Tmux navigation integration
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end() " Initialize plugin system
 
 

@@ -51,6 +51,11 @@ fi
 ln "$dotfiles/vim/init.vim" "$HOME/.vimrc"
 
 
+# Tmux setup
+# ================
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 # macOS config
 # ================
 if [[ "$OSTYPE" == "darwin"* ]]; then
