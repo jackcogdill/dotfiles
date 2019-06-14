@@ -31,11 +31,10 @@ Plug 'itchyny/lightline.vim' " Status line
 Plug 'mhinz/vim-signify' " Changes for version control systems
 Plug 'edkolev/tmuxline.vim' " Tmux status line
 
-" Sessions
-Plug 'thaerkh/vim-workspace'
-
-" Tmux navigation integration
-Plug 'christoomey/vim-tmux-navigator'
+" Navigation / Organization
+Plug 'thaerkh/vim-workspace' " Sessions
+Plug 'christoomey/vim-tmux-navigator' " Tmux navigation integration
+Plug 'ctrlpvim/ctrlp.vim' " Files
 
 call plug#end() " Initialize plugin system
 
@@ -48,6 +47,9 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Plugin config
 " ============================
+" CtrlP
+let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
+
 " vim-workspace
 nnoremap <leader>w :ToggleWorkspace<CR>
 let g:workspace_autocreate = 1
