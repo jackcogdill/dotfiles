@@ -49,6 +49,11 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " ============================
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.?(DS_Store|node_modules|git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " vim-workspace
 nnoremap <leader>w :ToggleWorkspace<CR>
