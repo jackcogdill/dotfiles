@@ -121,11 +121,11 @@ alias jn="jupyter notebook"
 # Functions
 # ============
 # Random 4-byte number
-rand() {
+function rand() {
     od -An -D -N 4 /dev/urandom | tr -d ' '
 }
 
-verse() {
+function verse() {
     local verses
     verses=(
         "There is neither Jew nor Greek, there is neither slave nor free, there is no male and female, for you are all one in Christ Jesus.\n\nGalatians 3:28"
@@ -154,32 +154,13 @@ verse() {
         "And so, from the day we heard, we have not ceased to pray for you, asking that you may be filled with the knowledge of his will in all spiritual wisdom and understanding, so as to walk in a manner worthy of the Lord, fully pleasing to him: bearing fruit in every good work and increasing in the knowledge of God; being strengthened with all power, according to his glorious might, for all endurance and patience with joy; giving thanks to the Father, who has qualified you to share in the inheritance of the saints in light. He has delivered us from the domain of darkness and transferred us to the kingdom of his beloved Son, in whom we have redemption, the forgiveness of sins.\n\nColossians 1:9-14"
         "Has the Lord as much delight in burnt offerings and sacrifices as in obeying the voice of the Lord? Behold to obey is better than sacrifice, and to heed than the fat of rams.\n\n1 Samuel 15:22"
     )
-    index=$(( `rand` % ${#verses[@]} ))
+    local index=$(( `rand` % ${#verses[@]} ))
     (( index++ )) # zsh arrays are 1-indexed
     echo ${verses[ index ]}
 }
 
-weather() {
-    if [[ $# -eq 0 ]]; then
-        curl "wttr.in/~Charlotte"
-    else
-        curl "wttr.in/\~$1"
-    fi
-}
-
-search() {
-    s="$1"
-    find . | while IFS= read -r f; do
-        cat "$f" | grep -E "$s" && (
-            print -P "%F{cyan}"
-            echo "${f#`pwd`}"
-            print -P "%f"
-        )
-    done
-}
-
 # List files changed between a commit range
-glc() {
+function glc() {
     local commit_range="$1"
     git log --name-only --pretty=oneline --full-index "$commit_range" | grep -vE '^[0-9a-f]{40} ' | sort | uniq
 }
