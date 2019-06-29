@@ -180,18 +180,8 @@ search() {
 
 # List files changed between a commit range
 glc() {
-    commit_range="$1"
+    local commit_range="$1"
     git log --name-only --pretty=oneline --full-index "$commit_range" | grep -vE '^[0-9a-f]{40} ' | sort | uniq
-}
-
-squash() {
-    # Thank you https://stackoverflow.com/a/5201642/1313757
-    git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
-}
-
-swap() {
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
 }
 
 # This speeds up pasting w/ autosuggest
