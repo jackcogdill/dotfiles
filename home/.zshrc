@@ -206,13 +206,12 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-# ssh: auto tmux
-#if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-#   tmux new -A -s ssh
-#fi
-
 # Auto tmux
-[ -z "$TMUX" ] && tmux new -A -s tmux
+if [[ -z "$TMUX" ]]; then
+    local session="default"
+    [ "$SSH_CONNECTION" != "" ] && session="ssh"
+    tmux new -A -s "$session"
+fi
 
 # NVM (Node Version Management)
 export NVM_DIR="$HOME/.nvm"
