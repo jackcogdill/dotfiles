@@ -1,8 +1,8 @@
 set nocompatible " Disable backward compatibility with vi
-let NVIM = has('nvim')
+let s:NVIM = has('nvim')
 
 " Auto install vim-plug
-let s:vimplug_path = NVIM ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let s:vimplug_path = s:NVIM ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
 if empty(glob(s:vimplug_path))
   silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -11,7 +11,7 @@ endif
 
 " Using vim-plug for plugins
 " ============================
-call plug#begin(NVIM ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
+call plug#begin(s:NVIM ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot' " Syntax highlighting for most languages
@@ -66,7 +66,7 @@ let g:workspace_autosave = 0 " Disable auto save
 let g:workspace_session_disable_on_args = 1
 
 " Lightline
-let g:lightline = {}
+let g:lightline = {'colorscheme': 'molokai'}
 set laststatus=2
 
 " Tmuxline
@@ -96,10 +96,9 @@ let g:indentLine_char = '┆'
 
 " Misc visual settings
 " ============================
-if NVIM
+if s:NVIM
     " Enable italics for comments
-    hi Comment cterm=italic
-    let g:gruvbox_italic=1
+    highlight Comment cterm=italic gui=italic
 endif
 
 if has('termguicolors')
@@ -130,32 +129,36 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-function! Light_theme()
+function! Set_light_theme()
     set background=light
     let g:gruvbox_contrast_light='medium'
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     let g:gruvbox_invert_signs=1
+    if s:NVIM
+      let g:gruvbox_italic=1
+    endif
     colorscheme gruvbox
-    let g:lightline.colorscheme='molokai'
 endfunction
 
-function! Dark_theme()
+function! Set_dark_theme()
     set background=dark
     let g:gruvbox_contrast_dark='medium'
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     let g:gruvbox_invert_signs=1
+    if s:NVIM
+      let g:gruvbox_italic=1
+    endif
     colorscheme gruvbox
-    let g:lightline.colorscheme='molokai'
 endfunction
 
 " Commands to manually change color scheme
-command! L call Light_theme()
-command! D call Dark_theme()
+command! L call Set_light_theme()
+command! D call Set_dark_theme()
 
 " Set colorscheme
-call Dark_theme()
+call Set_dark_theme()
 
 
 " Misc settings
@@ -188,7 +191,7 @@ set foldlevel=1       " This is just what i use
 
 " Keyboard shortcuts
 " ============================
-if NVIM
+if s:NVIM
     " Remove search highlighting
     nnoremap <silent><Esc> :noh<CR>
 else
@@ -205,7 +208,7 @@ nnoremap <Leader><Space> n@q
 vnoremap <Space> :normal @q<CR>
 " Redo last change on all lines in visual mode
 vnoremap . :normal .<CR>
-if NVIM
+if s:NVIM
     " Press leader+escape in terminal to get out
     tnoremap <Leader><Esc> <C-\><C-n>
 endif
