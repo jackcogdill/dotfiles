@@ -129,36 +129,35 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-function! Set_light_theme()
+function! s:Gruvbox_common()
+  let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
+  let g:gruvbox_invert_selection=0
+  let g:gruvbox_invert_signs=1
+  if s:nvim
+    let g:gruvbox_italic=1
+  endif
+endfunction
+
+function! s:Set_light_theme()
     set background=light
     let g:gruvbox_contrast_light='medium'
-    let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
-    let g:gruvbox_invert_selection=0
-    let g:gruvbox_invert_signs=1
-    if s:nvim
-      let g:gruvbox_italic=1
-    endif
+    call s:Gruvbox_common()
     colorscheme gruvbox
 endfunction
 
-function! Set_dark_theme()
+function! s:Set_dark_theme()
     set background=dark
     let g:gruvbox_contrast_dark='medium'
-    let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
-    let g:gruvbox_invert_selection=0
-    let g:gruvbox_invert_signs=1
-    if s:nvim
-      let g:gruvbox_italic=1
-    endif
+    call s:Gruvbox_common()
     colorscheme gruvbox
 endfunction
 
 " Commands to manually change color scheme
-command! L call Set_light_theme()
-command! D call Set_dark_theme()
+command! L call s:Set_light_theme()
+command! D call s:Set_dark_theme()
 
 " Set colorscheme
-call Set_dark_theme()
+call s:Set_dark_theme()
 
 
 " Misc settings
