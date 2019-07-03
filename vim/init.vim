@@ -133,7 +133,7 @@ set ruler " Show current row, column, percent, etc.
 function! Light_theme()
     set background=light
     let g:gruvbox_contrast_light='medium'
-    let g:gitgutter_override_sign_column_highlight=1
+    let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     colorscheme gruvbox
     let g:lightline.colorscheme='molokai'
@@ -142,7 +142,7 @@ endfunction
 function! Dark_theme()
     set background=dark
     let g:gruvbox_contrast_dark='medium'
-    let g:gitgutter_override_sign_column_highlight=1
+    let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     colorscheme gruvbox
     let g:lightline.colorscheme='molokai'
