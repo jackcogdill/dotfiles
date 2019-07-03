@@ -135,6 +135,7 @@ function! Light_theme()
     let g:gruvbox_contrast_light='medium'
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
+    let g:gruvbox_invert_signs=1
     colorscheme gruvbox
     let g:lightline.colorscheme='molokai'
 endfunction
@@ -144,6 +145,7 @@ function! Dark_theme()
     let g:gruvbox_contrast_dark='medium'
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
+    let g:gruvbox_invert_signs=1
     colorscheme gruvbox
     let g:lightline.colorscheme='molokai'
 endfunction
