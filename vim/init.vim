@@ -47,6 +47,9 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Plugin config
 " ============================
+" vim-signify
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
 let g:ctrlp_custom_ignore = {
