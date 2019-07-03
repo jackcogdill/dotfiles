@@ -1,8 +1,8 @@
 set nocompatible " Disable backward compatibility with vi
-let s:NVIM = has('nvim')
+let s:nvim = has('nvim')
 
 " Auto install vim-plug
-let s:vimplug_path = s:NVIM ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let s:vimplug_path = s:nvim ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
 if empty(glob(s:vimplug_path))
   silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -11,7 +11,7 @@ endif
 
 " Using vim-plug for plugins
 " ============================
-call plug#begin(s:NVIM ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
+call plug#begin(s:nvim ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot' " Syntax highlighting for most languages
@@ -96,7 +96,7 @@ let g:indentLine_char = '┆'
 
 " Misc visual settings
 " ============================
-if s:NVIM
+if s:nvim
     " Enable italics for comments
     highlight Comment cterm=italic gui=italic
 endif
@@ -135,7 +135,7 @@ function! Set_light_theme()
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     let g:gruvbox_invert_signs=1
-    if s:NVIM
+    if s:nvim
       let g:gruvbox_italic=1
     endif
     colorscheme gruvbox
@@ -147,7 +147,7 @@ function! Set_dark_theme()
     let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
     let g:gruvbox_invert_selection=0
     let g:gruvbox_invert_signs=1
-    if s:NVIM
+    if s:nvim
       let g:gruvbox_italic=1
     endif
     colorscheme gruvbox
@@ -191,7 +191,7 @@ set foldlevel=1       " This is just what i use
 
 " Keyboard shortcuts
 " ============================
-if s:NVIM
+if s:nvim
     " Remove search highlighting
     nnoremap <silent><Esc> :noh<CR>
 else
@@ -208,7 +208,7 @@ nnoremap <Leader><Space> n@q
 vnoremap <Space> :normal @q<CR>
 " Redo last change on all lines in visual mode
 vnoremap . :normal .<CR>
-if s:NVIM
+if s:nvim
     " Press leader+escape in terminal to get out
     tnoremap <Leader><Esc> <C-\><C-n>
 endif
