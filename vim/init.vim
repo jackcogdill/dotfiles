@@ -132,7 +132,6 @@ set ruler " Show current row, column, percent, etc.
 function! s:Gruvbox_common()
   let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
   let g:gruvbox_invert_selection=0
-  let g:gruvbox_invert_signs=1
   if s:nvim
     let g:gruvbox_italic=1
   endif
