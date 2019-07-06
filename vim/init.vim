@@ -216,8 +216,12 @@ nnoremap <silent> L :silent :tabn<CR>
 nnoremap <silent> <Leader>[ :silent :bp<CR>
 nnoremap <silent> <Leader>] :silent :bn<CR>
 
-" Spellcheck
-nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+" Sort
+vnoremap <Leader>s :sort<CR>
 
-" Paste from clipboard
-nnoremap <C-P> "*p
+" Spellcheck
+nnoremap <Leader>S :setlocal spell! spelllang=en_us<CR>
+
+" Copy/paste using system clipboard
+nnoremap <Leader>p "*p
+vnoremap <Leader>y "*y
