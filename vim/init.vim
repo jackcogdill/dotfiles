@@ -115,10 +115,6 @@ augroup numbertoggle
 augroup END
 
 autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4 " Scroll limit
-" Remap zt and zb to be unaffected by scrolloff
-" (actually move line to top and bottom)
-nnoremap zt :execute "normal! " . (line(".") + &scrolloff) . "Gzt"<CR>
-nnoremap zb :execute "normal! " . (line(".") - &scrolloff) . "Gzb"<CR>
 set nowrap " Disable line wrapping
 set cursorline " Enable cursor line
 set incsearch " Search as characters are entered
