@@ -1,54 +1,54 @@
 #! /bin/bash
 
-# Misc Setup
-# ================
-shopt -s expand_aliases
+# Detect OS
+# ============
+LINUX=0
+MACOS=0
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  LINUX=1
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  MACOS=1
+fi
+# Usage: if (( LINUX ))
+# Thank you https://stackoverflow.com/a/8597411/1313757
 
-# Option handling
-# ================
-OPTIND=1 # Reset in case getopts has been used previously in the shell
-overwrite=false
 
-# Use : to require argument, $OPTARG to access value
-while getopts "hf" opt; do
-    case "$opt" in
-    h)
-        printf "Usage:\n\
-$0 -h           Show this help\n\
-$0 -f           Overwrite files when creating symlinks\n\
-"
-        exit 0
-        ;;
-    f)  overwrite=true
-        ;;
-    esac
+# Install packages
+# ================
+packages=(
+  neovim
+  stow
+)
+pkg_manager=
+if (( MACOS )); then
+  pkg_manager="brew install"
+fi
+for pkg in "${packages[@]}"; do
+  $pkg_manager $pkg
 done
 
-shift $((OPTIND-1))
-[ "${1:-}" = "--" ] && shift
 
-
-# Create Symlinks
+# Create symlinks
 # ================
-dotfiles="$HOME/.dotfiles"
-if [ "$overwrite" = true ]; then
-    alias ln="ln -sf"
-else
-    alias ln="ln -s"
-fi
-
-for file in $(ls -A "$dotfiles/home"); do
-    ln "$dotfiles/home/$file" "$HOME/$file"
+dots=(
+  bash
+  brew
+  git
+  tmux
+  vim
+  zsh
+)
+for pkg in "${dots[@]}"; do
+  stow -t ~ $pkg
 done
 
-# NeoVim
-if hash nvim 2>/dev/null; then
-    mkdir -p "$HOME/.config/nvim"
-    ln "$dotfiles/vim/init.vim" "$HOME/.config/nvim/init.vim"
-fi
+# Neovim
+ln -s $(pwd)/vim/.vim/vimrc ~/.config/nvim/init.vim
 
-# Vim
-ln "$dotfiles/vim/init.vim" "$HOME/.vimrc"
+
+# Antigen setup
+# ================
+git clone https://github.com/zsh-users/antigen ~/.antigen
 
 
 # Tmux setup
@@ -58,8 +58,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # macOS config
 # ================
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Key repeat
-    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+if (( MACOS )); then
+  # Key repeat
+  defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 fi
+
+
+# Clean up
+# ================
+unset LINUX
+unset MACOS
+unset packages
+unset pkg_manager
+unset dots

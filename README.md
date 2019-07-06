@@ -23,12 +23,10 @@ To overwrite files when creating symlinks, use `~/.dotfiles/install.sh -f`.
 
 ## Todo
 
-- [ ] Use stow to create symlinks
-    - [ ] Create two tmux configs: macOS and linux. Then stow on `if (( LINUX ))`
-
 ## Completed
 
 - [x] Create `install.sh` to create symlinks
 - [x] Make single vim config with `if has('nvim')` blocks
 - [x] Find more suitable light theme
 - [x] ssh: auto tmux (`tmux new -A -s ssh`)
+- [x] Use stow to create symlinks

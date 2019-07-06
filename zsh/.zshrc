@@ -16,10 +16,6 @@ source ~/.fonts/lib/i_oct.sh
 
 # Antigen
 # ============
-# Setup
-if [ ! -d "$HOME/.antigen" ]; then
-    git clone https://github.com/zsh-users/antigen ~/.antigen
-fi
 source ~/.antigen/antigen.zsh
 antigen use oh-my-zsh
 
@@ -38,6 +34,7 @@ fi
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle unixorn/autoupdate-antigen.zshplugin # Auto updates for antigen
+ANTIGEN_AUTOUPDATE_VERBOSE=1
 
 # Theme
 antigen bundle mafredri/zsh-async
@@ -76,8 +73,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 # Environment vars
 # ============
 # Path
-USR_FOLDER=`echo ~`
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:$USR_FOLDER/go/bin:$USR_FOLDER/Hacking/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
 
@@ -193,3 +189,8 @@ export NVM_DIR="$HOME/.nvm"
 # ============
 # Auto suggestions
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
+
+# Clean up
+# ============
+unset LINUX
+unset MACOS
