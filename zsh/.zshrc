@@ -43,6 +43,11 @@ antigen bundle sindresorhus/pure
 antigen apply
 
 
+# Prompt
+# ============
+printf '\e[1 q' # Blinking box cursor
+
+
 # Misc
 # ============
 # Line editing
