@@ -33,8 +33,7 @@ fi
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle unixorn/autoupdate-antigen.zshplugin # Auto updates for antigen
-  ANTIGEN_AUTOUPDATE_VERBOSE=1
+antigen bundle jackcogdill/autoupdate-antigen # Auto updates for antigen
 
 # Theme
 antigen bundle mafredri/zsh-async
@@ -181,7 +180,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # Auto tmux
 if [[ -z "$TMUX" ]]; then
   local session="default"
-  [ "$SSH_CONNECTION" != "" ] && session="ssh"
+  [[ -n "$SSH_CONNECTION" ]] && session="ssh"
   tmux new -A -s "$session"
 fi
 
