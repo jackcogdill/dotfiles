@@ -42,9 +42,37 @@ antigen bundle sindresorhus/pure
 antigen apply
 
 
-# Prompt
-# ============
-printf '\e[1 q' # Blinking box cursor
+# Vi mode cursor
+# ================
+# The `add-zle-hook-widget` function is not guaranteed to be available.
+# It was added in Zsh 5.3.
+autoload -Uz +X add-zle-hook-widget 2>/dev/null
+
+function reset_vi_mode_cursor {
+  printf '\e[1 q' # Blinking box cursor
+}
+
+function update_vi_mode_cursor {
+  # Change the cursor style depending on keymap mode.
+  case $KEYMAP {
+    vicmd)
+      reset_vi_mode_cursor
+      ;;
+    viins|main)
+      printf '\e[5 q' # Blinking bar cursor
+      ;;
+    }
+}
+
+zle -N update_vi_mode_cursor
+zle -N reset_vi_mode_cursor
+if (( $+functions[add-zle-hook-widget] )); then
+  add-zle-hook-widget zle-line-init update_vi_mode_cursor
+  add-zle-hook-widget zle-keymap-select update_vi_mode_cursor
+  # Reset cursor to same style as vi command mode after entering a command
+  # This is to prevent persisting the vi insert mode style into other programs
+  add-zle-hook-widget zle-line-finish reset_vi_mode_cursor
+fi
 
 
 # Misc
