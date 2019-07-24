@@ -209,6 +209,29 @@ nnoremap <silent> <C-M> :silent :tabnew<CR>
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
 
+" Quickly navigate tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <silent> <Leader>9 :exe "tabn $"<CR>
+
+" Switch to last active tab
+if !exists('g:lasttab')
+  let g:lasttab = 1
+  let g:lasttab_backup = 1
+endif
+augroup lasttab
+  autocmd!
+  autocmd TabLeave * let g:lasttab_backup = g:lasttab | let g:lasttab = tabpagenr()
+  autocmd TabClosed * let g:lasttab = g:lasttab_backup
+augroup END
+nnoremap <silent> <Leader>l :exe "tabn " . g:lasttab<CR>
+
 " Navigate buffers
 nnoremap <silent> <Leader>[ :silent :bp<CR>
 nnoremap <silent> <Leader>] :silent :bn<CR>
