@@ -5,6 +5,8 @@ My personal config files for (mostly) everything I use.
 
 ![2019-07-04](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2019-07-24.png)
 
+Font: [Input](https://input.fontbureau.com/info/)
+
 ## Install
 
 ```bash
