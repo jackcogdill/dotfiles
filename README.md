@@ -3,7 +3,7 @@ My personal config files for (mostly) everything I use.
 
 ## Screenshots
 
-![2019-07-04](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2019-07-04.png)
+![2019-07-04](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2019-07-24.png)
 
 ## Install
 
