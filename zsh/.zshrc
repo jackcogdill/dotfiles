@@ -92,6 +92,9 @@ bindkey '^r' history-incremental-search-backward
 
 # Plugin configs
 # ============
+# Pure theme
+PURE_GIT_DOWN_ARROW="v"
+PURE_GIT_UP_ARROW="⌃"
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
