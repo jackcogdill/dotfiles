@@ -10,9 +10,6 @@ fi
 # Usage: if (( LINUX ))
   # Thank you https://stackoverflow.com/a/8597411/1313757
 
-# Load nerd font vars
-source ~/.fonts/lib/i_oct.sh
-
 
 # Antigen
 # ============
@@ -95,9 +92,6 @@ bindkey '^r' history-incremental-search-backward
 
 # Plugin configs
 # ============
-# Pure theme
-PURE_GIT_DOWN_ARROW=$i_oct_chevron_down
-PURE_GIT_UP_ARROW=$i_oct_chevron_up
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
