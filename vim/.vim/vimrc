@@ -49,6 +49,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " ============================
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
+nnoremap <Leader>sr :SignifyRefresh<CR>
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
@@ -59,7 +60,7 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " vim-workspace
-nnoremap <leader>w :ToggleWorkspace<CR>
+nnoremap <Leader>w :ToggleWorkspace<CR>
 let g:workspace_autocreate = 1
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave = 0 " Disable auto save
