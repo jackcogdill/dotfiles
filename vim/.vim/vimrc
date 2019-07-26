@@ -18,7 +18,7 @@ Plug 'sheerun/vim-polyglot' " Syntax highlighting for most languages
 Plug 'luochen1990/rainbow' " Color nested parentheses
 
 " Editing
-Plug 'Raimondi/delimitMate' " Autocomplete for parentheses, quotes, etc.
+Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
 Plug 'Yggdroot/indentLine' " Display code indentation with lines
