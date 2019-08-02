@@ -204,8 +204,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # Auto tmux
 if [[ -z "$TMUX" ]]; then
-  local session="default"
-  [[ -n "$SSH_CONNECTION" ]] && session="ssh"
+  [[ -n "$SSH_CONNECTION" ]] &&
+    local session="ssh" ||
+    local session="default"
   tmux new -A -s "$session"
 fi
 
