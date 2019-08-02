@@ -245,5 +245,8 @@ vnoremap <Leader>s :sort<CR>
 nnoremap <Leader>S :setlocal spell! spelllang=en_us<CR>
 
 " Copy/paste using system clipboard
-nnoremap <Leader>p "*p
 vnoremap <Leader>y "*y
+nnoremap <Leader>p "*p
+vnoremap <Leader>p "*p
+nnoremap <Leader>P "*P
+vnoremap <Leader>P "*P
