@@ -1,5 +1,7 @@
 #! /bin/bash
 
+cd $(dirname "$0")
+
 # Detect OS
 # ============
 LINUX=0
@@ -43,7 +45,7 @@ for pkg in "${dots[@]}"; do
 done
 
 # Neovim
-ln -s $(pwd)/vim/.vim/vimrc ~/.config/nvim/init.vim
+ln -s vim/.vim/vimrc ~/.config/nvim/init.vim
 
 # Antibody setup
 # ================
