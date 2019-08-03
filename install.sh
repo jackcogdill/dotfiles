@@ -45,10 +45,18 @@ done
 # Neovim
 ln -s $(pwd)/vim/.vim/vimrc ~/.config/nvim/init.vim
 
-
-# Antigen setup
+# Antibody setup
 # ================
-git clone https://github.com/zsh-users/antigen ~/.antigen
+(( MACOS )) &&
+  brew install getantibody/tap/antibody ||
+  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+
+extra_plugins=
+if (( LINUX )); then
+  extra_plugins="robbyrussell/oh-my-zsh path:plugins/debian"
+fi
+
+(cat ~/.zsh_plugins.txt <(echo "$extra_plugins")) | antibody bundle > ~/.zsh_plugins.sh
 
 
 # Tmux setup
@@ -69,6 +77,7 @@ fi
 # ================
 unset LINUX
 unset MACOS
+unset dots
 unset packages
 unset pkg_manager
-unset dots
+unset extra_plugins

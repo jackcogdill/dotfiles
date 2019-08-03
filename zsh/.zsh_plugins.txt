@@ -1,0 +1,17 @@
+# Oh-My-Zsh
+robbyrussell/oh-my-zsh
+
+# Oh-My-Zsh plugins
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/history
+robbyrussell/oh-my-zsh path:plugins/python
+robbyrussell/oh-my-zsh path:plugins/extract
+
+# Other plugins
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+jackcogdill/autoupdate-antibody
+
+# Theme
+mafredri/zsh-async
+sindresorhus/pure

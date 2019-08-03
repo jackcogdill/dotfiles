@@ -1,42 +1,8 @@
-# Detect OS
-# ============
-LINUX=0
-MACOS=0
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  LINUX=1
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  MACOS=1
-fi
-# Usage: if (( LINUX ))
-  # Thank you https://stackoverflow.com/a/8597411/1313757
-
-
-# Antigen
-# ============
-source ~/.antigen/antigen.zsh
-antigen use oh-my-zsh
-
-# Plugins
-antigen bundle git
-antigen bundle history
-antigen bundle python
-antigen bundle extract
-
-if (( LINUX )); then
-  antigen bundle debian
-elif (( MACOS )); then
-  antigen bundle brew
-fi
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle jackcogdill/autoupdate-antigen # Auto updates for antigen
-
-# Theme
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
-
-antigen apply
+# Antibody
+# ================
+# Tell Oh-My-Zsh where it lives
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+source ~/.zsh_plugins.sh
 
 
 # Vi mode cursor
@@ -169,8 +135,3 @@ export NVM_DIR="$HOME/.nvm"
 # ============
 # Auto suggestions
 bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
-
-# Clean up
-# ============
-unset LINUX
-unset MACOS
