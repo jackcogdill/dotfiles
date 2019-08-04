@@ -1,16 +1,26 @@
 set nocompatible " Disable backward compatibility with vi
 let s:nvim = has('nvim')
 
-" Auto install vim-plug
+" Utils
+" ============================
+" Like tabdo but restore the current tab.
+function! TabDo(command)
+  let currTab=tabpagenr()
+  execute 'tabdo ' . a:command
+  execute 'tabn ' . currTab
+endfunction
+com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
+
+
+" Using vim-plug for plugins
+" ============================
+" Auto install
 let s:vimplug_path = s:nvim ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
 if empty(glob(s:vimplug_path))
   silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
-" Using vim-plug for plugins
-" ============================
 call plug#begin(s:nvim ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
 
 " Syntax highlighting
@@ -49,7 +59,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " ============================
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
-nnoremap <Leader>sr :SignifyRefresh<CR>
+nnoremap <Leader>sr :Tabdo SignifyRefresh<CR>
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
