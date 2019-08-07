@@ -25,9 +25,11 @@ pkg_manager=
 if (( MACOS )); then
   pkg_manager="brew install"
 fi
-for pkg in "${packages[@]}"; do
-  $pkg_manager $pkg
-done
+if [[ -n "$pkg_manager" ]]; then
+  for pkg in "${packages[@]}"; do
+    $pkg_manager $pkg
+  done
+fi
 
 
 # Create symlinks
@@ -45,6 +47,7 @@ for pkg in "${dots[@]}"; do
 done
 
 # Neovim
+mkdir -p ~/.config/nvim/
 ln -s vim/.vim/vimrc ~/.config/nvim/init.vim
 
 # Antibody setup
