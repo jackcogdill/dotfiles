@@ -69,12 +69,16 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 # ============
 # Path
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
+export PATH="${PATH}:/usr/local/opt/ruby/bin"
+export PATH="${PATH}:/usr/local/opt/mongodb-community@3.4/bin"
 
 # Editor
 export EDITOR=`which nvim`
 export VISUAL="$EDITOR"
+
+# Go
+export GOPATH=$(go env GOPATH)
+export PATH="${PATH}:$GOPATH/bin"
 
 
 # Aliases
