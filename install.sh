@@ -48,7 +48,7 @@ done
 
 # Neovim
 mkdir -p ~/.config/nvim/
-ln -s vim/.vim/vimrc ~/.config/nvim/init.vim
+ln -s "$(pwd)/vim/.vim/vimrc" ~/.config/nvim/init.vim
 
 # Antibody setup
 # ================
@@ -56,12 +56,7 @@ ln -s vim/.vim/vimrc ~/.config/nvim/init.vim
   brew install getantibody/tap/antibody ||
   curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
 
-extra_plugins=
-if (( LINUX )); then
-  extra_plugins="robbyrussell/oh-my-zsh path:plugins/debian"
-fi
-
-(cat ~/.zsh_plugins.txt <(echo "$extra_plugins")) | antibody bundle > ~/.zsh_plugins.sh
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 
 
 # Tmux setup
