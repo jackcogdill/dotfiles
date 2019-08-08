@@ -21,16 +21,10 @@ fi
 
 # Install packages
 # ================
-packages=(
-  neovim
-  stow
-  zsh
-)
-pkg_manager=
 if (( MACOS )); then
-  pkg_manager="brew install"
+  brew bundle
 elif (( DEBIAN )); then
-  pkg_manager="apt install"
+  cat debian_packages | xargs apt install -y
 fi
 if [[ -n "$pkg_manager" ]]; then
   for pkg in "${packages[@]}"; do
@@ -93,5 +87,4 @@ unset LINUX
 unset MACOS
 unset dots
 unset packages
-unset pkg_manager
 unset extra_plugins
