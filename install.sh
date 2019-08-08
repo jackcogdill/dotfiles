@@ -5,9 +5,13 @@ cd $(dirname "$0")
 # Detect OS
 # ============
 LINUX=0
+DEBIAN=0
 MACOS=0
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   LINUX=1
+  if $(cat /etc/issue | grep -i debian); then
+    DEBIAN=1
+  fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   MACOS=1
 fi
@@ -24,6 +28,8 @@ packages=(
 pkg_manager=
 if (( MACOS )); then
   pkg_manager="brew install"
+elif (( DEBIAN )); then
+  pkg_manager="apt install"
 fi
 if [[ -n "$pkg_manager" ]]; then
   for pkg in "${packages[@]}"; do
