@@ -24,6 +24,7 @@ fi
 packages=(
   neovim
   stow
+  zsh
 )
 pkg_manager=
 if (( MACOS )); then
@@ -35,6 +36,13 @@ if [[ -n "$pkg_manager" ]]; then
   for pkg in "${packages[@]}"; do
     $pkg_manager $pkg
   done
+fi
+
+
+# Change shell to zsh
+# ============
+if [[ "$SHELL" != "$(which zsh)" ]]; then
+  chsh -s "$(which zsh)"
 fi
 
 
