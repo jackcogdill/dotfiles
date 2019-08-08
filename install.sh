@@ -9,7 +9,7 @@ DEBIAN=0
 MACOS=0
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   LINUX=1
-  if $(cat /etc/issue | grep -i debian); then
+  if cat /etc/issue | grep -i debian; then
     DEBIAN=1
   fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
