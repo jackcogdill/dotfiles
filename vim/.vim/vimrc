@@ -49,12 +49,6 @@ Plug 'ctrlpvim/ctrlp.vim' " Files
 call plug#end() " Initialize plugin system
 
 
-" Core Python config
-" ============================
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-
 " Plugin config
 " ============================
 " vim-signify
