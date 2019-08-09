@@ -45,7 +45,6 @@ fi
 # ================
 dots=(
   bash
-  brew
   git
   tmux
   vim
