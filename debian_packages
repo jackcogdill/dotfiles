@@ -3,6 +3,7 @@ gcc
 git
 golang
 neovim
+npm
 python3-dev
 stow
 tmux
