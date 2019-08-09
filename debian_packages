@@ -3,6 +3,7 @@ gcc
 git
 golang
 neovim
+python3-dev
 stow
 tmux
 zsh
