@@ -1,17 +1,6 @@
 set nocompatible " Disable backward compatibility with vi
 let s:nvim = has('nvim')
 
-" Utils
-" ============================
-" Like tabdo but restore the current tab.
-function! TabDo(command)
-  let currTab=tabpagenr()
-  execute 'tabdo ' . a:command
-  execute 'tabn ' . currTab
-endfunction
-com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
-
-
 " Using vim-plug for plugins
 " ============================
 " Auto install
@@ -53,7 +42,8 @@ call plug#end() " Initialize plugin system
 " ============================
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
-nnoremap <Leader>sr :Tabdo SignifyRefresh<CR>
+let g:signify_update_on_focusgained = 1
+nnoremap <Leader>d :SignifyDiff<CR>
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
@@ -211,9 +201,9 @@ if s:nvim
 endif
 
 " Navigate tabs
-nnoremap <silent> <C-M> :silent :tabnew<CR>
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
+nnoremap <silent> <Leader>D :tabclose<CR>
 
 " Quickly navigate tabs
 nnoremap <Leader>1 1gt
