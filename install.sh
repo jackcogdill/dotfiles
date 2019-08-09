@@ -24,6 +24,7 @@ fi
 if (( MACOS )); then
   brew bundle
 elif (( DEBIAN )); then
+  apt update
   cat debian_packages | xargs apt install -y
 fi
 if [[ -n "$pkg_manager" ]]; then
