@@ -107413,7 +107413,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>580282941.98569095</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>76</integer>
+	<integer>81</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108150,6 +108150,8 @@
 	</dict>
 	<key>NoSyncSearchHistory</key>
 	<array>
+		<string>devel</string>
+		<string>root</string>
 		<string>website/</string>
 	</array>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
@@ -108242,7 +108244,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-07-23T05:59:19Z</date>
+	<date>2019-08-04T22:42:45Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
