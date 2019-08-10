@@ -203,6 +203,7 @@ endif
 " Navigate tabs
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
+nnoremap <silent> <C-M> :silent :tabnew<CR>
 nnoremap <silent> <Leader>D :tabclose<CR>
 
 " Quickly navigate tabs
