@@ -127,7 +127,10 @@ if [[ -z "$TMUX" ]]; then
   [[ -n "$SSH_CONNECTION" ]] &&
     session="ssh" ||
     session="default"
-  tmux new -A -s "$session"
+  # Not currently attached
+  if ! tmux ls | grep -E "^$session" | grep -q attached; then
+    tmux new -A -s "$session"
+  fi
 fi
 
 # NVM (Node Version Management)
