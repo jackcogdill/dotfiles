@@ -17,6 +17,8 @@ git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles
 
 ## Todo
 
+- [ ] Make install process not rely on git (perhaps use curl)
+
 ## Completed
 
 - [x] Create `install.sh` to create symlinks
