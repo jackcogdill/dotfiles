@@ -2,6 +2,7 @@ cmake
 gcc
 git
 golang
+htop
 neovim
 npm
 python3-dev
