@@ -43,7 +43,6 @@ call plug#end() " Initialize plugin system
 " vim-signify
 let g:signify_vcs_list = [ 'git', 'hg' ]
 let g:signify_update_on_focusgained = 1
-nnoremap <Leader>d :SignifyDiff<CR>
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
@@ -204,7 +203,6 @@ endif
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
 nnoremap <silent> <C-M> :silent :tabnew<CR>
-nnoremap <silent> <Leader>D :tabclose<CR>
 
 " Quickly navigate tabs
 nnoremap <Leader>1 1gt
@@ -245,3 +243,5 @@ nnoremap <Leader>p "*p
 vnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
 vnoremap <Leader>P "*P
+nnoremap <Leader>d "*d
+vnoremap <Leader>d "*d
