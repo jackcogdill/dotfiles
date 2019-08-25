@@ -4,6 +4,7 @@ gcc
 git
 golang
 htop
+jq
 neovim
 npm
 python3-dev
