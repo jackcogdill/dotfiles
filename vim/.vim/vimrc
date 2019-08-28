@@ -108,6 +108,8 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+" Make C-C trigger InsertLeave
+inoremap <C-C> <Esc>
 
 autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4 " Scroll limit
 set nowrap " Disable line wrapping
