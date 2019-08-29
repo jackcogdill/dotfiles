@@ -65,6 +65,14 @@ set laststatus=2
 
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W'],
+      \'x'    : '#{prefix_highlight} %a',
+      \'y'    : ['%B %d', '%H:%M'],
+      \'z'    : '#h'}
+let g:tmuxline_status_justify = 'left'
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
