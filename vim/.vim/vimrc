@@ -69,8 +69,8 @@ let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W'],
-      \'x'    : '#{prefix_highlight} %a',
-      \'y'    : ['%B %d', '%H:%M'],
+      \'x'    : '#{prefix_highlight} %a %b %d',
+      \'y'    : ['%H:%M'],
       \'z'    : '#h'}
 let g:tmuxline_status_justify = 'left'
 
