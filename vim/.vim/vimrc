@@ -223,7 +223,7 @@ nnoremap <Leader>5 5gt
 nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
-nnoremap <silent> <Leader>9 :exe "tabn $"<CR>
+nnoremap <silent> <Leader>9 :tablast<CR>
 
 " Switch to last active tab
 if !exists('g:lasttab')
