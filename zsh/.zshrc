@@ -1,8 +1,14 @@
 # Antibody
 # ================
+# Prompt (before init)
+RPROMPT='%F{white}%*'
+
 # Tell Oh-My-Zsh where it lives
 ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 source ~/.zsh_plugins.sh
+
+# Prompt (after init)
+PROMPT='%F{cyan}%(1j.[%j] .)'$PROMPT
 
 
 # Vi mode cursor
