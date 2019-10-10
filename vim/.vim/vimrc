@@ -46,6 +46,8 @@ let g:signify_update_on_focusgained = 1
 
 " CtrlP
 let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
+" Keep MRU file relative to working directory
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.?(DS_Store|node_modules|git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
