@@ -164,6 +164,13 @@ call s:Set_dark_theme()
 
 " Misc settings
 " ============================
+" Reload buffers if changed outside of vim
+set autoread
+augroup reloadbuffers
+  autocmd!
+  autocmd FocusGained * checktime
+augroup END
+
 " Disable bells and flashing
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
