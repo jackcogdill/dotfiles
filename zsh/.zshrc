@@ -78,9 +78,11 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/
 export PATH="${PATH}:/usr/local/opt/ruby/bin"
 export PATH="${PATH}:/usr/local/opt/mongodb-community@3.4/bin"
 
-# Editor
-export EDITOR=`which nvim`
-export VISUAL="$EDITOR"
+# Editor / pager
+export EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
+# Smart case search
+export PAGER="$(which less) -i"
 
 # Go
 export GOPATH=$(go env GOPATH)
