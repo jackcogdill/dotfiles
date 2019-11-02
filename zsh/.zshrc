@@ -91,14 +91,15 @@ export PATH="${PATH}:$GOPATH/bin"
 
 # Aliases
 # ============
-alias lt='ls -halt' # human readable, show hidden, print details, sort by date
-alias ip='curl icanhazip.com'
-alias gh='cd ~/Git_Repos'
+alias l="exa -lah"
+alias ip="curl icanhazip.com"
+alias gh="cd ~/Git_Repos"
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
+alias diff="diff-so-fancy"
 
 # SSH
 alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
