@@ -100,6 +100,7 @@ alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
 alias diff="diff-so-fancy"
+# git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
 # SSH
 alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
