@@ -223,8 +223,8 @@ endif
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
 nnoremap <silent> <C-M> :silent :tabnew<CR>
-
-" Quickly navigate tabs
+nnoremap <silent> <A-h> :silent :tabm -1<CR>
+nnoremap <silent> <A-l> :silent :tabm +1<CR>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
