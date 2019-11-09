@@ -81,8 +81,7 @@ export PATH="${PATH}:/usr/local/opt/mongodb-community@3.4/bin"
 # Editor / pager
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
-# Smart case search
-export PAGER="$(which less) -i"
+export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
 
 # Go
 export GOPATH=$(go env GOPATH)
@@ -91,7 +90,6 @@ export PATH="${PATH}:$GOPATH/bin"
 
 # Aliases
 # ============
-alias l="exa -lah"
 alias ip="curl icanhazip.com"
 alias gh="cd ~/Git_Repos"
 alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
@@ -99,8 +97,6 @@ alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias mfind="mdfind -onlyin ."
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
-alias diff="diff-so-fancy"
-# git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
 # SSH
 alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
