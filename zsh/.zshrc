@@ -60,6 +60,7 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
+bindkey '^f' history-incremental-search-forward
 
 
 # Plugin configs
