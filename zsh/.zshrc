@@ -10,57 +10,8 @@ source ~/.zsh_plugins.sh
 # Prompt (after init)
 PROMPT='%F{cyan}%(1j.[%j] .)'$PROMPT
 
-
-# Vi mode cursor
-# ================
-# The `add-zle-hook-widget` function is not guaranteed to be available.
-# It was added in Zsh 5.3.
-autoload -Uz +X add-zle-hook-widget 2>/dev/null
-
-function reset_vi_mode_cursor {
-  printf '\e[1 q' # Blinking box cursor
-}
-
-function update_vi_mode_cursor {
-  # Change the cursor style depending on keymap mode.
-  case $KEYMAP {
-    vicmd)
-      reset_vi_mode_cursor
-      ;;
-    viins|main)
-      printf '\e[5 q' # Blinking bar cursor
-      ;;
-    }
-}
-
-zle -N update_vi_mode_cursor
-zle -N reset_vi_mode_cursor
-if (( $+functions[add-zle-hook-widget] )); then
-  add-zle-hook-widget zle-line-init update_vi_mode_cursor
-  add-zle-hook-widget zle-keymap-select update_vi_mode_cursor
-  # Reset cursor to same style as vi command mode after entering a command
-  # This is to prevent persisting the vi insert mode style into other programs
-  add-zle-hook-widget zle-line-finish reset_vi_mode_cursor
-fi
-
-
-# Misc
-# ============
-# Line editing
-bindkey -v # Vi mode
-export KEYTIMEOUT=1 # Reduce default 0.4s delay after hitting <ESC> key
-# Use vim cli mode
-bindkey '^P' up-history
-bindkey '^N' down-history
-# backspace and ^h working even after
-# returning from command mode
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-# ctrl-w removed word backwards
-bindkey '^w' backward-kill-word
-# ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
-bindkey '^f' history-incremental-search-forward
+# Blinking block cursor
+printf '\e[1 q'
 
 
 # Plugin configs
