@@ -22,7 +22,7 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load # --verbose
+zplug load
 
 
 # Prompt
@@ -30,6 +30,7 @@ zplug load # --verbose
 RPROMPT='%F{white}%*'
 PROMPT='%F{cyan}%(1j.[%j] .)'$PROMPT
 printf '\e[1 q' # Blinking block cursor
+bindkey -e # Emacs
 
 
 # Plugin configs
