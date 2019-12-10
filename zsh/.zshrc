@@ -11,6 +11,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
+# Theme
 zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure"
 
