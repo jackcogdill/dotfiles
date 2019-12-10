@@ -27,8 +27,8 @@ zplug load
 
 # Prompt
 # ============
-RPROMPT='%F{white}%*'
-PROMPT='%F{cyan}%(1j.[%j] .)'$PROMPT
+RPROMPT='%F{white}%*%f'
+PROMPT='%F{cyan}%(1j.[%j] .)%f'$PROMPT
 printf '\e[1 q' # Blinking block cursor
 bindkey -e # Emacs
 
