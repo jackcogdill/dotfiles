@@ -1,17 +1,36 @@
-# Antibody
-# ================
-# Prompt (before init)
+# zplug
+# ============
+source ~/.zplug/init.zsh
+
+zplug "lib/completion", from:oh-my-zsh # [tab] squares
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
+zplug "plugins/python", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+
+zplug "mafredri/zsh-async"
+zplug "sindresorhus/pure"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load # --verbose
+
+
+# Prompt
+# ============
 RPROMPT='%F{white}%*'
-
-# Tell Oh-My-Zsh where it lives
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-source ~/.zsh_plugins.sh
-
-# Prompt (after init)
 PROMPT='%F{cyan}%(1j.[%j] .)'$PROMPT
-
-# Blinking block cursor
-printf '\e[1 q'
+printf '\e[1 q' # Blinking block cursor
 
 
 # Plugin configs

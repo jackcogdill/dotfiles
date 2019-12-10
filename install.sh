@@ -58,13 +58,11 @@ done
 mkdir -p ~/.config/nvim/
 ln -s "$(pwd)/vim/.vim/vimrc" ~/.config/nvim/init.vim
 
-# Antibody setup
+# zplug setup
 # ================
-(( MACOS )) &&
-  brew install getantibody/tap/antibody ||
-  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
-
-antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+curl -sL --proto-redir -all,https \
+  https://raw.githubusercontent.com/zplug/installer/master/installer.zsh \
+  | zsh
 
 
 # Tmux setup
