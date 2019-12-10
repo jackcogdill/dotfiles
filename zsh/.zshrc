@@ -4,7 +4,6 @@ source ~/.zplug/init.zsh
 
 zplug "lib/completion", from:oh-my-zsh # [tab] squares
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/history", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 
