@@ -1,3 +1,12 @@
+# Shell vars
+# ============
+export GOPATH=$(go env GOPATH)
+export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/usr/local/opt/ruby/bin:/usr/local/opt/mongodb-community@3.4/bin:$GOPATH/bin"
+export EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
+export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
+
+
 # zplug
 # ============
 source ~/.zplug/init.zsh
@@ -7,9 +16,10 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 
+# !! Keep order
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
 
 # Theme
 zplug "mafredri/zsh-async"
@@ -26,68 +36,23 @@ fi
 zplug load
 
 
-# Prompt
+# Shell config
 # ============
+# Prompt
+#        [    time   ]
 RPROMPT='%F{white}%*%f'
+#       [        jobs        ]
 PROMPT='%F{cyan}%(1j.[%j] .)%f'$PROMPT
 printf '\e[1 q' # Blinking block cursor
 bindkey -e # Emacs
-
-
-# Plugin configs
-# ============
-# Pure theme
+# Pure
 PURE_GIT_DOWN_ARROW="v"
 PURE_GIT_UP_ARROW="⌃"
-
-# Autosuggestions
+# zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
-
-# Environment vars
-# ============
-# Path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
-export PATH="${PATH}:/usr/local/opt/ruby/bin"
-export PATH="${PATH}:/usr/local/opt/mongodb-community@3.4/bin"
-
-# Editor / pager
-export EDITOR=$(which nvim)
-export VISUAL=$(which nvim)
-export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
-
-# Go
-export GOPATH=$(go env GOPATH)
-export PATH="${PATH}:$GOPATH/bin"
-
-
-# Aliases
-# ============
-alias ip="curl icanhazip.com"
-alias gh="cd ~/Git_Repos"
-alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias mfind="mdfind -onlyin ."
-alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
-
-# SSH
-alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
-alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh)
-alias portal="ssh jackcog@portal.cs.vt.edu"
-alias ourlogin="ssh kiyoshi@ourlogin.space"
-
-# Git
-alias gpf="git push -f"
-alias gla="git pull --all"
-alias gu="gta; gfa; gla"
-
-alias javarepl="java -jar /opt/local/share/java/javarepl*.jar"
-alias vs="open -a /Applications/Visual\ Studio\ Code.app"
-alias vlc="open -a /Applications/VLC.app"
-alias chrome="open -a /Applications/Google\ Chrome.app"
-
-
-# This speeds up pasting w/ autosuggest
+bindkey '^Z' autosuggest-execute # Accept and execute
+# This speeds up pasting
+# ----------------------
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
@@ -98,6 +63,30 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+# ----------------------
+# zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+
+# Aliases
+# ============
+alias l="ls -laF"
+alias h="history"
+alias ip="curl icanhazip.com"
+alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
+# ssh
+alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
+alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh)
+alias portal="ssh jackcog@portal.cs.vt.edu"
+alias ourlogin="ssh kiyoshi@ourlogin.space"
+# macOS
+alias vs="open -a /Applications/Visual\ Studio\ Code.app"
+alias vlc="open -a /Applications/VLC.app"
+alias chrome="open -a /Applications/Google\ Chrome.app"
+
 
 # Auto tmux
 if [[ -z "$TMUX" ]]; then
@@ -105,8 +94,8 @@ if [[ -z "$TMUX" ]]; then
   [[ -n "$SSH_CONNECTION" ]] &&
     session="ssh" ||
     session="default"
-  # Not currently attached
-  if ! tmux ls | grep -E "^$session" | grep -q attached; then
+  # Only attach once
+  if ! tmux ls | grep -E "^$session" | grep -q attached; then # Not currently attached
     tmux new -A -s "$session"
   fi
 fi
@@ -115,8 +104,3 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
-# Keybindings
-# ============
-# Auto suggestions
-bindkey '^Z' autosuggest-execute # Accept and execute the auto-suggestion with Ctrl-Z
