@@ -11,6 +11,7 @@ $GOPATH/bin:\
 /usr/local/bin:\
 /usr/local/opt/mongodb-community@3.4/bin:\
 /usr/local/opt/ruby/bin:\
+/usr/local/sbin:\
 /usr/sbin"
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
