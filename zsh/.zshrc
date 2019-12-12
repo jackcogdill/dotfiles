@@ -1,5 +1,5 @@
-# Shell vars
-# ============
+# Vars
+# ====
 export GOPATH=$(go env GOPATH)
 export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/usr/local/opt/ruby/bin:/usr/local/opt/mongodb-community@3.4/bin:$GOPATH/bin"
 export EDITOR=$(which nvim)
@@ -8,7 +8,7 @@ export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
 
 
 # zplug
-# ============
+# =====
 source ~/.zplug/init.zsh
 
 zplug "lib/completion", from:oh-my-zsh # [tab] squares
@@ -36,8 +36,8 @@ fi
 zplug load
 
 
-# Shell config
-# ============
+# Shell
+# =====
 # Prompt
 #        [    time   ]
 RPROMPT='%F{white}%*%f'
@@ -72,7 +72,7 @@ bindkey -M emacs '^N' history-substring-search-down
 
 
 # Aliases
-# ============
+# =======
 alias l="ls -laF"
 alias h="history"
 alias ip="curl icanhazip.com"
@@ -88,6 +88,13 @@ alias vlc="open -a /Applications/VLC.app"
 alias chrome="open -a /Applications/Google\ Chrome.app"
 
 
+# Misc
+# ====
+# NVM (Node Version Management)
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
 # Auto tmux
 if [[ -z "$TMUX" ]]; then
   local session
@@ -99,8 +106,3 @@ if [[ -z "$TMUX" ]]; then
     tmux new -A -s "$session"
   fi
 fi
-
-# NVM (Node Version Management)
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
