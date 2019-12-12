@@ -1,7 +1,17 @@
 # Vars
 # ====
 export GOPATH=$(go env GOPATH)
-export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/usr/local/opt/ruby/bin:/usr/local/opt/mongodb-community@3.4/bin:$GOPATH/bin"
+export PATH="${PATH}:\
+$GOPATH/bin:\
+/Library/TeX/texbin:\
+/bin:\
+/opt/X11/bin:\
+/sbin:\
+/usr/bin:\
+/usr/local/bin:\
+/usr/local/opt/mongodb-community@3.4/bin:\
+/usr/local/opt/ruby/bin:\
+/usr/sbin"
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
