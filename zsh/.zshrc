@@ -1,18 +1,20 @@
 # Vars
 # ====
 export GOPATH=$(go env GOPATH)
-export PATH="${PATH}:\
+# !! Keep this order. Use GNU ls for LS_COLORS to work
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:\
+${PATH}:\
 $GOPATH/bin:\
-/Library/TeX/texbin:\
 /bin:\
-/opt/X11/bin:\
 /sbin:\
 /usr/bin:\
+/usr/sbin:\
 /usr/local/bin:\
+/usr/local/sbin:\
 /usr/local/opt/mongodb-community@3.4/bin:\
 /usr/local/opt/ruby/bin:\
-/usr/local/sbin:\
-/usr/sbin"
+/opt/X11/bin:\
+/Library/TeX/texbin"
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
@@ -31,6 +33,10 @@ zplug "plugins/extract", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
+
+zplug "trapd00r/LS_COLORS", \
+  hook-build:"dircolors -b LS_COLORS > c.zsh", \
+  use:"c.zsh"
 
 # Theme
 zplug "mafredri/zsh-async"
@@ -56,14 +62,15 @@ RPROMPT='%F{white}%*%f'
 PROMPT='%F{cyan}%(1j.[%j] .)%f'$PROMPT
 printf '\e[1 q' # Blinking block cursor
 bindkey -e # Emacs
+
 # Pure
 PURE_GIT_DOWN_ARROW="v"
 PURE_GIT_UP_ARROW="⌃"
+
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 bindkey '^Z' autosuggest-execute # Accept and execute
 # This speeds up pasting
-# ----------------------
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
@@ -74,17 +81,23 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-# ----------------------
+
 # zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+# Zsh to use the same colors as ls
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 
 # Aliases
 # =======
-alias l="ls -laF"
+alias ls="ls --color=auto -F"
+alias ll="ls --color=auto -Flh"
+alias la="ls --color=auto -Fa"
+alias  l="ls --color=auto -Falh"
 alias h="history"
 alias ip="curl icanhazip.com"
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated" # Update brew
