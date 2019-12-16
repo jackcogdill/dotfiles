@@ -45,7 +45,9 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 let g:signify_update_on_focusgained = 1
 
 " CtrlP
-let g:ctrlp_cmd = 'CtrlPMixed' " Search in Files, Buffers and MRU files
+let g:ctrlp_map = '<C-p><C-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+nnoremap <C-p><C-u> :CtrlPBuffer<CR>
 " Keep MRU file relative to working directory
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_custom_ignore = {
