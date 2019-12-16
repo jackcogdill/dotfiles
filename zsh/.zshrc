@@ -25,6 +25,8 @@ export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
 source ~/.zplug/init.zsh
 
 zplug "lib/completion", from:oh-my-zsh # [tab] squares
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
@@ -92,12 +94,10 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # Aliases
 # =======
-# ls
-# --
-alias ls="ls --color=auto -F"
-alias ll="ls --color=auto -Flh"
-alias la="ls --color=auto -Fa"
-alias  l="ls --color=auto -Falh"
+alias ls="ls --color=auto"
+alias h="history"
+alias ip="curl icanhazip.com"
+alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
 
 # ssh
 # ---
@@ -110,12 +110,6 @@ alias portal="ssh jackcog@portal.cs.vt.edu"
 alias vs="open -a /Applications/Visual\ Studio\ Code.app"
 alias vlc="open -a /Applications/VLC.app"
 alias chrome="open -a /Applications/Google\ Chrome.app"
-
-# Misc
-# ----
-alias h="history"
-alias ip="curl icanhazip.com"
-alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
 
 
 # Everything Else
