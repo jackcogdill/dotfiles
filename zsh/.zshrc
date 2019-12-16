@@ -95,6 +95,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Aliases
 # =======
 alias ls="ls --color=auto"
+alias la="ls --color=auto -a"
 alias h="history"
 alias ip="curl icanhazip.com"
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
