@@ -31,18 +31,17 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 
-# !! Keep this order
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
-
 zplug "trapd00r/LS_COLORS", \
   hook-build:"dircolors -b LS_COLORS > c.zsh", \
-  use:"c.zsh"
+  use:c.zsh
 
 # Theme
-zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
+zplug "denysdovhan/spaceship-prompt", \
+  use:spaceship.zsh, \
+  as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -57,15 +56,41 @@ zplug load
 
 # Plugins
 # =======
-# Pure
+# Spaceship
 # ----
-PURE_GIT_DOWN_ARROW="v"
-PURE_GIT_UP_ARROW="⌃"
-#        [    time   ]
-RPROMPT='%F{white}%*%f'
-#       [        jobs        ]
-PROMPT='%F{cyan}%(1j.[%j] .)%f'$PROMPT
 printf '\e[1 q' # Blinking block cursor
+
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  package       # Package version
+  node          # Node.js section
+  golang        # Go section
+  venv          # virtualenv section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  time          # Time stamps section
+)
+
+SPACESHIP_DIR_COLOR="blue"
+SPACESHIP_BATTERY_THRESHOLD=30
+SPACESHIP_CHAR_SYMBOL="❯ "
+SPACESHIP_CHAR_SYMBOL_SECONDARY="❯ "
+SPACESHIP_CHAR_COLOR_SUCCESS="white"
+SPACESHIP_CHAR_COLOR_SECONDARY="black"
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_COLOR="black"
 
 # Autosuggestions
 # -------------------
