@@ -24,13 +24,17 @@ export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
 # =====
 source ~/.zplug/init.zsh
 
+# Omz libs
 zplug "lib/completion", from:oh-my-zsh # [tab] squares
 zplug "lib/directories", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
+
+# Omz plugins
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 
+# Other
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
