@@ -43,7 +43,7 @@ zplug "trapd00r/LS_COLORS", \
   use:c.zsh
 
 # Theme
-zplug "denysdovhan/spaceship-prompt", \
+zplug "jackcogdill/spaceship-prompt", \
   use:spaceship.zsh, \
   as:theme
 
@@ -76,7 +76,6 @@ SPACESHIP_PROMPT_ORDER=(
   exec_time     # Execution time
   line_sep      # Line break
   battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
@@ -94,6 +93,8 @@ SPACESHIP_GIT_STATUS_COLOR=245 # gray
 SPACESHIP_BATTERY_THRESHOLD=30
 SPACESHIP_CHAR_SYMBOL="❯ "
 SPACESHIP_CHAR_SYMBOL_SECONDARY="❯ "
+SPACESHIP_CHAR_VI_MODE=true
+SPACESHIP_CHAR_VI_MODE_SYMBOL="❮ "
 SPACESHIP_CHAR_COLOR_SUCCESS= # fg
 SPACESHIP_CHAR_COLOR_SECONDARY=245 # gray
 
