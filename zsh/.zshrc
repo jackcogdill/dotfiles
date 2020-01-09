@@ -151,6 +151,15 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 # ===============
 bindkey -e # Emacs
 
+# Set the terminal title
+function set_title() {
+  # Set title atomically in one print statement so that it works when XTRACE is enabled.
+  # $2 is the current command
+  print -n $opts $'\e]0;'${2}$'\a'
+}
+add-zsh-hook precmd set_title
+add-zsh-hook preexec set_title
+
 # Zsh to use the same colors as ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
