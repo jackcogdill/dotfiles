@@ -107172,7 +107172,7 @@
 			<key>Show Mark Indicators</key>
 			<false/>
 			<key>Show Status Bar</key>
-			<false/>
+			<true/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
@@ -107461,7 +107461,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>580282941.98569095</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>114</integer>
+	<integer>116</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108346,7 +108346,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-12-12T04:52:17Z</date>
+	<date>2020-01-04T07:15:44Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>

@@ -75,7 +75,6 @@ SPACESHIP_PROMPT_ORDER=(
   venv          # virtualenv section
   exec_time     # Execution time
   line_sep      # Line break
-  battery       # Battery level and status
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
@@ -90,7 +89,6 @@ SPACESHIP_GIT_BRANCH_COLOR=72 # aqua
 SPACESHIP_GIT_STATUS_PREFIX=" "
 SPACESHIP_GIT_STATUS_SUFFIX=
 SPACESHIP_GIT_STATUS_COLOR=245 # gray
-SPACESHIP_BATTERY_THRESHOLD=30
 SPACESHIP_CHAR_SYMBOL="❯ "
 SPACESHIP_CHAR_SYMBOL_SECONDARY="❯ "
 SPACESHIP_CHAR_VI_MODE=true
