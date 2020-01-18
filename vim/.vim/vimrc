@@ -80,12 +80,6 @@ let g:tmuxline_status_justify = 'left'
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
-if !has('termguicolors') " If true color is not available, fix weird colors by setting defaults
-    let g:rainbow_conf = {
-    \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-    \    'ctermfgs': ['blue', 'yellow', 'cyan', 'magenta']
-    \}
-endif
 
 " Better whitespace
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
@@ -117,8 +111,8 @@ set number
 set relativenumber
 augroup numbertoggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave * silent set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * silent set norelativenumber
 augroup END
 " Make C-C trigger InsertLeave
 inoremap <C-C> <Esc>
