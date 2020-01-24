@@ -282,3 +282,6 @@ nnoremap <Leader>P "*P
 vnoremap <Leader>P "*P
 nnoremap <Leader>d "*d
 vnoremap <Leader>d "*d
+
+" Reload vimrc
+nnoremap <A-r> :source $MYVIMRC<CR>
