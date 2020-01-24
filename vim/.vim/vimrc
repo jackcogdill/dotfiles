@@ -24,6 +24,7 @@ Plug 'Yggdroot/indentLine' " Display code indentation with lines
 
 " Color schemes
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
@@ -63,7 +64,7 @@ let g:workspace_autosave = 0 " Disable auto save
 let g:workspace_session_disable_on_args = 1
 
 " Lightline
-let g:lightline = {'colorscheme': 'molokai'}
+let g:lightline = {}
 set laststatus=2
 
 " Tmuxline
@@ -127,34 +128,55 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-function! s:Gruvbox_common()
+function! s:Reload_lightline()
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
+
+function! s:Set_light_theme(manual)
+  set background=light
+  colorscheme PaperColor
+  let g:lightline.colorscheme = 'PaperColor'
+  call s:Reload_lightline()
+
+  if a:manual
+    execute 'Tmuxline vim_statusline_3'
+    call system('tmux setenv THEME light')
+  endif
+endfunction
+
+function! s:Set_dark_theme(manual)
+  " Config
+  let g:gruvbox_contrast_dark='medium'
   let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
   let g:gruvbox_invert_selection=0
   if s:nvim
     let g:gruvbox_italic=1
   endif
-endfunction
 
-function! s:Set_light_theme()
-    set background=light
-    let g:gruvbox_contrast_light='medium'
-    call s:Gruvbox_common()
-    colorscheme gruvbox
-endfunction
+  set background=dark
+  colorscheme gruvbox
+  let g:lightline.colorscheme = 'molokai'
+  call s:Reload_lightline()
 
-function! s:Set_dark_theme()
-    set background=dark
-    let g:gruvbox_contrast_dark='medium'
-    call s:Gruvbox_common()
-    colorscheme gruvbox
+  if a:manual
+    execute 'Tmuxline iceberg'
+    call system('tmux setenv THEME dark')
+  endif
 endfunction
 
 " Commands to manually change color scheme
-command! L call s:Set_light_theme()
-command! D call s:Set_dark_theme()
+command! L call s:Set_light_theme(1)
+command! D call s:Set_dark_theme(1)
 
 " Set colorscheme
-call s:Set_dark_theme()
+let s:theme = trim(system('2>/dev/null tmux showenv THEME | cut -d "=" -f 2'))
+if s:theme == 'light'
+  call s:Set_light_theme(0)
+else
+  call s:Set_dark_theme(0)
+endif
 
 
 " Misc settings
