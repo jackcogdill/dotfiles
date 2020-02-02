@@ -138,9 +138,9 @@ function! s:Set_light_theme(manual)
   set background=light
   colorscheme PaperColor
   let g:lightline.colorscheme = 'PaperColor'
-  call s:Reload_lightline()
 
   if a:manual
+    call s:Reload_lightline()
     execute 'Tmuxline vim_statusline_3'
     call system('tmux setenv THEME light')
   endif
@@ -158,9 +158,9 @@ function! s:Set_dark_theme(manual)
   set background=dark
   colorscheme gruvbox
   let g:lightline.colorscheme = 'molokai'
-  call s:Reload_lightline()
 
   if a:manual
+    call s:Reload_lightline()
     execute 'Tmuxline iceberg'
     call system('tmux setenv THEME dark')
   endif
