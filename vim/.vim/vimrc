@@ -128,25 +128,25 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-function! s:Reload_lightline()
+function! s:ReloadLightline()
   call lightline#init()
   call lightline#colorscheme()
   call lightline#update()
 endfunction
 
-function! s:Set_light_theme(manual)
+function! s:SetLightTheme(manual)
   set background=light
   colorscheme PaperColor
   let g:lightline.colorscheme = 'PaperColor'
 
   if a:manual
-    call s:Reload_lightline()
+    call s:ReloadLightline()
     execute 'Tmuxline vim_statusline_3'
     call system('tmux setenv THEME light')
   endif
 endfunction
 
-function! s:Set_dark_theme(manual)
+function! s:SetDarkTheme(manual)
   " Config
   let g:gruvbox_contrast_dark='medium'
   let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
@@ -160,22 +160,22 @@ function! s:Set_dark_theme(manual)
   let g:lightline.colorscheme = 'molokai'
 
   if a:manual
-    call s:Reload_lightline()
+    call s:ReloadLightline()
     execute 'Tmuxline iceberg'
     call system('tmux setenv THEME dark')
   endif
 endfunction
 
 " Commands to manually change color scheme
-command! L call s:Set_light_theme(1)
-command! D call s:Set_dark_theme(1)
+command! L call s:SetLightTheme(1)
+command! D call s:SetDarkTheme(1)
 
 " Set colorscheme
 let s:theme = trim(system('2>/dev/null tmux showenv THEME | cut -d "=" -f 2'))
 if s:theme == 'light'
-  call s:Set_light_theme(0)
+  call s:SetLightTheme(0)
 else
-  call s:Set_dark_theme(0)
+  call s:SetDarkTheme(0)
 endif
 
 
