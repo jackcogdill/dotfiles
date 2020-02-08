@@ -14,6 +14,8 @@
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -106895,7 +106897,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>11.458940751903553</real>
+			<real>30</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -107000,7 +107002,7 @@
 			<key>Initial Text</key>
 			<string></string>
 			<key>Initial Use Transparency</key>
-			<false/>
+			<true/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -107608,7 +107610,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.078039736675126883</real>
+			<real>0.090621034263959399</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -107648,6 +107650,7 @@
 		<string>3.3.0beta15</string>
 		<string>3.3.0beta8</string>
 		<string>3.3.3beta2</string>
+		<string>3.3.8beta5</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -107672,7 +107675,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>580282941.98569095</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>119</integer>
+	<integer>120</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108537,7 +108540,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-01-28T04:15:57Z</date>
+	<date>2020-02-08T06:50:00Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -108605,7 +108608,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8beta4</string>
+	<string>3.3.8beta5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
