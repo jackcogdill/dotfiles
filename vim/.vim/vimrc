@@ -42,7 +42,7 @@ call plug#end() " Initialize plugin system
 " Plugin config
 " ============================
 " vim-signify
-let g:signify_vcs_list = [ 'git', 'hg' ]
+let g:signify_vcs_list = ['git']
 let g:signify_update_on_focusgained = 1
 
 " CtrlP
