@@ -75,7 +75,7 @@ let g:tmuxline_preset = {
   \ 'cwin' : '#I・#W',
   \ 'x'    : '#{prefix_highlight} %a %b %d',
   \ 'y'    : '%H:%M',
-  \ 'z'    : '#h'
+  \ 'z'    : '#h',
   \ }
 let g:tmuxline_status_justify = 'left'
 
