@@ -4,7 +4,7 @@ Tailored to me. Use at your own risk :)
 
 ## Screenshots
 
-![2019-07-04](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2019-07-24.png)
+![2020-02-07](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2020-02-07.png)
 
 Font: [Input](https://input.fontbureau.com/info/)
 
