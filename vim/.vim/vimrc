@@ -70,16 +70,20 @@ set laststatus=2
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W'],
-      \'x'    : '#{prefix_highlight} %a %b %d',
-      \'y'    : ['%H:%M'],
-      \'z'    : '#h'}
+  \ 'a'    : '#S',
+  \ 'win'  : ['#I', '#W'],
+  \ 'cwin' : ['#I', '#W'],
+  \ 'x'    : '#{prefix_highlight} %a %b %d',
+  \ 'y'    : ['%H:%M'],
+  \ 'z'    : '#h'
+  \ }
 let g:tmuxline_status_justify = 'left'
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
+let g:rainbow_conf = {
+  \ 'guifgs': ['#d3869b', '#83a598', '#fe8019', '#8ec07c'],
+  \ }
 
 " Better whitespace
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
