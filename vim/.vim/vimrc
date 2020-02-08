@@ -71,8 +71,8 @@ set laststatus=2
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
   \ 'a'    : '#S',
-  \ 'win'  : ['#I', '#W'],
-  \ 'cwin' : ['#I', '#W'],
+  \ 'win'  : '#I・#W',
+  \ 'cwin' : '#I・#W',
   \ 'x'    : '#{prefix_highlight} %a %b %d',
   \ 'y'    : '%H:%M',
   \ 'z'    : '#h'
