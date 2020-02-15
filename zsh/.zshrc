@@ -61,7 +61,7 @@ zplug load
 # Plugins
 # =======
 # Spaceship
-# ----
+# ---------
 printf '\e[1 q' # Blinking block cursor
 
 SPACESHIP_PROMPT_ORDER=(
@@ -100,7 +100,7 @@ SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_COLOR=239 # bg2
 
 # Autosuggestions
-# -------------------
+# ---------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
 bindkey -M emacs '^Z' autosuggest-execute
 bindkey -M vicmd '^Z' autosuggest-execute
@@ -117,7 +117,7 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # History Substring Search
-# ----------------------------
+# ------------------------
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
