@@ -107610,7 +107610,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.090621034263959399</real>
+			<real>0.090424730329949243</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -107640,17 +107640,17 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.3beta1</string>
-		<string>3.3.0beta14</string>
-		<string>3.3.7beta4</string>
-		<string>3.3.0beta16</string>
-		<string>3.3.7beta2</string>
-		<string>3.3.0beta13</string>
-		<string>3.3.8beta4</string>
-		<string>3.3.2beta1</string>
-		<string>3.3.0beta15</string>
-		<string>3.3.0beta8</string>
-		<string>3.3.3beta2</string>
 		<string>3.3.8beta5</string>
+		<string>3.3.2beta1</string>
+		<string>3.3.0beta13</string>
+		<string>3.3.0beta14</string>
+		<string>3.3.0beta15</string>
+		<string>3.3.3beta2</string>
+		<string>3.3.0beta16</string>
+		<string>3.3.8beta4</string>
+		<string>3.3.7beta2</string>
+		<string>3.3.0beta8</string>
+		<string>3.3.7beta4</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -107675,7 +107675,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>580282941.98569095</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>120</integer>
+	<integer>121</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108540,7 +108540,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-08T06:50:00Z</date>
+	<date>2020-02-09T11:09:29Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
