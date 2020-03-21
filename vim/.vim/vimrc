@@ -284,8 +284,9 @@ nnoremap <Leader>p "*p
 vnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
 vnoremap <Leader>P "*P
-nnoremap <Leader>d "*d
-vnoremap <Leader>d "*d
 
 " Reload vimrc
 nnoremap <A-r> :source $MYVIMRC<CR>
+
+" Toggle diff mode
+nnoremap <silent> <Leader>d :exe &diff == 0 ? 'windo diffthis' : 'diffoff!'<CR>
