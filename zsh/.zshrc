@@ -37,7 +37,6 @@ zplug "plugins/extract", from:oh-my-zsh
 # Other
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
 zplug "trapd00r/LS_COLORS", \
   hook-build:"dircolors -b LS_COLORS > c.zsh", \
   use:c.zsh
@@ -116,13 +115,6 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-# History Substring Search
-# ------------------------
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
 
 # Aliases
 # =======
@@ -165,6 +157,13 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# fzf
+# ---
+# Auto-completion
+[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+# Key bindings
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # Auto start tmux
 if [[ -z "$TMUX" ]]; then
