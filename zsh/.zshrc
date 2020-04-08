@@ -76,7 +76,7 @@ zplug load
 # =======
 # Autosuggestions
 # ---------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241' # gruvbox bg3
 bindkey -M emacs '^Z' autosuggest-execute
 bindkey -M vicmd '^Z' autosuggest-execute
 # This speeds up pasting
