@@ -1,3 +1,17 @@
+# Auto start tmux
+if [[ -z "$TMUX" ]]; then
+  local session="tmux"
+  [[ -n "$SSH_CONNECTION" ]] && session="ssh"
+  tmux new -A -s "$session"
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Vars
 # ====
 export GOPATH=$(go env GOPATH)
@@ -42,9 +56,9 @@ zplug "trapd00r/LS_COLORS", \
   use:c.zsh
 
 # Theme
-zplug "jackcogdill/spaceship-prompt", \
-  use:spaceship.zsh, \
-  as:theme
+zplug "romkatv/powerlevel10k", \
+  as:theme, \
+  depth:1
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -59,45 +73,6 @@ zplug load
 
 # Plugins
 # =======
-# Spaceship
-# ---------
-printf '\e[1 q' # Blinking block cursor
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  package       # Package version
-  node          # Node.js section
-  golang        # Go section
-  venv          # virtualenv section
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-SPACESHIP_RPROMPT_ORDER=(
-  time          # Time stamps section
-)
-
-SPACESHIP_DIR_COLOR=32 # blue
-SPACESHIP_GIT_BRANCH_COLOR=72 # aqua
-SPACESHIP_GIT_STATUS_PREFIX=" "
-SPACESHIP_GIT_STATUS_SUFFIX=
-SPACESHIP_GIT_STATUS_COLOR=245 # gray
-SPACESHIP_CHAR_SYMBOL="❯ "
-SPACESHIP_CHAR_SYMBOL_SECONDARY="❯ "
-SPACESHIP_CHAR_VI_MODE=true
-SPACESHIP_CHAR_VI_MODE_SYMBOL="❮ "
-SPACESHIP_CHAR_COLOR_SUCCESS= # fg
-SPACESHIP_CHAR_COLOR_SECONDARY=245 # gray
-
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_TIME_COLOR=239 # bg2
-
 # Autosuggestions
 # ---------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=63'
@@ -139,6 +114,7 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 
 # Everything Else
 # ===============
+printf '\e[1 q' # Blinking block cursor
 bindkey -e # Emacs
 
 # Set the terminal title
@@ -165,15 +141,5 @@ export NVM_DIR="$HOME/.nvm"
 # Key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
-# Auto start tmux
-if [[ -z "$TMUX" ]]; then
-  local session
-  [[ -n "$SSH_CONNECTION" ]] \
-    && session="ssh" \
-    || session="default"
-
-  # Only attach once
-  if ! tmux ls | grep -E "^$session" | grep -q attached; then # Not currently attached
-    tmux new -A -s "$session"
-  fi
-fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
