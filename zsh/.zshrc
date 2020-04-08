@@ -1,7 +1,8 @@
-# Auto start tmux
-if [[ -z "$TMUX" ]]; then
-  local session="tmux"
-  [[ -n "$SSH_CONNECTION" ]] && session="ssh"
+printf '\e[1 q' # Blinking block cursor
+bindkey -e # Emacs
+# Auto tmux
+if [[ $- == *i* && -z "$TMUX" ]]; then
+  [[ -n "$SSH_CONNECTION" ]] && local session="ssh" || local session="tmux"
   tmux new -A -s "$session"
 fi
 
@@ -114,9 +115,6 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 
 # Everything Else
 # ===============
-printf '\e[1 q' # Blinking block cursor
-bindkey -e # Emacs
-
 # Set the terminal title
 function set_title() {
   # Set title atomically in one print statement so that it works when XTRACE is enabled.
