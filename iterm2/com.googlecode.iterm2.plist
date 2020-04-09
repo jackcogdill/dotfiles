@@ -107626,7 +107626,7 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
-			<false/>
+			<true/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
@@ -107650,12 +107650,15 @@
 		<string>3.3.8beta4</string>
 		<string>3.3.7beta2</string>
 		<string>3.3.0beta8</string>
+		<string>3.3.9beta1</string>
 		<string>3.3.7beta4</string>
+		<string>3.3.10beta1</string>
+		<string>3.3.10beta2</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
+		<string>Hack</string>
 		<string>Input Mono</string>
-		<string>Input Sans</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
@@ -107675,7 +107678,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>580282941.98569095</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>121</integer>
+	<integer>124</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -108540,7 +108543,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-09T11:09:29Z</date>
+	<date>2020-04-02T01:09:19Z</date>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -108608,7 +108611,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8beta5</string>
+	<string>3.3.10beta2</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
