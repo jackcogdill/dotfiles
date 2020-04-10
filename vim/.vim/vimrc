@@ -64,8 +64,13 @@ let g:workspace_autosave = 0 " Disable auto save
 let g:workspace_session_disable_on_args = 1
 
 " Lightline
+set laststatus=2 " Always enable status line
+set noshowmode " De-dup mode status
 let g:lightline = {}
-set laststatus=2
+let g:lightline.tabline = {
+      \ 'left': [['tabs']],
+      \ 'right': [[]],
+      \ }
 
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
