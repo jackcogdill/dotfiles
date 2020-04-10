@@ -76,7 +76,7 @@ zplug load
 # =======
 # Autosuggestions
 # ---------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241' # gruvbox bg3
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239' # gruvbox bg2
 bindkey -M emacs '^Z' autosuggest-execute
 bindkey -M vicmd '^Z' autosuggest-execute
 # This speeds up pasting
@@ -138,6 +138,9 @@ export NVM_DIR="$HOME/.nvm"
 [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
 # Key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+# Nerd fonts
+source ~/.local/share/fonts/i_all.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
