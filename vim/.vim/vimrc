@@ -24,7 +24,6 @@ Plug 'Yggdroot/indentLine' " Display code indentation with lines
 
 " Color schemes
 Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
@@ -143,10 +142,20 @@ function! s:ReloadLightline()
   call lightline#update()
 endfunction
 
+function! s:GruvboxCommon()
+  let g:gruvbox_contrast_dark='medium'
+  let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
+  let g:gruvbox_invert_selection=0
+  if s:nvim
+    let g:gruvbox_italic=1
+  endif
+endfunction
+
 function! s:SetLightTheme(manual)
+  call s:GruvboxCommon()
+  let g:lightline.colorscheme = 'gruvbox'
+  colorscheme gruvbox
   set background=light
-  colorscheme PaperColor
-  let g:lightline.colorscheme = 'PaperColor'
 
   if a:manual
     call s:ReloadLightline()
@@ -156,21 +165,14 @@ function! s:SetLightTheme(manual)
 endfunction
 
 function! s:SetDarkTheme(manual)
-  " Config
-  let g:gruvbox_contrast_dark='medium'
-  let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
-  let g:gruvbox_invert_selection=0
-  if s:nvim
-    let g:gruvbox_italic=1
-  endif
-
-  set background=dark
+  call s:GruvboxCommon()
+  let g:lightline.colorscheme = 'gruvbox'
   colorscheme gruvbox
-  let g:lightline.colorscheme = 'molokai'
+  set background=dark
 
   if a:manual
     call s:ReloadLightline()
-    execute 'Tmuxline iceberg'
+    execute 'Tmuxline vim_statusline_3'
     call system('tmux setenv THEME dark')
   endif
 endfunction
