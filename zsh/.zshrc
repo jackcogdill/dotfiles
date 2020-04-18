@@ -115,11 +115,6 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 
 # Everything Else
 # ===============
-# Enable edit command line
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
-
 # Set the terminal title
 function set_title() {
   # Set title atomically in one print statement so that it works when XTRACE is enabled.
