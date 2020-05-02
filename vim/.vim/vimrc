@@ -81,7 +81,7 @@ let g:tmuxline_preset = {
   \ 'a'    : '#S',
   \ 'win'  : '#W',
   \ 'cwin' : '#W',
-  \ 'x'    : '#{prefix_highlight} %a %b %d',
+  \ 'x'    : '%a %b %d',
   \ 'y'    : '%H:%M',
   \ 'z'    : '#h',
   \ }
