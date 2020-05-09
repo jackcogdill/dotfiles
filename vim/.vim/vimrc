@@ -33,7 +33,8 @@ Plug 'edkolev/tmuxline.vim' " Tmux status line
 " Navigation / Organization
 Plug 'thaerkh/vim-workspace' " Sessions
 Plug 'christoomey/vim-tmux-navigator' " Tmux navigation integration
-Plug 'ctrlpvim/ctrlp.vim' " Files
+Plug 'junegunn/fzf' " Fuzzy search
+Plug 'airblade/vim-rooter' " Project root working directory
 
 call plug#end() " Initialize plugin system
 
@@ -44,16 +45,48 @@ call plug#end() " Initialize plugin system
 let g:signify_vcs_list = ['git']
 let g:signify_update_on_focusgained = 1
 
-" CtrlP
-let g:ctrlp_cmd = 'CtrlPMixed'
-nnoremap <C-n> :CtrlPBuffer<CR>
-" Keep MRU file relative to working directory
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.?(DS_Store|node_modules|git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" fzf
+" ---
+let g:fzf_layout = { 'down': '~25%' }
+let $FZF_DEFAULT_COMMAND = 'ag -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ --ignore .undodir
+      \ --ignore node_modules
+      \ -g ""'
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(lines)
+  let cmd = get({
+        \ 'ctrl-x': 'sb',
+        \ 'ctrl-v': 'vert sb',
+        \ 'ctrl-t': 'tab sb',
+        \ }, a:lines[0], 'b')
+  execute cmd matchstr(a:lines[1], '^[ 0-9]*')
+endfunction
+
+" Files
+nnoremap <silent> <C-p> :exe "FZF" . FindRootDirectory()<CR>
+" Buffers
+nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
+      \ 'source': reverse(<sid>buflist()),
+      \ 'sink*': function('<sid>bufopen'),
+      \ 'options': '--expect=ctrl-t,ctrl-v,ctrl-x',
+      \ }))<CR>
+
+" vim-rooter
+" ----------
+let g:rooter_manual_only = 1
+let g:rooter_patterns = ['.git/']
 
 " vim-workspace
 nnoremap <Leader>w :ToggleWorkspace<CR>
