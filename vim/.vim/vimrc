@@ -305,6 +305,7 @@ nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <silent> <Leader>9 :tablast<CR>
+nnoremap <silent> <C-T><C-O> :tabonly<CR>
 
 " Switch to last active tab
 if !exists('g:lasttab')
