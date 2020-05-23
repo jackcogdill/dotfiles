@@ -174,6 +174,8 @@ set hlsearch " Highlight search matches
 set showcmd " Show (partial) command on the last line of the screen
 set ruler " Show current row, column, percent, etc.
 
+set colorcolumn=80
+
 
 " Color schemes
 " ============================
