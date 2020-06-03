@@ -35,7 +35,7 @@ $GOPATH/bin:\
 /Library/TeX/texbin"
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
-export PAGER="$(which less) -Fi" # F: quit if one screen, i: smart case search
+export PAGER="$(which less) -i" # i: smart case search
 
 
 # zplug
