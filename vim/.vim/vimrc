@@ -107,22 +107,35 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave = 0 " Disable auto save
 let g:workspace_session_disable_on_args = 1
 
-" Lightline
-set laststatus=2 " Always enable status line
-set noshowmode " De-dup mode status
-let g:lightline = {}
-let g:lightline.tabline = {
-      \ 'left': [['tabs']],
-      \ 'right': [[]],
+let g:lightline = {
+      \ 'tabline': {
+      \   'left'  : [[ 'tabs' ]],
+      \   'right' : [[]],
+      \ },
+      \ 'tab': {
+      \   'active': [ 'filename', 'modified' ],
+      \   'inactive': [ 'filename', 'modified' ],
+      \ },
+      \ 'active': {
+      \   'left': [[ 'mode', 'paste' ],
+      \            [ 'readonly', 'filename' ]],
+      \   'right': [[ 'percent' ],
+      \             [ 'filetype' ]]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ 'mode_map': {
+      \   'n' : 'NO', 'i' : 'IN', 'R' : 'RE', 'v' : 'VI', 'V' : 'VL', "\<C-v>": 'VB',
+      \   'c' : 'CM', 's' : 'SE', 'S' : 'SL', "\<C-s>": 'SB', 't': 'TR',
+      \ },
       \ }
-let g:lightline.tab = {
-      \ 'active': ['filename', 'modified'],
-      \ 'inactive': ['filename', 'modified'],
-      \ }
-" Truncate the components from the right in narrow windows
-let g:lightline.component = {
-      \ 'lineinfo': '%3l:%-2v%<',
-      \ }
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
