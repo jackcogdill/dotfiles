@@ -140,14 +140,15 @@ endfunction
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
-  \ 'a'    : '#S',
-  \ 'win'  : '#W',
-  \ 'cwin' : '#W',
-  \ 'x'    : '%a %b %d',
-  \ 'y'    : '%H:%M',
-  \ 'z'    : '#h',
-  \ }
-let g:tmuxline_status_justify = 'left'
+      \ 'win'     : '#W',
+      \ 'cwin'    : '#W',
+      \ 'y'       : '%a %b %d',
+      \ 'z'       : '%H:%M',
+      \ 'options' : {
+      \   'status-justify' : 'left',
+      \   'status-style'   : 'default',
+      \ },
+      \ }
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
@@ -220,6 +221,12 @@ function! s:GruvboxCommon()
   endif
 endfunction
 
+function! s:MyTmuxline()
+  call tmuxline#set_theme(
+        \ tmuxline#util#create_theme_from_lightline(
+        \ lightline#palette()['replace']))
+endfunction
+
 function! s:SetLightTheme(manual)
   call s:GruvboxCommon()
   let g:lightline.colorscheme = 'gruvbox'
@@ -228,7 +235,7 @@ function! s:SetLightTheme(manual)
 
   if a:manual
     call s:ReloadLightline()
-    execute 'Tmuxline vim_statusline_3'
+    call s:MyTmuxline()
     call system('tmux setenv THEME light')
   endif
 endfunction
@@ -241,7 +248,7 @@ function! s:SetDarkTheme(manual)
 
   if a:manual
     call s:ReloadLightline()
-    execute 'Tmuxline vim_statusline_3'
+    call s:MyTmuxline()
     call system('tmux setenv THEME dark')
   endif
 endfunction
