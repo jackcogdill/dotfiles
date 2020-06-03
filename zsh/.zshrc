@@ -121,9 +121,12 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 # ===============
 # Set the terminal title
 function set_title() {
+  # $1 is the raw user string
+  # $2 is a single-line, size-limited version
+  local cmd
+  [[ -z "$2" ]] && cmd="${0##-}" || cmd="$2"
   # Set title atomically in one print statement so that it works when XTRACE is enabled.
-  # $2 is the current command
-  print -n $opts $'\e]0;'${2}$'\a'
+  print -n $opts $'\e]0;'${cmd}$'\a'
 }
 add-zsh-hook precmd set_title
 add-zsh-hook preexec set_title
