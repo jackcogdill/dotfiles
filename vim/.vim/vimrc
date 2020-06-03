@@ -58,29 +58,29 @@ let $FZF_DEFAULT_COMMAND = 'ag -i --nocolor --nogroup --hidden
       \ --ignore node_modules
       \ -g ""'
 
-function! s:buflist()
+fun! s:buflist()
   redir => ls
   silent ls
   redir END
   return split(ls, '\n')
-endfunction
+endfun
 
-function! s:bufopen(lines)
+fun! s:bufopen(lines)
   let cmd = get({
         \ 'ctrl-x': 'sb',
         \ 'ctrl-v': 'vert sb',
         \ 'ctrl-t': 'tab sb',
         \ }, a:lines[0], 'b')
   execute cmd matchstr(a:lines[1], '^[ 0-9]*')
-endfunction
+endfun
 
-function! s:recentlist()
+fun! s:recentlist()
   redir => list
   silent oldfiles
   redir END
   let list = split(list, '\n')
   return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
-endfunction
+endfun
 
 " Files
 nnoremap <silent> <C-p> :exe "FZF" . FindRootDirectory()<CR>
@@ -131,11 +131,11 @@ let g:lightline = {
       \ },
       \ }
 
-function! LightlineFilename()
+fun! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
   return filename . modified
-endfunction
+endfun
 
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
@@ -206,28 +206,28 @@ nnoremap <Leader>cc :let &cc = &cc == '' ? '80,100' : ''<CR>
 
 " Color schemes
 " ============================
-function! s:ReloadLightline()
+fun! s:ReloadLightline()
   call lightline#init()
   call lightline#colorscheme()
   call lightline#update()
-endfunction
+endfun
 
-function! s:GruvboxCommon()
+fun! s:GruvboxCommon()
   let g:gruvbox_contrast_dark='medium'
   let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
   let g:gruvbox_invert_selection=0
   if s:nvim
     let g:gruvbox_italic=1
   endif
-endfunction
+endfun
 
-function! s:MyTmuxline()
+fun! s:MyTmuxline()
   call tmuxline#set_theme(
         \ tmuxline#util#create_theme_from_lightline(
         \ lightline#palette()['replace']))
-endfunction
+endfun
 
-function! s:SetLightTheme(manual)
+fun! s:SetLightTheme(manual)
   call s:GruvboxCommon()
   let g:lightline.colorscheme = 'gruvbox'
   colorscheme gruvbox
@@ -238,9 +238,9 @@ function! s:SetLightTheme(manual)
     call s:MyTmuxline()
     call system('tmux setenv THEME light')
   endif
-endfunction
+endfun
 
-function! s:SetDarkTheme(manual)
+fun! s:SetDarkTheme(manual)
   call s:GruvboxCommon()
   let g:lightline.colorscheme = 'gruvbox'
   colorscheme gruvbox
@@ -251,7 +251,7 @@ function! s:SetDarkTheme(manual)
     call s:MyTmuxline()
     call system('tmux setenv THEME dark')
   endif
-endfunction
+endfun
 
 " Commands to manually change color scheme
 command! L call s:SetLightTheme(1)
