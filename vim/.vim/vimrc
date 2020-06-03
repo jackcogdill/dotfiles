@@ -74,6 +74,14 @@ function! s:bufopen(lines)
   execute cmd matchstr(a:lines[1], '^[ 0-9]*')
 endfunction
 
+function! s:recentlist()
+  redir => list
+  silent oldfiles
+  redir END
+  let list = split(list, '\n')
+  return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
+endfunction
+
 " Files
 nnoremap <silent> <C-p> :exe "FZF" . FindRootDirectory()<CR>
 " Buffers
@@ -81,6 +89,10 @@ nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
       \ 'source': reverse(<sid>buflist()),
       \ 'sink*': function('<sid>bufopen'),
       \ 'options': '--expect=ctrl-t,ctrl-v,ctrl-x',
+      \ }))<CR>
+" Recent
+nnoremap <silent> <C-m> :call fzf#run(fzf#wrap({
+      \ 'source': <sid>recentlist(),
       \ }))<CR>
 
 " vim-rooter
@@ -293,7 +305,6 @@ endif
 " Navigate tabs
 nnoremap <silent> H :silent :tabp<CR>
 nnoremap <silent> L :silent :tabn<CR>
-nnoremap <silent> <C-M> :silent :tabnew<CR>
 nnoremap <silent> <A-h> :silent :tabm -1<CR>
 nnoremap <silent> <A-l> :silent :tabm +1<CR>
 nnoremap <Leader>1 1gt
