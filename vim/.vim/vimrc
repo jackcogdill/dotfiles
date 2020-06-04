@@ -119,7 +119,8 @@ let g:lightline = {
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ],
       \            [ 'readonly', 'filename' ]],
-      \   'right': [[ 'percent' ],
+      \   'right': [[ 'lineinfo' ],
+      \             [ 'percent' ],
       \             [ 'filetype' ]]
       \ },
       \ 'component_function': {
