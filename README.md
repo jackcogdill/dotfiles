@@ -1,28 +1,7 @@
 # Dotfiles
 
-Tailored to me. Use at your own risk :)
+## Screenshot
 
-## Screenshots
-
-![2020-04-09](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2020-04-09.png)
+![2020-06-03](https://github.com/jackcogdill/dotfiles/blob/master/screenshots/2020-06-03.png)
 
 Font: [Input](https://input.fontbureau.com/info/)
-
-## Install
-
-```bash
-git clone https://github.com/jackcogdill/dotfiles ~/.dotfiles
-~/.dotfiles/install.sh
-```
-
-## Todo
-
-- [ ] Make install process not rely on git (perhaps use curl)
-
-## Completed
-
-- [x] Create `install.sh` to create symlinks
-- [x] Make single vim config with `if has('nvim')` blocks
-- [x] Find more suitable light theme
-- [x] ssh: auto tmux (`tmux new -A -s ssh`)
-- [x] Use stow to create symlinks
