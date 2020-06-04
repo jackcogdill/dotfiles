@@ -31,6 +31,7 @@
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
+    my_padding              # padding
     # os_icon               # os identifier
     dir                     # current directory
     vcs                     # git status
@@ -1425,6 +1426,10 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 2 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_my_padding() {
+    p10k segment -t ' '
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
