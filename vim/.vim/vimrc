@@ -109,19 +109,23 @@ let g:workspace_session_disable_on_args = 1
 
 let g:lightline = {
       \ 'tabline': {
-      \   'left'  : [[ 'tabs' ]],
+      \   'left'  : [['tabs']],
       \   'right' : [[]],
       \ },
       \ 'tab': {
-      \   'active': [ 'filename', 'modified' ],
-      \   'inactive': [ 'filename', 'modified' ],
+      \   'active': ['filename', 'modified'],
+      \   'inactive': ['filename', 'modified'],
       \ },
       \ 'active': {
-      \   'left': [[ 'mode', 'paste' ],
-      \            [ 'readonly', 'filename' ]],
-      \   'right': [[ 'lineinfo' ],
-      \             [ 'percent' ],
-      \             [ 'filetype' ]]
+      \   'left': [['mode', 'paste'],
+      \            ['readonly', 'filename']],
+      \   'right': [['lineinfo'],
+      \             ['percent'],
+      \             ['filetype']],
+      \ },
+      \ 'inactive': {
+      \   'left': [['filename']],
+      \   'right': [[]],
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
