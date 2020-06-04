@@ -107,6 +107,7 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave = 0 " Disable auto save
 let g:workspace_session_disable_on_args = 1
 
+set noshowmode " Dedup mode status
 let g:lightline = {
       \ 'tabline': {
       \   'left'  : [['tabs']],
