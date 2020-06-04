@@ -132,8 +132,8 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \ },
       \ 'mode_map': {
-      \   'n' : 'NO', 'i' : 'IN', 'R' : 'RE', 'v' : 'VI', 'V' : 'VL', "\<C-v>": 'VB',
-      \   'c' : 'CM', 's' : 'SE', 'S' : 'SL', "\<C-s>": 'SB', 't': 'TR',
+      \   'n' : 'no', 'i' : 'in', 'R' : 're', 'v' : 'vi', 'V' : 'vl', "\<C-v>": 'vb',
+      \   'c' : 'cm', 's' : 'se', 'S' : 'sl', "\<C-s>": 'sb', 't': 'tr',
       \ },
       \ }
 
