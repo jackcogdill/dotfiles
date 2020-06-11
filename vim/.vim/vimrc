@@ -132,8 +132,8 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \ },
       \ 'mode_map': {
-      \   'n' : 'no', 'i' : 'in', 'R' : 're', 'v' : 'vi', 'V' : 'vl', "\<C-v>": 'vb',
-      \   'c' : 'cm', 's' : 'se', 'S' : 'sl', "\<C-s>": 'sb', 't': 'tr',
+      \   'n' : 'NOR', 'i' : 'INS', 'R' : 'REP', 'v' : 'VIS', 'V' : 'V-L', "\<C-v>": 'V-B',
+      \   'c' : 'COM', 's' : 'SEL', 'S' : 'S-L', "\<C-s>": 'S-B', 't': 'TER',
       \ },
       \ }
 
@@ -218,7 +218,7 @@ fun! s:ReloadLightline()
   call lightline#update()
 endfun
 
-fun! s:GruvboxCommon()
+fun! s:GruvboxConfig()
   let g:gitgutter_override_sign_column_highlight=1 " Match sign and number column
   let g:gruvbox_invert_selection=0
   if s:nvim
@@ -233,7 +233,7 @@ fun! s:MyTmuxline()
 endfun
 
 fun! s:SetLightTheme(manual)
-  call s:GruvboxCommon()
+  call s:GruvboxConfig()
   let g:lightline.colorscheme = 'gruvbox'
   colorscheme gruvbox
   set background=light
@@ -246,7 +246,7 @@ fun! s:SetLightTheme(manual)
 endfun
 
 fun! s:SetDarkTheme(manual)
-  call s:GruvboxCommon()
+  call s:GruvboxConfig()
   let g:lightline.colorscheme = 'gruvbox'
   colorscheme gruvbox
   set background=dark
