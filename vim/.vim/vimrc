@@ -367,13 +367,10 @@ vnoremap <C-s> :sort<CR>
 nnoremap <Leader>S :setlocal spell! spelllang=en_us<CR>
 
 " Copy/paste/delete using system clipboard
-nnoremap <Leader>y "*y
-nnoremap <Leader>p "*p
-nnoremap <Leader>P "*P
-nnoremap <Leader>d "*d
-vnoremap <Leader>y "*y
-vnoremap <Leader>p "*p
-vnoremap <Leader>d "*d
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>P "*P
+noremap <Leader>d "*d
 
 " Reload vimrc
 nnoremap <A-r> :source $MYVIMRC<CR>
