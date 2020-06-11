@@ -106356,6 +106356,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>DisableWindowSizeSnap</key>
+	<integer>1</integer>
 	<key>DoubleReportScrollWheel</key>
 	<false/>
 	<key>EnableDivisionView</key>
@@ -106624,9 +106626,9 @@
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 800 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1010 800 0 0 1280 800 </string>
+	<string>798 569 460 200 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>194 111 892 587 0 0 1280 777 </string>
+	<string>611 18 652 509 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>194 79 892 622 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -108588,7 +108590,7 @@
 	<key>TerminalMargin</key>
 	<integer>30</integer>
 	<key>TerminalVMargin</key>
-	<integer>20</integer>
+	<integer>40</integer>
 	<key>ThreeFingerEmulates</key>
 	<false/>
 	<key>TmuxDashboardLimit</key>
