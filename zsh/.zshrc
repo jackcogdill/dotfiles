@@ -33,6 +33,7 @@ $GOPATH/bin:\
 /usr/local/opt/ruby/bin:\
 /opt/X11/bin:\
 /Library/TeX/texbin"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export PAGER="$(which less) -i" # i: smart case search
