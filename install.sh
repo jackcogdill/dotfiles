@@ -44,6 +44,7 @@ fi
 # Create symlinks
 # ================
 dots=(
+  alacritty
   bash
   git
   tmux
