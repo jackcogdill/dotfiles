@@ -98,8 +98,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # Aliases
 # =======
 alias ls="ls --color=auto"
-alias la="ls -a"
-alias lx="ls -X"
+alias lx="ls -lAhX"
 alias h="history"
 alias ip="curl icanhazip.com"
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
