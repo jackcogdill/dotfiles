@@ -148,6 +148,7 @@ let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
       \ 'win'     : '#W',
       \ 'cwin'    : '#W',
+      \ 'x'       : '#T',
       \ 'y'       : '%a %b %d',
       \ 'z'       : '%H:%M',
       \ 'options' : {
