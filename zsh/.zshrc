@@ -146,8 +146,5 @@ export NVM_DIR="$HOME/.nvm"
 # Key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
-# Nerd fonts
-source ~/.local/share/fonts/i_all.sh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
