@@ -23,6 +23,7 @@ export GOPATH=$(go env GOPATH)
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:\
 ${PATH}:\
 $GOPATH/bin:\
+$HOME/.cargo/bin:\
 /bin:\
 /sbin:\
 /usr/bin:\
