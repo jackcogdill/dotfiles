@@ -1,16 +1,15 @@
 set nocompatible " Disable backward compatibility with vi
-let s:nvim = has('nvim')
 
 " Using vim-plug for plugins
 " ============================
 " Auto install
-let s:vimplug_path = s:nvim ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let s:vimplug_path = '~/.local/share/nvim/site/autoload/plug.vim'
 if empty(glob(s:vimplug_path))
   silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(s:nvim ? '~/.local/share/nvim/plugged' : '~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot' " Syntax highlighting for most languages
@@ -177,15 +176,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Misc visual settings
 " ============================
-if s:nvim
-  " Enable italics for comments
-  highlight Comment cterm=italic gui=italic
-endif
-
-if has('termguicolors')
-  set termguicolors
-endif
-
+set termguicolors
 " No line numbers
 set nonumber
 " Make C-C trigger InsertLeave
@@ -247,13 +238,8 @@ set foldlevel=1       " This is just what i use
 
 " Keyboard shortcuts
 " ============================
-if s:nvim
-  " Remove search highlighting
-  nnoremap <silent><Esc> :noh<CR>
-else
-  " Hit Esc twice to remove search highlighting from previous search
-  nnoremap <silent> <Esc><Esc> :noh<CR>
-endif
+" Remove search highlighting
+nnoremap <silent><Esc> :noh<CR>
 " Press // in visual mode to search selected text
 vnoremap // y/<C-R>"<CR>
 " Redo macro with space
@@ -264,10 +250,8 @@ nnoremap <Leader><Space> n@q
 vnoremap <Space> :normal @q<CR>
 " Redo last change on all lines in visual mode
 vnoremap . :normal .<CR>
-if s:nvim
-  " Press leader+escape in terminal to get out
-  tnoremap <Leader><Esc> <C-\><C-n>
-endif
+" Press leader+escape in terminal to get out
+tnoremap <Leader><Esc> <C-\><C-n>
 
 " Navigate tabs
 nnoremap <silent> H :silent :tabp<CR>
