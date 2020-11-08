@@ -38,6 +38,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export PAGER="$(which less) -i" # i: smart case search
+export LANG="en_US.UTF-8"
 
 
 # zplug
