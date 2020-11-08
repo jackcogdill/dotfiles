@@ -160,7 +160,7 @@ let g:tmuxline_preset = {
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
 let g:rainbow_conf = {
-  \ 'guifgs': ['#d3869b', '#83a598', '#fe8019', '#8ec07c'],
+  \ 'ctermfgs': [9, 14, 11, 13],
   \ }
 
 " Better whitespace
