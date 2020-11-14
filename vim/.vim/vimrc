@@ -159,9 +159,6 @@ let g:tmuxline_preset = {
 
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
-let g:rainbow_conf = {
-  \ 'ctermfgs': [9, 14, 11, 13],
-  \ }
 
 " Better whitespace
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
