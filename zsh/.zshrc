@@ -155,5 +155,23 @@ export FZF_DEFAULT_OPTS="
 # Nerd fonts
 source ~/.local/share/fonts/i_all.sh
 
+# Save/load named tmux layouts
+TMUX_LAYOUTS="$HOME/.tmux/layouts.json"
+function savel() {
+  [[ -f "$TMUX_LAYOUTS" ]] || echo "{}" > "$TMUX_LAYOUTS"
+  local name="$1"
+  local layout=$(tmux list-windows -F '#{?window_active,#{window_layout},}' | grep .)
+  jq --arg name "$name" --arg layout "$layout" '.[$name] = $layout' "$TMUX_LAYOUTS" | sponge "$TMUX_LAYOUTS"
+}
+function loadl() {
+  local layouts=(${(@f)$(jq --raw-output 'keys[]' $TMUX_LAYOUTS)})
+  (COLUMNS=1
+  PS3="Select a saved tmux layout: "
+  select layout in $layouts; do
+    tmux select-layout $(jq --raw-output --arg layout "$layout" '.[$layout]' "$TMUX_LAYOUTS")
+    break
+  done)
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
