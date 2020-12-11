@@ -160,6 +160,9 @@ let g:tmuxline_preset = {
 " Rainbow parentheses
 let g:rainbow_active = 1 " Enable
 
+" Auto pairs
+let g:AutoPairsShortcutFastWrap = '<M-w>'
+
 " Better whitespace
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
 
