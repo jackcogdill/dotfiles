@@ -21,7 +21,7 @@ Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
 
 " Color schemes
-Plug 'sainnhe/forest-night'
+Plug 'sainnhe/everforest'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
@@ -107,7 +107,7 @@ let g:workspace_session_disable_on_args = 1
 
 set noshowmode " Dedup mode status
 let g:lightline = {
-      \ 'colorscheme': 'forest_night',
+      \ 'colorscheme': 'everforest',
       \ 'tabline': {
       \   'left'  : [['tabs']],
       \   'right' : [[]],
@@ -199,10 +199,11 @@ set ruler " Show current row, column, percent, etc.
 
 " Color schemes
 " ============================
-let g:forest_night_enable_italic = 1
-let g:forest_night_sign_column_background = 'none'
-let g:forest_night_lightline_disable_bold = 1
-colorscheme forest-night
+let g:everforest_background = 'soft'
+let g:everforest_enable_italic = 1
+let g:everforest_sign_column_background = 'none'
+let g:everforest_lightline_disable_bold = 1
+colorscheme everforest
 " call tmuxline#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
 
 
