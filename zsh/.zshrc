@@ -20,7 +20,9 @@ fi
 # ====
 export GOPATH=$(go env GOPATH)
 # !! Keep this order. Use GNU ls for LS_COLORS to work
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:\
+export PATH="\
+/opt/homebrew/opt/coreutils/libexec/gnubin:\
+/opt/homebrew/bin:\
 ${PATH}:\
 $GOPATH/bin:\
 $HOME/.cargo/bin:\
@@ -29,11 +31,7 @@ $HOME/.cargo/bin:\
 /usr/bin:\
 /usr/sbin:\
 /usr/local/bin:\
-/usr/local/sbin:\
-/usr/local/opt/mongodb-community@3.4/bin:\
-/usr/local/opt/ruby/bin:\
-/opt/X11/bin:\
-/Library/TeX/texbin"
+/usr/local/sbin:"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
@@ -142,18 +140,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # fzf
 # ---
-# Auto-completion
-[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-# Key bindings
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Color scheme
 export FZF_DEFAULT_OPTS="
   --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
   --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
 " # Nord
-
-# Nerd fonts
-source ~/.local/share/fonts/i_all.sh
 
 # Save/load named tmux layouts
 TMUX_LAYOUTS="$HOME/.tmux/layouts.json"
