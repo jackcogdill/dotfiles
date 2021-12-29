@@ -1,127 +1,189 @@
-set nocompatible " Disable backward compatibility with vi
+set nocompatible
+augroup vimrc
+  autocmd!
+augroup END
 
-" Using vim-plug for plugins
+" Plugins
 " ============================
-" Auto install
-let s:vimplug_path = '~/.local/share/nvim/site/autoload/plug.vim'
-if empty(glob(s:vimplug_path))
-  silent execute '!curl -fLo ' . s:vimplug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" Auto install vim-plug
+let s:vimplug_dir = '~/.local/share/nvim/site/autoload/plug.vim'
+if empty(glob(s:vimplug_dir))
+  silent exe '!curl -fLo ' . s:vimplug_dir . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax highlighting
-Plug 'sheerun/vim-polyglot' " Syntax highlighting for most languages
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Incremental syntax parsing
 Plug 'luochen1990/rainbow' " Color nested parentheses
 
 " Editing
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --js-completer --go-completer' } " Auto completion
+Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
+
+" Semantic completion
+Plug 'neovim/nvim-lspconfig'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp' " LSP source
+Plug 'Shougo/neco-vim' " Vim source
+Plug 'Shougo/echodoc.vim' " Display function signatures from completions
+Plug 'Shougo/neosnippet.vim' " Snippet support
 
 " Color schemes
 Plug 'sainnhe/everforest'
 
 " Status
 Plug 'itchyny/lightline.vim' " Status line
-Plug 'mhinz/vim-signify' " Changes for version control systems
 Plug 'edkolev/tmuxline.vim' " Tmux status line
+Plug 'mhinz/vim-signify' " Signs for changes tracked by a version control system
 
 " Navigation / Organization
 Plug 'thaerkh/vim-workspace' " Sessions
-Plug 'christoomey/vim-tmux-navigator' " Tmux navigation integration
-Plug 'junegunn/fzf' " Fuzzy search
+Plug 'christoomey/vim-tmux-navigator' " Seamless navigation with tmux
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy search
 Plug 'airblade/vim-rooter' " Project root working directory
+Plug 'ojroques/vim-oscyank' " Copy to system clipboard including over remote ssh
+Plug 'preservim/tagbar' " File structure overview
+
+" Shell commands
+Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 
 call plug#end() " Initialize plugin system
 
-
 " Plugin config
 " ============================
+" nvim-treesitter
+" ---------------
+lua <<EOF
+require 'nvim-treesitter.configs'.setup {
+  -- one of 'all', 'maintained' (parsers with maintainers), or list of languages
+  ensure_installed = 'maintained',
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = { 'html' }, -- list of language that will be disabled
+  },
+}
+
+-- Compatibility with rainbow-parentheses
+require 'nvim-treesitter.highlight'
+vim.treesitter.highlighter.hl_map['punctuation.bracket'] = nil
+EOF
+
+" vim-table-mode
+" --------------
+" Markdown-compatible
+" let g:table_mode_corner='|'
+
+" ReST-compatible
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
+
+" auto-pairs
+" ----------
+let g:AutoPairsCenterLine = 0
+let g:AutoPairsShortcutFastWrap = '<M-w>'
+
 " vim-signify
+" -----------
 let g:signify_vcs_list = ['git']
 let g:signify_update_on_focusgained = 1
 
 " fzf
 " ---
 let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_COMMAND = 'ag -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ --ignore .undodir
-      \ --ignore node_modules
-      \ -g ""'
+let $FZF_DEFAULT_COMMAND = 'find . -type f ! -path "*.undodir*"'
 
-fun! s:buflist()
+fun! s:Buflist()
   redir => ls
   silent ls
   redir END
   return split(ls, '\n')
 endfun
 
-fun! s:bufopen(lines)
+fun! s:Bufopen(lines)
   let cmd = get({
         \ 'ctrl-x': 'sb',
         \ 'ctrl-v': 'vert sb',
         \ 'ctrl-t': 'tab sb',
         \ }, a:lines[0], 'b')
-  execute cmd matchstr(a:lines[1], '^[ 0-9]*')
+  exe cmd matchstr(a:lines[1], '^[ 0-9]*')
 endfun
 
-fun! s:recentlist()
+fun! s:Registerlist()
   redir => list
-  silent oldfiles
+  silent registers
   redir END
   let list = split(list, '\n')
-  return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
+  " Remove header.
+  call remove(list, 0)
+  return list
+endfun
+
+fun! s:Registerpaste(line)
+  exe 'normal ' . matchstr(a:line, '^\s\+\S\+\s\+\zs".') . 'p'
 endfun
 
 " Files
-nnoremap <silent> <C-p> :exe "FZF" . FindRootDirectory()<CR>
+nnoremap <silent> <C-p> :exe 'FZF ' . FindRootDirectory()<CR>
 " Buffers
 nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
-      \ 'source': reverse(<sid>buflist()),
-      \ 'sink*': function('<sid>bufopen'),
+      \ 'source': reverse(<sid>Buflist()),
+      \ 'sink*': function('<sid>Bufopen'),
       \ 'options': '--expect=ctrl-t,ctrl-v,ctrl-x',
       \ }))<CR>
-" Recent
-nnoremap <silent> ' :call fzf#run(fzf#wrap({
-      \ 'source': <sid>recentlist(),
+" Registers
+nnoremap <silent> <C-y> :call fzf#run(fzf#wrap({
+      \ 'source': <sid>Registerlist(),
+      \ 'sink': function('<sid>Registerpaste'),
       \ }))<CR>
 
 " vim-rooter
 " ----------
 let g:rooter_manual_only = 1
-let g:rooter_patterns = ['.git/']
+
+" Tagbar
+" ----------
+nnoremap <leader>t :TagbarOpen<CR>
+let g:tagbar_autoclose = 1
+let g:tagbar_type_jslayout = {
+    \ 'ctagstype' : 'Jslayout',
+    \ 'kinds'     : [
+        \ 't:templates',
+        \ 'a:attribute templates',
+    \ ]
+\ }
 
 " vim-workspace
-nnoremap <Leader>w :ToggleWorkspace<CR>
+" -------------
+nnoremap <leader>w :ToggleWorkspace<CR>
 let g:workspace_autocreate = 1
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_session_directory = expand('~/.local/share/nvim/sessions/')
 let g:workspace_autosave = 0 " Disable auto save
+" Mostly because `hg commit` creates a workspace flooded with tmp files
 let g:workspace_session_disable_on_args = 1
 
-set noshowmode " Dedup mode status
+" Lightline
+" ---------
+set laststatus=2 " Enable status line
+set noshowmode " De-dup mode status
 let g:lightline = {
       \ 'colorscheme': 'everforest',
       \ 'tabline': {
-      \   'left'  : [['tabs']],
+      \   'left'  : [[ 'tabs' ]],
       \   'right' : [[]],
       \ },
       \ 'tab': {
-      \   'active': ['filename', 'modified'],
-      \   'inactive': ['filename', 'modified'],
+      \   'active': [ 'filename', 'modified' ],
+      \   'inactive': [ 'filename', 'modified' ],
       \ },
       \ 'active': {
-      \   'left': [['mode', 'paste'],
-      \            ['readonly', 'filename']],
-      \   'right': [['lineinfo'],
-      \             ['percent'],
-      \             ['filetype']],
+      \   'left': [[ 'mode', 'paste', 'spell' ],
+      \            [ 'readonly', 'filename' ]],
+      \   'right': [[ 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'filetype' ]]
       \ },
       \ 'inactive': {
       \   'left': [['filename']],
@@ -131,8 +193,8 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \ },
       \ 'mode_map': {
-      \   'n' : 'NOR', 'i' : 'INS', 'R' : 'REP', 'v' : 'VIS', 'V' : 'V-L', "\<C-v>": 'V-B',
-      \   'c' : 'COM', 's' : 'SEL', 'S' : 'S-L', "\<C-s>": 'S-B', 't': 'TER',
+      \   'n' : 'NML', 'i' : 'INS', 'R' : 'REP', 'v' : 'VIS', 'V' : 'V-L', "\<C-v>": 'V-B',
+      \   'c' : 'CMD', 's' : 'SEL', 'S' : 'S-L', "\<C-s>": 'S-B', 't': 'TRM',
       \ },
       \ }
 
@@ -144,6 +206,7 @@ fun! LightlineFilename()
 endfun
 
 " Tmuxline
+" --------
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
       \ 'win'     : '#W',
@@ -158,37 +221,63 @@ let g:tmuxline_preset = {
       \ }
 
 " Rainbow parentheses
-let g:rainbow_active = 1 " Enable
-
-" Auto pairs
-let g:AutoPairsShortcutFastWrap = '<M-w>'
+" -------------------
+let g:rainbow_active = 1
 
 " Better whitespace
+" -----------------
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
 
-" YouCompleteMe
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_server_python_interpreter = 'python3'
-let g:ycm_python_binary_path = 'python3'
-let g:python3_host_prog = '/usr/local/bin/python3'
+" deoplete
+" --------
+let g:python3_host_prog = '/usr/bin/python3'
+let g:deoplete#enable_at_startup = 1
+" Manually set complete options
+set completeopt=menuone
+" '_' sets options for all sources
+call deoplete#custom#source('_', {
+      \ 'matchers': ['matcher_full_fuzzy'],
+      \ 'smart_case': v:true,
+      \ })
+call deoplete#custom#option('_', {
+      \ 'auto_complete_delay': 250,
+      \ 'auto_refresh_delay': 250,
+      \ 'max_list': 100,
+      \ })
+
+" neosnippet
+" ----------
+let g:neosnippet#disable_runtime_snippets = { '_': 1 }
+let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_complete_done = 1
+imap <C-j> <Plug>(neosnippet_expand_or_jump)
+smap <C-j> <Plug>(neosnippet_expand_or_jump)
+
+" echodoc
+" -------
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+
+" AsyncRun
+" --------------
+" Open the quickfix window automatically at N lines height after command starts
+let g:asyncrun_open = 8
 
 
-" Misc visual settings
+" Visual
 " ============================
 set termguicolors
 " Line numbers
 set number
 set relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * silent set relativenumber
+augroup vimrc
+  autocmd BufEnter,FocusGained,InsertLeave * silent if &number == 1 | set relativenumber | endif
   autocmd BufLeave,FocusLost,InsertEnter   * silent set norelativenumber
 augroup END
 " Make C-C trigger InsertLeave
 inoremap <C-C> <Esc>
 
-autocmd VimEnter,WinEnter * let &scrolloff = winheight(0) / 4 " Scroll limit
+autocmd vimrc VimEnter,WinEnter * let &scrolloff = winheight(0) / 4 " Scroll limit
 set nowrap " Disable line wrapping
 set cursorline " Enable cursor line
 set incsearch " Search as characters are entered
@@ -197,38 +286,38 @@ set showcmd " Show (partial) command on the last line of the screen
 set ruler " Show current row, column, percent, etc.
 
 
-" Color schemes
+" Colorscheme
 " ============================
 let g:everforest_background = 'soft'
 let g:everforest_enable_italic = 1
 let g:everforest_sign_column_background = 'none'
 let g:everforest_lightline_disable_bold = 1
 colorscheme everforest
-" call tmuxline#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
+" call tmuxline#api#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
 
 
-" Misc settings
+" Editor
 " ============================
 " Reload buffers if changed outside of vim
 set autoread
-augroup reloadbuffers
-  autocmd!
-  autocmd FocusGained * checktime
-augroup END
+autocmd vimrc FocusGained * checktime
 
 " Disable bells and flashing
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+autocmd vimrc GUIEnter * set visualbell t_vb=
 
 set backspace=indent,eol,start " Normal backspace in insert mode
 set ignorecase
 set smartcase
 
 " Tabs
-set list listchars=tab:·\-
+set list listchars=tab:·\  " Keep this whitespace
 set tabstop=2 shiftwidth=2 expandtab
 " Language specific tab size
-autocmd FileType go setlocal tabstop=2 shiftwidth=2
+augroup vimrc
+  autocmd FileType go setlocal tabstop=2 shiftwidth=2
+  autocmd FileType python setlocal tabstop=2 shiftwidth=2
+augroup END
 
 " Enable mode shapes, 'Cursor' highlight, and blinking:
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
@@ -239,11 +328,17 @@ set foldnestmax=10    " Deepest fold is 10 levels
 set nofoldenable      " Dont fold by default
 set foldlevel=1       " This is just what i use
 
+" Disable joinspaces (only insert 1 space after [.?!], not 2)
+set nojs
 
-" Keyboard shortcuts
+" Remember 1000 recent files
+set shada=!,'1000,<50,s10,h
+
+
+" Keybinds
 " ============================
-" Remove search highlighting
-nnoremap <silent><Esc> :noh<CR>
+" Remove search highlighting and close the quickfix window.
+nnoremap <silent><Esc> :noh<CR>:cclose<CR>
 " Press // in visual mode to search selected text
 vnoremap // y/<C-R>"<CR>
 " Redo macro with space
@@ -279,8 +374,7 @@ if !exists('g:lasttab')
   let g:lasttab = 1
   let g:lasttab_backup = 1
 endif
-augroup lasttab
-  autocmd!
+augroup vimrc
   autocmd TabLeave * let g:lasttab_backup = g:lasttab | let g:lasttab = tabpagenr()
   autocmd TabClosed * let g:lasttab = g:lasttab_backup
 augroup END
@@ -290,20 +384,34 @@ nnoremap <silent> <Leader>l :exe "tabn " . g:lasttab<CR>
 nnoremap <silent> <Leader>[ :silent :bp<CR>
 nnoremap <silent> <Leader>] :silent :bn<CR>
 
+" Spell check
+nnoremap <Leader>s :setlocal spell! spelllang=en_us<CR>
+
 " Sort
 vnoremap <C-s> :sort<CR>
 
-" Spellcheck
-nnoremap <Leader>S :setlocal spell! spelllang=en_us<CR>
-
-" Copy/paste/delete using system clipboard
+" Copy/paste/delete to system clipboard
 noremap <Leader>y "*y
+noremap <Leader>Y :OSCYank<CR>
 noremap <Leader>p "*p
 noremap <Leader>P "*P
 noremap <Leader>d "*d
+" Copy filepath to the unnamed register
+noremap <Leader>g :let @" = expand('%')<CR>
+
+" Toggle line wrapping ruler (colorcolumn) (off by default)
+nnoremap <silent> <Leader><Leader> :let &cc = &cc == '' ? '+1' : ''<CR>
 
 " Reload vimrc
 nnoremap <A-r> :source $MYVIMRC<CR>
 
-" Toggle diff mode
+" Toggle diffs
 nnoremap <silent> <Leader>D :exe &diff == 0 ? 'windo diffthis' : 'diffoff!'<CR>
+
+
+" Local config
+" ============================
+let s:local_config = expand('~/.config/nvim/local.vim')
+if filereadable(s:local_config)
+  exe 'source ' . s:local_config
+endif
