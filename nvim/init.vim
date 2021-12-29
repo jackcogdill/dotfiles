@@ -111,6 +111,14 @@ fun! s:Bufopen(lines)
   exe cmd matchstr(a:lines[1], '^[ 0-9]*')
 endfun
 
+fun! s:Recentlist()
+  redir => list
+  silent oldfiles
+  redir END
+  let list = split(list, '\n')
+  return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
+endfun
+
 fun! s:Registerlist()
   redir => list
   silent registers
@@ -132,6 +140,10 @@ nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
       \ 'source': reverse(<sid>Buflist()),
       \ 'sink*': function('<sid>Bufopen'),
       \ 'options': '--expect=ctrl-t,ctrl-v,ctrl-x',
+      \ }))<CR>
+" Recent
+nnoremap <silent> <C-e> :call fzf#run(fzf#wrap({
+      \ 'source': <sid>Recentlist(),
       \ }))<CR>
 " Registers
 nnoremap <silent> <C-y> :call fzf#run(fzf#wrap({
