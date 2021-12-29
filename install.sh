@@ -2,6 +2,8 @@
 
 cd $(dirname "$0")
 
+# TODO: consider changing this to platform-specific install files.
+# (e.g. macos.sh -> install packages -> run main install.sh)
 # Detect OS
 # Usage: if (( LINUX ))
 # Thank you https://stackoverflow.com/a/8597411/1313757
@@ -22,32 +24,29 @@ if [[ "$SHELL" != "$(which zsh)" ]]; then
   chsh -s "$(which zsh)"
 fi
 
+# Install zplug
+[ -d ~/.zplug ] || curl -sL --proto-redir -all,https \
+  https://raw.githubusercontent.com/zplug/installer/master/installer.zsh \
+  | zsh
+
 # Create symlinks
 dots=(
   alacritty
   bash
   git
   tmux
-  vim
   zsh
 )
 for pkg in "${dots[@]}"; do
   stow -t ~ $pkg
 done
 
-# Neovim setup
-mkdir -p ~/.config/nvim/
-ln -s "$(pwd)/vim/.vim/vimrc" ~/.config/nvim/init.vim
-
-# zplug setup
-curl -sL --proto-redir -all,https \
-  https://raw.githubusercontent.com/zplug/installer/master/installer.zsh \
-  | zsh
-
+# NeoVim
+mkdir -p ~/.config/nvim
+stow --target ~/.config/nvim nvim
 
 # Tmux setup
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 
 # macOS config
 if (( MACOS )); then
