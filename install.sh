@@ -31,7 +31,6 @@ fi
 
 # Create symlinks
 dots=(
-  alacritty
   bash
   git
   tmux
@@ -40,6 +39,10 @@ dots=(
 for pkg in "${dots[@]}"; do
   stow -t ~ $pkg
 done
+
+# Alacritty
+mkdir -p ~/.config/alacritty
+stow --target ~/.config/alacritty alacritty
 
 # NeoVim
 mkdir -p ~/.config/nvim
