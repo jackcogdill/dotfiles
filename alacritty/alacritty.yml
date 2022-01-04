@@ -881,3 +881,6 @@ key_bindings:
 
   # Print all received window events.
   #print_events: false
+
+import:
+  - ~/.config/alacritty/local.yml
