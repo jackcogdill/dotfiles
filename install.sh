@@ -60,5 +60,5 @@ if (( MACOS )); then
   killall Finder
 fi
 
-echo "Download the Blex Mono nerd font from https://github.com/ryanoasis/nerd-fonts/releases/latest"
-echo "Download the IBM Plex Mono font from https://github.com/IBM/plex/releases/latest"
+echo "Download the font 'BlexMono Nerd Font Mono' from https://github.com/ryanoasis/nerd-fonts/releases/latest"
+echo "Download the font 'IBM Plex Mono' from https://github.com/IBM/plex/releases/latest"
