@@ -124,12 +124,11 @@ fun! s:Registerlist()
   redir => list
   silent registers
   redir END
-  let list = split(list, '\n')[1:]
-  return list
+  return split(list, '\n')[1:]
 endfun
 
 fun! s:Registerpaste(line)
-  exe 'normal ' . matchstr(a:line, '^\s\+\S\+\s\+\zs".') . 'p'
+  exe 'normal ' . matchstr(a:line, '^\s\+\w\s\+\zs".') . 'p'
 endfun
 
 " Files
