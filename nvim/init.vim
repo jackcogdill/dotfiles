@@ -22,6 +22,7 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
+Plug 'svermeulen/vim-yoink' " Yank history
 
 " Semantic completion
 Plug 'neovim/nvim-lspconfig'
@@ -123,9 +124,7 @@ fun! s:Registerlist()
   redir => list
   silent registers
   redir END
-  let list = split(list, '\n')
-  " Remove header.
-  call remove(list, 0)
+  let list = split(list, '\n')[1:]
   return list
 endfun
 
@@ -150,6 +149,11 @@ nnoremap <silent> <C-y> :call fzf#run(fzf#wrap({
       \ 'source': <sid>Registerlist(),
       \ 'sink': function('<sid>Registerpaste'),
       \ }))<CR>
+
+" vim-yoink
+" ---------
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkSyncNumberedRegisters = 1
 
 " vim-rooter
 " ----------
