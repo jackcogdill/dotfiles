@@ -162,13 +162,6 @@ let g:rooter_manual_only = 1
 " ----------
 nnoremap <leader>t :TagbarOpen<CR>
 let g:tagbar_autoclose = 1
-let g:tagbar_type_jslayout = {
-    \ 'ctagstype' : 'Jslayout',
-    \ 'kinds'     : [
-        \ 't:templates',
-        \ 'a:attribute templates',
-    \ ]
-\ }
 
 " vim-workspace
 " -------------
