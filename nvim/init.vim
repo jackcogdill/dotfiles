@@ -301,7 +301,11 @@ let g:everforest_enable_italic = 1
 let g:everforest_sign_column_background = 'none'
 let g:everforest_lightline_disable_bold = 1
 colorscheme everforest
-" call tmuxline#api#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
+" Update lightline and tmuxline on background change
+autocmd OptionSet background
+      \ execute 'source' globpath(&rtp, 'autoload/lightline/colorscheme/everforest.vim')
+      \ | call lightline#colorscheme() | call lightline#update()
+      \ | call tmuxline#api#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
 
 
 " Editor
