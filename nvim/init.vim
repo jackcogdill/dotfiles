@@ -160,7 +160,7 @@ let g:rooter_manual_only = 1
 
 " Tagbar
 " ----------
-nnoremap <leader>t :TagbarOpen<CR>
+nnoremap <silent> <leader>t :TagbarOpen<CR>
 let g:tagbar_autoclose = 1
 
 " vim-workspace
