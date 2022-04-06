@@ -15,12 +15,12 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Incremental syntax parsing
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Incremental syntax parsing
 Plug 'luochen1990/rainbow' " Color nested parentheses
 
 " Editing
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
-Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
+Plug 'ntpeters/vim-better-whitespace', { 'on': 'StripWhitespace' } " Remove trailing whitespace
 Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
 Plug 'svermeulen/vim-yoink' " Yank history
 
@@ -46,10 +46,10 @@ Plug 'christoomey/vim-tmux-navigator' " Seamless navigation with tmux
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy search
 Plug 'airblade/vim-rooter' " Project root working directory
 Plug 'ojroques/vim-oscyank' " Copy to system clipboard including over remote ssh
-Plug 'preservim/tagbar' " File structure overview
+Plug 'preservim/tagbar', { 'on': 'TagbarOpen' } " File structure overview
 
 " Shell commands
-Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
+Plug 'skywind3000/asyncrun.vim', { 'on': 'AsyncRun' } " Run shell commands in the background
 
 call plug#end() " Initialize plugin system
 
