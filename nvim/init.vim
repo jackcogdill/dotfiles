@@ -20,7 +20,7 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 
 " Editing
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
-Plug 'ntpeters/vim-better-whitespace', { 'on': 'StripWhitespace' } " Remove trailing whitespace
+Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
 Plug 'svermeulen/vim-yoink' " Yank history
 
