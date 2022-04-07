@@ -46,7 +46,7 @@ Plug 'christoomey/vim-tmux-navigator' " Seamless navigation with tmux
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy search
 Plug 'airblade/vim-rooter' " Project root working directory
 Plug 'ojroques/vim-oscyank' " Copy to system clipboard including over remote ssh
-Plug 'preservim/tagbar', { 'on': 'TagbarOpen' } " File structure overview
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' } " File structure overview
 
 " Shell commands
 Plug 'skywind3000/asyncrun.vim', { 'on': 'AsyncRun' } " Run shell commands in the background
@@ -160,7 +160,7 @@ let g:rooter_manual_only = 1
 
 " Tagbar
 " ----------
-nnoremap <silent> <leader>t :TagbarOpen<CR>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 
 " vim-workspace
