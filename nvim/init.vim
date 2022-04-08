@@ -51,6 +51,12 @@ Plug 'preservim/tagbar' " File structure overview
 " Shell commands
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 
+" Local plugins
+let s:plug = expand('~/.config/nvim/plug.vim')
+if filereadable(s:plug)
+  exe 'source ' . s:plug
+endif
+
 call plug#end() " Initialize plugin system
 
 " Plugin config
