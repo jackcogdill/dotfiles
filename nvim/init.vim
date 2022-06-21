@@ -65,8 +65,7 @@ call plug#end() " Initialize plugin system
 " ---------------
 lua <<EOF
 require 'nvim-treesitter.configs'.setup {
-  -- one of 'all', 'maintained' (parsers with maintainers), or list of languages
-  ensure_installed = 'maintained',
+  ensure_installed = 'all',
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { 'html' }, -- list of language that will be disabled
