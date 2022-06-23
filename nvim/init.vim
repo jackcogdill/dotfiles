@@ -6,9 +6,9 @@ augroup END
 " Plugins
 " ============================
 " Auto install vim-plug
-let s:vimplug_dir = '~/.local/share/nvim/site/autoload/plug.vim'
-if empty(glob(s:vimplug_dir))
-  silent exe '!curl -fLo ' . s:vimplug_dir . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:vimplug = '~/.local/share/nvim/site/autoload/plug.vim'
+if empty(glob(s:vimplug))
+  silent exe '!curl -fLo ' . s:vimplug . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd vimrc VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
