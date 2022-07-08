@@ -222,6 +222,7 @@ endfun
 " --------
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
+      \ 'a'       : '#h:#S',
       \ 'win'     : '#W',
       \ 'cwin'    : '#W',
       \ 'x'       : '#T',
