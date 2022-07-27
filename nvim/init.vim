@@ -77,15 +77,6 @@ require 'nvim-treesitter.highlight'
 vim.treesitter.highlighter.hl_map['punctuation.bracket'] = nil
 EOF
 
-" vim-table-mode
-" --------------
-" Markdown-compatible
-" let g:table_mode_corner='|'
-
-" ReST-compatible
-let g:table_mode_corner_corner='+'
-let g:table_mode_header_fillchar='='
-
 " auto-pairs
 " ----------
 let g:AutoPairsCenterLine = 0
