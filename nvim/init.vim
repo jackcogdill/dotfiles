@@ -268,6 +268,10 @@ let g:echodoc#type = 'floating'
 " Open the quickfix window automatically at N lines height after command starts
 let g:asyncrun_open = 8
 
+" vim-oscyank
+" --------------
+noremap <Leader>Y :OSCYank<CR>
+
 
 " Visual
 " ============================
@@ -401,7 +405,6 @@ vnoremap <C-s> :sort<CR>
 
 " Copy/paste/delete to system clipboard
 noremap <Leader>y "*y
-noremap <Leader>Y :OSCYank<CR>
 noremap <Leader>p "*p
 noremap <Leader>P "*P
 noremap <Leader>d "*d
