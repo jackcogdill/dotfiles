@@ -270,6 +270,7 @@ let g:asyncrun_open = 8
 
 " vim-oscyank
 " --------------
+let g:oscyank_term = 'default'
 noremap <Leader>Y :OSCYank<CR>
 
 
