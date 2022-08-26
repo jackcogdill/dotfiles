@@ -351,8 +351,8 @@ set shada=!,'1000,<50,s10,h
 
 " Keybinds
 " ============================
-" Remove search highlighting and close the quickfix window.
-nnoremap <silent><Esc> :noh<CR>:cclose<CR>
+" Remove search highlighting
+nnoremap <silent><Esc> :noh<CR>
 " Press // in visual mode to search selected text
 vnoremap // y/<C-R>"<CR>
 " Redo macro with space
