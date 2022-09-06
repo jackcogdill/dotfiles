@@ -90,7 +90,7 @@ let g:signify_update_on_focusgained = 1
 " fzf
 " ---
 let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_COMMAND = 'find . -type f ! -path "*.undodir*"'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore node_modules --ignore .undodir -g ""'
 
 fun! s:Buflist()
   redir => ls
