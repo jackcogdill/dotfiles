@@ -1,5 +1,9 @@
 let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
+" neoformat
+" ---------
+autocmd vimrc BufWritePre * Neoformat
+
 " nvim-lspconfig
 " --------------
 lua <<EOF
@@ -35,8 +39,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<Leader>f', vim.lsp.buf.formatting, bufopts)
-
-  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 end
 
 require('lspconfig')['tsserver'].setup{
