@@ -41,6 +41,9 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Leader>f', vim.lsp.buf.formatting, bufopts)
 end
 
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+}
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
 }
