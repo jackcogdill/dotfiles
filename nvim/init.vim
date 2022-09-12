@@ -352,8 +352,8 @@ set shada=!,'1000,<50,s10,h
 
 " Keybinds
 " ============================
-" Remove search highlighting
-nnoremap <silent><Esc> :noh<CR>
+" Remove search highlighting and clear command line
+nnoremap <silent><Esc> :noh<CR> <Bar> :echo ''<CR>
 " Press // in visual mode to search selected text
 vnoremap // y/<C-R>"<CR>
 " Redo macro with space
