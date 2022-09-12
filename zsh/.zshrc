@@ -103,18 +103,6 @@ alias lx="ls -lAhX"
 alias ip="curl icanhazip.com"
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
 
-# ssh
-# ---
-alias rl="ssh -t jackcog@rlogin.cs.vt.edu zsh"
-alias rlb="ssh jackcog@rlogin.cs.vt.edu" # ssh to rlogin in bash (instead of zsh)
-alias portal="ssh jackcog@portal.cs.vt.edu"
-
-# macOS
-# -----
-alias vs="open -a /Applications/Visual\ Studio\ Code.app"
-alias vlc="open -a /Applications/VLC.app"
-alias chrome="open -a /Applications/Google\ Chrome.app"
-
 
 # Everything Else
 # ===============
