@@ -81,8 +81,8 @@ zplug load
 # Autosuggestions
 # ---------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239' # gruvbox bg2
-bindkey -M emacs '^Z' autosuggest-execute
-bindkey -M vicmd '^Z' autosuggest-execute
+bindkey -M emacs '^[^M' autosuggest-execute # Alt + Enter
+bindkey -M vicmd '^[^M' autosuggest-execute # Alt + Enter
 # This speeds up pasting
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
