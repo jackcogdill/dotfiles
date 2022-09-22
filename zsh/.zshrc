@@ -3,10 +3,7 @@ bindkey -e # Emacs
 # Auto tmux
 if [[ $- == *i* && -z "$TMUX" ]]; then
   [[ -n "$SSH_CONNECTION" ]] && local session="ssh" || local session="tmux"
-  # Only attach once
-  if ! tmux ls | grep -E "^$session" | grep -q attached; then
-    tmux new -A -s "$session"
-  fi
+  tmux new -A -s "$session"
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -16,44 +13,29 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Vars
-# ====
-export GOPATH=$(go env GOPATH)
-# !! Keep this order. Use GNU ls for LS_COLORS to work
-export PATH="\
-/opt/homebrew/opt/coreutils/libexec/gnubin:\
-/opt/homebrew/bin:\
-${PATH}:\
-$GOPATH/bin:\
-$HOME/.cargo/bin:\
-/bin:\
-/sbin:\
-/usr/bin:\
-/usr/sbin:\
-/usr/local/bin:\
-/usr/local/sbin:"
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+# Environment vars
+# ================================
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export PAGER="$(which less) -i" # i: smart case search
-export LANG="en_US.UTF-8"
 
 
 # zplug
-# =====
+# ================================
 source ~/.zplug/init.zsh
 
-# Omz libs
+# omz libs
 zplug "lib/completion", from:oh-my-zsh # [tab] squares
 zplug "lib/directories", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 
-# Omz plugins
+# omz plugins
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
+[[ -f /etc/debian_version ]] && zplug "plugins/debian", from:oh-my-zsh
 
-# Other
+# Other plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "trapd00r/LS_COLORS", \
@@ -76,8 +58,14 @@ fi
 zplug load
 
 
+# Libraries
+# ================================
+# Nerd-fonts
+source ~/.local/share/fonts/i_all.sh
+
+
 # Plugins
-# =======
+# ================================
 # Autosuggestions
 # ---------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239' # gruvbox bg2
@@ -85,11 +73,11 @@ bindkey -M emacs '^[^M' autosuggest-execute # Alt + Enter
 bindkey -M vicmd '^[^M' autosuggest-execute # Alt + Enter
 # This speeds up pasting
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
+function pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
 }
-pastefinish() {
+function pastefinish() {
   zle -N self-insert $OLD_SELF_INSERT
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
@@ -97,15 +85,15 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 
 # Aliases
-# =======
+# ================================
+alias grep="grep --color=auto"
 alias ls="ls --color=auto"
-alias lx="ls -lAhX"
+alias lx="ls -hAlX"
 alias ip="curl icanhazip.com"
-alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
 
 
 # Everything Else
-# ===============
+# ================================
 # Options
 setopt EXTENDED_GLOB
 
@@ -147,33 +135,11 @@ add-zsh-hook preexec preexec
 # Zsh to use the same colors as ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# NVM (Node Version Management)
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
 # fzf
-# ---
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color=16" # Match terminal color scheme
-
-# Save/load named tmux layouts
-TMUX_LAYOUTS="$HOME/.tmux/layouts.json"
-function savel() {
-  [[ -f "$TMUX_LAYOUTS" ]] || echo "{}" > "$TMUX_LAYOUTS"
-  local name="$1"
-  local layout=$(tmux list-windows -F '#{?window_active,#{window_layout},}' | grep .)
-  jq --arg name "$name" --arg layout "$layout" '.[$name] = $layout' "$TMUX_LAYOUTS" | sponge "$TMUX_LAYOUTS"
-}
-function loadl() {
-  local layouts=(${(@f)$(jq --raw-output 'keys[]' $TMUX_LAYOUTS)})
-  (COLUMNS=1
-  PS3="Select a saved tmux layout: "
-  select layout in $layouts; do
-    tmux select-layout $(jq --raw-output --arg layout "$layout" '.[$layout]' "$TMUX_LAYOUTS")
-    break
-  done)
-}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# Machine-specific config
+[[ -f ~/.zshrc_local ]] && source ~/.zshrc_local
