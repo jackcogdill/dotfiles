@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cd $(dirname "$0")
+cd $(dirname "$0")/..
 
 # Change shell to zsh
 if [[ "$SHELL" != "$(which zsh)" ]]; then
