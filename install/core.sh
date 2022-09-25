@@ -13,12 +13,12 @@ fi
   | zsh
 
 # Create symlinks
-dots=(
+packages=(
   git
   tmux
   zsh
 )
-for pkg in "${dots[@]}"; do
+for pkg in "${packages[@]}"; do
   stow -t ~ $pkg
 done
 
