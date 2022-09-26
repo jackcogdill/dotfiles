@@ -1,4 +1,5 @@
 [user]
 	email = hi@jackcogdill.com
+	name = Jack Cogdill
 [core]
 	excludesFile = ~/.gitignore_global
