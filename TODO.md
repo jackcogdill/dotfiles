@@ -1,1 +1,8 @@
-[ ] Create an install option to not use default local configs (zsh, nvim, etc)
+## Install
+[ ] Create install options with local variants per machine
+  - E.g.:
+    - personal-macbook/zsh, tmux, vim...
+    - work-macbook/zsh, tmux, vim...
+
+## Vim
+[ ] Merge lsp configs (same mappings) across personal and work
