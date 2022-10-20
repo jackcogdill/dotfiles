@@ -135,6 +135,11 @@ add-zsh-hook preexec preexec
 # Zsh to use the same colors as ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# Edit command in editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 # fzf
 export FZF_DEFAULT_OPTS="--color=16" # Match terminal color scheme
 
