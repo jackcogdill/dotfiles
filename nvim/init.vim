@@ -72,11 +72,9 @@ require 'nvim-treesitter.configs'.setup {
     disable = { 'html', 'help' }, -- list of language that will be disabled
   },
 }
-
--- Compatibility with rainbow-parentheses
-require 'nvim-treesitter.highlight'
-vim.treesitter.highlighter.hl_map['punctuation.bracket'] = nil
 EOF
+" Compatibility with rainbow-parentheses
+autocmd vimrc BufEnter * hi clear TSPunctBracket
 
 " auto-pairs
 " ----------
