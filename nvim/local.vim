@@ -8,6 +8,7 @@ let g:neoformat_python_yapf = {
       \ 'args': ["--style='{based_on_style: google, indent_width: 2}'"],
       \ }
 let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_javascript = ['prettier']
 
 " nvim-lspconfig
 " --------------
