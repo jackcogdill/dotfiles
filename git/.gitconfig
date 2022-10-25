@@ -3,3 +3,10 @@
 	name = Jack Cogdill
 [core]
 	excludesFile = ~/.gitignore_global
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflictsWithHistory \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
