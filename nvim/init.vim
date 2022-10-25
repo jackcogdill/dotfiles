@@ -51,6 +51,9 @@ Plug 'preservim/tagbar' " File structure overview
 " Shell commands
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 
+" Conflict resolution
+Plug 'whiteinge/diffconflicts'
+
 " Local plugins
 let s:plug = expand('~/.config/nvim/plug.vim')
 if filereadable(s:plug)
