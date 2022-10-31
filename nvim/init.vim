@@ -1,4 +1,6 @@
 set nocompatible
+set mouse=
+
 augroup vimrc
   autocmd!
 augroup END
