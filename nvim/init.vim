@@ -199,6 +199,7 @@ let g:lightline = {
       \   'c' : 'CMD', 's' : 'SEL', 'S' : 'S-L', "\<C-s>": 'S-B', 't': 'TRM',
       \ },
       \ }
+autocmd vimrc WinClosed * call lightline#update()
 
 fun! LightlineFilename()
   let expanded = expand('%:t')
@@ -302,7 +303,7 @@ let g:everforest_sign_column_background = 'none'
 let g:everforest_lightline_disable_bold = 1
 colorscheme everforest
 " Update lightline and tmuxline on background change
-autocmd OptionSet background
+autocmd vimrc OptionSet background
       \ execute 'source' globpath(&rtp, 'autoload/lightline/colorscheme/everforest.vim')
       \ | call lightline#colorscheme() | call lightline#update()
       \ | call tmuxline#api#set_theme(tmuxline#util#create_theme_from_lightline(lightline#palette()['command']))
