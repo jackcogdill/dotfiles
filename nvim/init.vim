@@ -93,7 +93,13 @@ let g:signify_update_on_focusgained = 1
 " fzf
 " ---
 let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore={.git,node_modules,.undodir} -g ""'
+let $FZF_DEFAULT_COMMAND = 'find .
+      \ -type d \(
+      \ -name node_modules -o
+      \ -name .git -o
+      \ -name .undodir
+      \ \)
+      \ -prune -o -print'
 
 fun! s:Buflist()
   redir => ls
