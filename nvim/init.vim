@@ -87,7 +87,7 @@ let g:AutoPairsShortcutFastWrap = '<M-w>'
 
 " vim-signify
 " -----------
-let g:signify_vcs_list = ['git']
+let g:signify_skip = { 'vcs': { 'allow': ['git'] } }
 let g:signify_update_on_focusgained = 1
 
 " fzf
