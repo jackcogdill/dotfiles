@@ -2,7 +2,7 @@ let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 " neoformat
 " ---------
-autocmd vimrc BufWritePre *.py,*.js,*.ts Neoformat
+autocmd vimrc BufWritePre * Neoformat
 let g:neoformat_python_yapf = {
       \ 'exe': 'yapf',
       \ 'args': ["--style='{based_on_style: google, indent_width: 2}'"],
@@ -11,9 +11,6 @@ let g:neoformat_typescript_prettier = {
       \ 'exe': 'prettier',
       \ 'args': ['--parser typescript --single-quote'],
       \ }
-let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_typescript = ['prettier']
 
 " nvim-lspconfig
 " --------------
