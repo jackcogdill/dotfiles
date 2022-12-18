@@ -68,7 +68,6 @@ source ~/.local/share/fonts/i_all.sh
 # ================================
 # Autosuggestions
 # ---------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239' # gruvbox bg2
 bindkey -M emacs '^[^M' autosuggest-execute # Alt + Enter
 bindkey -M vicmd '^[^M' autosuggest-execute # Alt + Enter
 # This speeds up pasting
@@ -104,8 +103,7 @@ function set_title() {
   setopt localoptions noshwordsplit
 
   case $TTY in
-    # Don't set title over serial console.
-    /dev/ttyS[0-9]*) return;;
+    /dev/ttyS[0-9]*) return;; # Don't set title over serial console.
   esac
 
   local -a opts
