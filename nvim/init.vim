@@ -73,7 +73,7 @@ require 'nvim-treesitter.configs'.setup {
   ignore_install = { 'phpdoc' },
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { 'html', 'help' }, -- list of language that will be disabled
+    disable = { 'html' }, -- list of language that will be disabled
   },
 }
 EOF
