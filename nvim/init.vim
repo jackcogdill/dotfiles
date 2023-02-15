@@ -93,7 +93,7 @@ let g:signify_update_on_focusgained = 1
 " fzf
 " ---
 let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_COMMAND = 'find .
+let $FZF_DEFAULT_COMMAND = 'find
       \ -type d \(
       \ -name node_modules -o
       \ -name .git -o
@@ -114,7 +114,7 @@ fun! s:Bufopen(lines)
         \ 'ctrl-v': 'vert sb',
         \ 'ctrl-t': 'tab sb',
         \ }, a:lines[0], 'b')
-  exe cmd matchstr(a:lines[1], '^[ 0-9]*')
+  exe cmd split(a:lines[1])[0]
 endfun
 
 fun! s:Recentlist()
