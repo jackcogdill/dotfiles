@@ -10,3 +10,4 @@
 -   [ ] Merge lsp configs (same mappings) across personal and work
 -   [ ] Consider migrating from deoplete to nvim-cmp
     -   See https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+-   [ ] Create a Ctrl-P mapping that merges all the common fzf sources
