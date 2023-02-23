@@ -83,14 +83,6 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
 
-# Aliases
-# ================================
-alias grep="grep --color=auto"
-alias ls="ls --color=auto"
-alias lx="ls -hAlX"
-alias ip="curl icanhazip.com"
-
-
 # Everything Else
 # ================================
 # Options
