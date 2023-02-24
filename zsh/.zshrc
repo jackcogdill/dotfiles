@@ -20,6 +20,12 @@ export VISUAL=$(which nvim)
 export PAGER="$(which less) -i" # i: smart case search
 
 
+# Aliases
+# ================================
+alias grep="grep --color=auto"
+alias ls="ls --color=auto"
+
+
 # zplug
 # ================================
 source ~/.zplug/init.zsh
