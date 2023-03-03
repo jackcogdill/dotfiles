@@ -24,7 +24,6 @@ Plug 'luochen1990/rainbow' " Color nested parentheses
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
 Plug 'ntpeters/vim-better-whitespace' " Remove trailing whitespace
 Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
-Plug 'svermeulen/vim-yoink' " Yank history
 
 " Semantic completion
 Plug 'neovim/nvim-lspconfig'
@@ -125,13 +124,6 @@ fun! s:Recentlist()
   return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
 endfun
 
-fun! s:Registerlist()
-  redir => list
-  silent registers
-  redir END
-  return split(list, '\n')[1:]
-endfun
-
 fun! s:Registerpaste(line)
   exe 'normal ' . matchstr(a:line, '^\s\+\w\s\+\zs".') . 'p'
 endfun
@@ -148,16 +140,6 @@ nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
 nnoremap <silent> <C-e> :call fzf#run(fzf#wrap({
       \ 'source': <sid>Recentlist(),
       \ }))<CR>
-" Registers
-nnoremap <silent> <C-y> :call fzf#run(fzf#wrap({
-      \ 'source': <sid>Registerlist(),
-      \ 'sink': function('<sid>Registerpaste'),
-      \ }))<CR>
-
-" vim-yoink
-" ---------
-let g:yoinkIncludeDeleteOperations = 1
-let g:yoinkSyncNumberedRegisters = 1
 
 " vim-rooter
 " ----------
