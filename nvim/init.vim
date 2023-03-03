@@ -100,41 +100,18 @@ let $FZF_DEFAULT_COMMAND = 'find
       \ \)
       \ -prune -o -print'
 
-fun! s:Buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfun
-
-fun! s:Bufopen(lines)
-  let cmd = get({
-        \ 'ctrl-x': 'sb',
-        \ 'ctrl-v': 'vert sb',
-        \ 'ctrl-t': 'tab sb',
-        \ }, a:lines[0], 'b')
-  exe cmd split(a:lines[1])[0]
-endfun
-
-fun! s:Recentlist()
-  redir => list
-  silent oldfiles
-  redir END
-  let list = split(list, '\n')
-  return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
-endfun
-
 " Files
 nnoremap <silent> <C-p> :exe 'FZF ' . FindRootDirectory()<CR>
 " Buffers
 nnoremap <silent> <C-n> :call fzf#run(fzf#wrap({
-      \ 'source': reverse(<sid>Buflist()),
-      \ 'sink*': function('<sid>Bufopen'),
-      \ 'options': '--expect=ctrl-t,ctrl-v,ctrl-x',
+      \ 'source': filter(map(filter(range(1, bufnr('$')),
+      \           {_, v -> buflisted(v)}),
+      \           {_, v -> bufname(v)}),
+      \           {_, v -> len(v) > 0}),
       \ }))<CR>
 " Recent
 nnoremap <silent> <C-e> :call fzf#run(fzf#wrap({
-      \ 'source': <sid>Recentlist(),
+      \ 'source': v:oldfiles,
       \ }))<CR>
 
 " vim-rooter
