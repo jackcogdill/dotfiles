@@ -94,9 +94,9 @@ let g:signify_update_on_focusgained = 1
 let g:fzf_layout = { 'down': '~25%' }
 let $FZF_DEFAULT_COMMAND = 'find
       \ -type d \(
-      \ -name node_modules -o
-      \ -name .git -o
-      \ -name .undodir
+      \ -name node_modules
+      \ -o -name .git
+      \ -o -name .undodir
       \ \)
       \ -prune -o -print'
 
@@ -122,10 +122,6 @@ fun! s:Recentlist()
   redir END
   let list = split(list, '\n')
   return map(list, {_, v -> substitute(v, '^[0-9]\+: ', '', '')})
-endfun
-
-fun! s:Registerpaste(line)
-  exe 'normal ' . matchstr(a:line, '^\s\+\w\s\+\zs".') . 'p'
 endfun
 
 " Files
