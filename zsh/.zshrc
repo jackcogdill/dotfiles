@@ -3,7 +3,6 @@ bindkey -e # Emacs
 # Auto tmux
 if [[ $- == *i* && -z "$TMUX" ]]; then
   # Machine-specific config
-  [[ -f ~/.zshrc_pretmux ]] && source ~/.zshrc_pretmux
   [[ -n "$SSH_CONNECTION" ]] && local session="ssh" || local session="tmux"
   tmux new -A -s "$session"
 fi
