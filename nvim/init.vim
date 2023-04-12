@@ -229,8 +229,7 @@ let g:echodoc#type = 'floating'
 
 " AsyncRun
 " --------------
-" Open the quickfix window automatically at N lines height after command starts
-let g:asyncrun_open = 8
+let g:asyncrun_mode = 'term'
 
 " vim-oscyank
 " --------------
