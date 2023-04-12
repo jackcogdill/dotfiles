@@ -149,7 +149,7 @@ let g:lightline = {
       \             [ 'filetype' ]]
       \ },
       \ 'inactive': {
-      \   'left': [['filename']],
+      \   'left': [[ 'filename' ]],
       \   'right': [[]],
       \ },
       \ 'component_function': {
@@ -163,6 +163,10 @@ let g:lightline = {
 autocmd vimrc WinClosed * call lightline#update()
 
 fun! LightlineFilename()
+  if &buftype == 'terminal'
+    return expand('%:s?term://[^:]*:??')
+  endif
+
   let expanded = expand('%:t')
   let filename = expanded !=# '' ? expanded : '[No Name]'
   let modified = &modified ? ' +' : ''
