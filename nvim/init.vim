@@ -164,7 +164,8 @@ autocmd vimrc WinClosed * call lightline#update()
 
 fun! LightlineFilename()
   if &buftype == 'terminal'
-    return expand('%:s?term://[^:]*:??')
+    "        [ name ][ remove prefix ][ title ]
+    return expand('%:s?term://[^:]*:??:s?.*;#??')
   endif
 
   let expanded = expand('%:t')
