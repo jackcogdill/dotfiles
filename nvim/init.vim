@@ -229,7 +229,15 @@ let g:echodoc#type = 'floating'
 
 " AsyncRun
 " --------------
-let g:asyncrun_mode = 'term'
+fun! AsyncWrap(cmd)
+  let opts = {
+      \ 'mode': 'term',
+      \ 'rows': 10,
+      \ 'focus': 0,
+      \ 'listed': 0,
+      \ }
+  call asyncrun#run('', opts, a:cmd)
+endfun
 
 " vim-oscyank
 " --------------
