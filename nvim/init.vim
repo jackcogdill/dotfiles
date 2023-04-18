@@ -17,7 +17,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Incremental syntax parsing
+Plug 'nvim-treesitter/nvim-treesitter', { 'tag': '*', 'do': ':TSUpdate' } " Incremental syntax parsing
 Plug 'luochen1990/rainbow' " Color nested parentheses
 
 " Editing
