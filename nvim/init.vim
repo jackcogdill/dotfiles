@@ -383,8 +383,6 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>P "*P
 noremap <Leader>d "*d
-" Copy filepath to the unnamed register
-noremap <Leader>g :let @" = expand('%')<CR>
 
 " Toggle line wrapping ruler (colorcolumn) (off by default)
 nnoremap <silent> <Leader><Leader> :let &cc = &cc == '' ? '+1' : ''<CR>
