@@ -243,9 +243,9 @@ endfun
 " vim-oscyank
 " --------------
 let g:oscyank_term = 'default'
-nnoremap <leader>c <Plug>OSCYankOperator
-nnoremap <leader>cc <leader>c_
-vnoremap <leader>c <Plug>OSCYankVisual
+nmap <leader>c <Plug>OSCYankOperator
+nmap <leader>cc <leader>c_
+vmap <leader>c <Plug>OSCYankVisual
 
 
 " Visual
