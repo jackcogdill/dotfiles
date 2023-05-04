@@ -327,6 +327,7 @@ draw_bold_text_with_bright_colors: false
   # regardless of their background color.
   #transparent_background_colors: false
 
+# From https://github.com/sainnhe/everforest/wiki#terminal-emulators
 # Define
 schemes:
   everforest_dark_hard: &everforest_dark_hard
