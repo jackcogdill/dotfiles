@@ -19,6 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Syntax highlighting
 Plug 'nvim-treesitter/nvim-treesitter', { 'tag': '*', 'do': ':TSUpdate' } " Incremental syntax parsing
 Plug 'luochen1990/rainbow' " Color nested parentheses
+Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': '*' } " indentation guides
 
 " Editing
 Plug 'jiangmiao/auto-pairs' " Autocomplete for parentheses, quotes, etc.
@@ -64,6 +65,19 @@ call plug#end() " Initialize plugin system
 
 " Plugin config
 " ============================
+" indent-blankline
+" ----------------
+lua << EOF
+require('indent_blankline').setup {
+  indentLine_enabled = 1,
+  buftype_exclude = { 'terminal' },
+  show_trailing_blankline_indent = false,
+  show_first_indent_level = false,
+  show_current_context = true,
+  show_current_context_start = true,
+}
+EOF
+
 " nvim-treesitter
 " ---------------
 lua << EOF
