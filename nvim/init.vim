@@ -106,7 +106,7 @@ let g:signify_update_on_focusgained = 1
 " fzf
 " ---
 let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_COMMAND = 'find
+let $FZF_DEFAULT_COMMAND = 'find .
       \ -type d \(
       \ -name node_modules
       \ -o -name .git
