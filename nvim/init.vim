@@ -69,10 +69,11 @@ call plug#end() " Initialize plugin system
 " ----------------
 lua << EOF
 require('indent_blankline').setup {
-  indentLine_enabled = 1,
-  buftype_exclude = { 'terminal' },
-  show_trailing_blankline_indent = false,
+  enabled = true,
+  use_treesitter = true,
+  max_indent_increase = 1,
   show_first_indent_level = false,
+  show_trailing_blankline_indent = false,
   show_current_context = true,
   show_current_context_start = true,
 }
