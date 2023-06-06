@@ -171,7 +171,7 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \ },
       \ 'mode_map': {
-      \   'n' : 'NML', 'i' : 'INS', 'R' : 'REP', 'v' : 'VIS', 'V' : 'V-L', "\<C-v>": 'V-B',
+      \   'n' : 'NOR', 'i' : 'INS', 'R' : 'REP', 'v' : 'VIS', 'V' : 'V-L', "\<C-v>": 'V-B',
       \   'c' : 'CMD', 's' : 'SEL', 'S' : 'S-L', "\<C-s>": 'S-B', 't': 'TRM',
       \ },
       \ }
