@@ -45,7 +45,7 @@ Plug 'mhinz/vim-signify' " Signs for changes tracked by a version control system
 " Navigation / Organization
 Plug 'thaerkh/vim-workspace' " Sessions
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation with tmux
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy search
+Plug 'junegunn/fzf', { 'tag': '*', 'do': { -> fzf#install() } } " Fuzzy search
 Plug 'airblade/vim-rooter' " Project root working directory
 Plug 'ojroques/vim-oscyank' " Copy to system clipboard including over remote ssh
 
