@@ -397,7 +397,6 @@ vnoremap <C-s> :sort<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>P "*P
-noremap <Leader>d "*d
 
 " Toggle line wrapping ruler (colorcolumn) (off by default)
 nnoremap <silent> <Leader><Leader> :let &cc = &cc == '' ? '+1' : ''<CR>
