@@ -32,7 +32,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp' " LSP source
 Plug 'Shougo/neco-vim' " Vim source
 Plug 'Shougo/echodoc.vim' " Display function signatures from completions
-Plug 'Shougo/neosnippet.vim' " Snippet support
 
 " Color schemes
 Plug 'sainnhe/everforest'
@@ -229,14 +228,6 @@ call deoplete#custom#option('_', {
       \ 'auto_refresh_delay': 250,
       \ 'max_list': 100,
       \ })
-
-" neosnippet
-" ----------
-let g:neosnippet#disable_runtime_snippets = { '_': 1 }
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_complete_done = 1
-imap <C-j> <Plug>(neosnippet_expand_or_jump)
-smap <C-j> <Plug>(neosnippet_expand_or_jump)
 
 " echodoc
 " -------
