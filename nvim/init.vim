@@ -28,10 +28,15 @@ Plug 'wsdjeg/vim-fetch' " Line and column jump specifications
 
 " Semantic completion
 Plug 'neovim/nvim-lspconfig'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp' " LSP source
-Plug 'Shougo/neco-vim' " Vim source
-Plug 'Shougo/echodoc.vim' " Display function signatures from completions
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Color schemes
 Plug 'sainnhe/everforest'
@@ -64,6 +69,93 @@ call plug#end() " Initialize plugin system
 
 " Plugin config
 " ============================
+" nvim-cmp
+" --------
+lua << EOF
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+local cmp = require('cmp')
+
+-- If lsp offers a completion score, use it when sorting completion options
+local function compare_by_completion_score(entry1, entry2)
+  if entry1.completion_item.score ~= nil and entry2.completion_item.score ~= nil then
+    return entry1.completion_item.score > entry2.completion_item.score
+  end
+end
+
+cmp.setup({
+  formatting = {
+    format = function(entry, vim_item)
+      -- Source
+      vim_item.menu = ({
+        nvim_lsp = '[LSP]',
+        luasnip = '[LuaSnip]',
+        buffer = '[Buffer]',
+        path = '[Path]',
+        nvim_lua = '[Lua]',
+      })[entry.source.name]
+      return vim_item
+    end
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'nvim_lua' },
+  }),
+  sorting = {
+    comparators = {
+      compare_by_completion_score,
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+  experimental = {
+    ghost_text = true,
+  },
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' },
+    { name = 'buffer' },
+  })
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+    { name = 'cmdline' },
+  })
+})
+EOF
+
 " indent-blankline
 " ----------------
 lua << EOF
@@ -211,28 +303,6 @@ let g:rainbow_active = 1
 " Better whitespace
 " -----------------
 nnoremap <silent> <C-s> :silent :StripWhitespace<CR>
-
-" deoplete
-" --------
-let g:python3_host_prog = '/usr/bin/python3'
-let g:deoplete#enable_at_startup = 1
-" Manually set complete options
-set completeopt=menuone
-" '_' sets options for all sources
-call deoplete#custom#source('_', {
-      \ 'matchers': ['matcher_full_fuzzy'],
-      \ 'smart_case': v:true,
-      \ })
-call deoplete#custom#option('_', {
-      \ 'auto_complete_delay': 250,
-      \ 'auto_refresh_delay': 250,
-      \ 'max_list': 100,
-      \ })
-
-" echodoc
-" -------
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'floating'
 
 " AsyncRun
 " --------------
