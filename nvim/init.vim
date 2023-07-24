@@ -35,7 +35,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip', { 'tag': '*' }
+Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " Color schemes
@@ -156,10 +157,20 @@ cmp.setup.cmdline(':', {
 })
 EOF
 
+" luasnip
+" -------
+lua << EOF
+local luasnip = require('luasnip')
+local opts = { noremap = true, silent = true }
+vim.keymap.set({'i', 's'}, '<C-j>', function() luasnip.jump(1) end, opts)
+vim.keymap.set({'i', 's'}, '<C-k>', function() luasnip.jump(-1) end, opts)
+require('luasnip.loaders.from_vscode').lazy_load()
+EOF
+
 " indent-blankline
 " ----------------
 lua << EOF
-require('indent_blankline').setup {
+require('indent_blankline').setup({
   enabled = true,
   use_treesitter = true,
   max_indent_increase = 1,
@@ -167,20 +178,20 @@ require('indent_blankline').setup {
   show_trailing_blankline_indent = false,
   show_current_context = true,
   show_current_context_start = true,
-}
+})
 EOF
 
 " nvim-treesitter
 " ---------------
 lua << EOF
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = 'all',
   ignore_install = { 'phpdoc' },
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { 'html', 'proto' }, -- list of language that will be disabled
   },
-}
+})
 EOF
 " Compatibility with rainbow-parentheses
 autocmd vimrc BufEnter * hi clear TSPunctBracket
