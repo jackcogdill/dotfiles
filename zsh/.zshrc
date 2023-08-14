@@ -93,7 +93,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # Everything Else
 # ================================
 # Options
-setopt EXTENDED_GLOB
+setopt extendedglob
 
 # Set the terminal title
 # $1 is options
