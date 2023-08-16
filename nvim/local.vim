@@ -11,6 +11,10 @@ let g:neoformat_typescript_prettier = {
       \ 'exe': 'prettier',
       \ 'args': ['--parser typescript --single-quote'],
       \ }
+let g:neoformat_javascript_prettier = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--parser javascript --single-quote'],
+      \ }
 
 " nvim-lspconfig
 " --------------
