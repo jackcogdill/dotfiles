@@ -26,7 +26,4 @@ require('lazy').setup({
   install = {
     colorscheme = { 'everforest' },
   },
-  dev = {
-    path = vim.fn.stdpath('data') .. '/local-plugins',
-  },
 })
