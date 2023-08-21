@@ -7,5 +7,6 @@ return {
       let g:signify_skip = { 'vcs': { 'allow': ['git'] } }
       let g:signify_update_on_focusgained = 1
     ]])
+    pcall(require, 'local.vim-signify')
   end,
 }

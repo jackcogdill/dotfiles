@@ -4,5 +4,6 @@ return {
   event = 'BufReadPost',
   config = function()
     vim.g.rainbow_active = 1
+    pcall(require, 'local.rainbow')
   end,
 }
