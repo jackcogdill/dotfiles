@@ -1,1 +1,2 @@
-vim/.vim/*
+nvim/lua/local-*
+nvim/lua/plugins/local-*
