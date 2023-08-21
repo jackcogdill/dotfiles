@@ -1,4 +1,5 @@
 require('settings')
+require('autocmds')
 require('keybinds')
 
 -- bootstrap lazy.nvim

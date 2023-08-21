@@ -27,20 +27,3 @@ vim.o.foldlevel = 1
 -- cursor: enable mode shapes, 'Cursor' highlight, and blinking
 vim.o.guicursor =
   'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
-
--- autocmds
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
-  pattern = '*',
-  command = 'silent if &number == 1 | set relativenumber | endif',
-})
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
-  pattern = '*',
-  command = 'silent set norelativenumber',
-})
--- scroll limit
-vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter' }, {
-  pattern = '*',
-  command = 'let &scrolloff = winheight(0) / 4',
-})
--- reload buffers if changed outside of vim
-vim.api.nvim_create_autocmd('FocusGained', { pattern = '*', command = 'checktime' })
