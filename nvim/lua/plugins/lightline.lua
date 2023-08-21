@@ -1,7 +1,7 @@
 -- status line
 return {
   'itchyny/lightline.vim',
-  event = 'BufReadPost',
+  lazy = false,
   config = function()
     vim.cmd([[
       let g:lightline = {
