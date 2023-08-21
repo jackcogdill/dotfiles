@@ -2,9 +2,10 @@ require('options')
 require('autocmds')
 require('keybinds')
 
-if vim.loop.fs_stat(vim.fn.stdpath('config') .. '/lua/local-config.lua') then
-  require('local-config')
-end
+-- try loading local configs
+pcall(require, 'local.options')
+pcall(require, 'local.autocmds')
+pcall(require, 'local.keybinds')
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
