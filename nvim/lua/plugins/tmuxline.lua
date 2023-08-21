@@ -18,5 +18,6 @@ return {
             \ },
             \ }
     ]])
+    pcall(require, 'local.tmuxline')
   end,
 }

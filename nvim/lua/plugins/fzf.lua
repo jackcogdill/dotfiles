@@ -2,38 +2,60 @@
 return {
   'junegunn/fzf',
   version = '*',
-  build = ':call fzf#install()',
+  build = function()
+    vim.fn['fzf#install']()
+  end,
   dependencies = { 'vim-rooter' },
   keys = {
     {
       -- files
       '<C-p>',
-      ":exe 'FZF ' . FindRootDirectory()<CR>",
+      function()
+        vim.cmd('FZF ' .. vim.fn.FindRootDirectory())
+      end,
       silent = true,
     },
     {
       -- buffers
       '<C-n>',
-      ":call fzf#run(fzf#wrap({ 'source': filter(map(filter(range(1, bufnr('$')), {_, v -> buflisted(v)}), {_, v -> bufname(v)}), {_, v -> len(v) > 0}) }))<CR>",
+      function()
+        local files = {}
+        for i = 1, vim.fn.bufnr('$') do
+          if vim.fn.buflisted(i) then
+            local file = vim.fn.bufname(i)
+            if string.len(file) > 0 then
+              table.insert(files, file)
+            end
+          end
+        end
+        vim.fn.FzfWrappedRun({
+          source = files,
+        })
+      end,
       silent = true,
     },
     {
       -- recent
       '<C-e>',
-      ":call fzf#run(fzf#wrap({ 'source': v:oldfiles }))<CR>",
+      function()
+        vim.fn.FzfWrappedRun({
+          source = vim.v.oldfiles,
+        })
+      end,
       silent = true,
     },
   },
   config = function()
     vim.g.fzf_layout = { down = '~25%' }
+    vim.env.FZF_DEFAULT_COMMAND = [[
+      find . -type d \( -name node_modules -o -name .git -o -name .undodir \) -prune -o -print
+    ]]
+
+    -- can't use vim.fn because the sink/sinklist funcrefs are reset to vim.NIL
     vim.cmd([[
-      let $FZF_DEFAULT_COMMAND = 'find .
-            \ -type d \(
-            \ -name node_modules
-            \ -o -name .git
-            \ -o -name .undodir
-            \ \)
-            \ -prune -o -print'
+      fun! FzfWrappedRun(...)
+        call fzf#run(call('fzf#wrap', a:000))
+      endfun
     ]])
   end,
 }
