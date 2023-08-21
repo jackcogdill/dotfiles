@@ -1,3 +1,55 @@
+local ok, custom_keys = pcall(require, 'local.fzf-keys')
+local default_keys = {
+  files = {
+    '<C-p>',
+    function()
+      vim.cmd('FZF ' .. vim.fn.FindRootDirectory())
+    end,
+    silent = true,
+  },
+  buffers = {
+    '<C-n>',
+    function()
+      local numbers = {}
+      for i = 1, vim.fn.bufnr('$') do
+        table.insert(numbers, i)
+      end
+
+      local listed = vim.tbl_filter(vim.fn.buflisted, numbers)
+      local names = vim.tbl_map(vim.fn.bufname, listed)
+      local non_empty = vim.tbl_filter(function(name)
+        return string.len(name) > 0
+      end, names)
+
+      vim.fn.FzfWrappedRun({
+        source = non_empty,
+      })
+    end,
+    silent = true,
+  },
+  recent = {
+    '<C-e>',
+    function()
+      local list = vim.v.oldfiles
+
+      -- remove tmp files (created by vim for merge conflicts)
+      list = vim.tbl_filter(function(file)
+        return not string.match(file, '^/tmp/')
+      end, list)
+
+      -- remove non-existent files
+      list = vim.tbl_filter(function(file)
+        return vim.loop.fs_stat(file)
+      end, list)
+
+      vim.fn.FzfWrappedRun({
+        source = list,
+      })
+    end,
+    silent = true,
+  },
+}
+
 -- fuzzy search
 return {
   'junegunn/fzf',
@@ -6,45 +58,9 @@ return {
     vim.fn['fzf#install']()
   end,
   dependencies = { 'vim-rooter' },
-  keys = {
-    {
-      -- files
-      '<C-p>',
-      function()
-        vim.cmd('FZF ' .. vim.fn.FindRootDirectory())
-      end,
-      silent = true,
-    },
-    {
-      -- buffers
-      '<C-n>',
-      function()
-        local files = {}
-        for i = 1, vim.fn.bufnr('$') do
-          if vim.fn.buflisted(i) then
-            local file = vim.fn.bufname(i)
-            if string.len(file) > 0 then
-              table.insert(files, file)
-            end
-          end
-        end
-        vim.fn.FzfWrappedRun({
-          source = files,
-        })
-      end,
-      silent = true,
-    },
-    {
-      -- recent
-      '<C-e>',
-      function()
-        vim.fn.FzfWrappedRun({
-          source = vim.v.oldfiles,
-        })
-      end,
-      silent = true,
-    },
-  },
+  keys = vim.tbl_values(
+    vim.tbl_deep_extend('keep', ok and custom_keys or {}, default_keys)
+  ),
   config = function()
     vim.g.fzf_layout = { down = '~25%' }
     vim.env.FZF_DEFAULT_COMMAND = [[
