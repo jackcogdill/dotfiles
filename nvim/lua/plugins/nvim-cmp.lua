@@ -10,7 +10,7 @@ return {
     'hrsh7th/cmp-cmdline',
     'saadparwaiz1/cmp_luasnip',
   },
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   config = function()
     local cmp = require('cmp')
 
