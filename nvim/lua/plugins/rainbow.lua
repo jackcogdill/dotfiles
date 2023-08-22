@@ -3,7 +3,10 @@ return {
   'luochen1990/rainbow',
   event = 'BufReadPost',
   config = function()
-    vim.g.rainbow_active = 1
+    vim.api.nvim_create_autocmd('BufEnter', {
+      pattern = '*',
+      command = 'RainbowToggleOn',
+    })
     pcall(require, 'local.rainbow')
   end,
 }
