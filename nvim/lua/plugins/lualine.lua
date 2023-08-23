@@ -23,7 +23,7 @@ return {
         },
       },
       lualine_b = { 'filename' },
-      lualine_c = {},
+      lualine_c = { 'branch' },
       lualine_x = { 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
