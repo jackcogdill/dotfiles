@@ -30,6 +30,8 @@ vim.keymap.set(
   ":exe &diff == 0 ? 'windo diffthis' : 'diffoff!'<CR>",
   { silent = true }
 )
+-- lazy.nvim
+vim.keymap.set('n', '<Leader>z', ':Lazy<CR>', { silent = true })
 
 -- navigate tabs
 vim.keymap.set('n', 'H', ':silent :tabp<CR>', { silent = true })
