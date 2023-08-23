@@ -1,8 +1,10 @@
+local ok, custom_opts = pcall(require, 'local.lualine-opts')
+
 -- status line
 return {
   'nvim-lualine/lualine.nvim',
   lazy = false,
-  opts = {
+  opts = vim.tbl_deep_extend('keep', ok and custom_opts or {}, {
     options = {
       icons_enabled = false,
       component_separators = '|',
@@ -55,5 +57,5 @@ return {
       lualine_y = {},
       lualine_z = {},
     },
-  },
+  }),
 }
