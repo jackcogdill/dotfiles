@@ -11,6 +11,10 @@ return {
       exe = 'prettier',
       args = { '--parser typescript --single-quote' }
     }
+    vim.g.neoformat_javascript_prettier = {
+      exe = 'prettier',
+      args = { '--parser javascript --single-quote' }
+    }
     vim.g.neoformat_enabled_lua = { 'stylua' }
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '*',
