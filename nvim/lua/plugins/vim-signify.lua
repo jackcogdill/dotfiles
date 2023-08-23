@@ -1,7 +1,7 @@
 -- signs for changes tracked by a version control system
 return {
   'mhinz/vim-signify',
-  event = 'VeryLazy',
+  event = 'BufReadPost',
   config = function()
     vim.cmd([[
       let g:signify_skip = { 'vcs': { 'allow': ['git'] } }
