@@ -9,7 +9,7 @@ vim.keymap.set('v', '<Space>', ':normal @q<CR>', {})
 -- redo last change on selected lines
 vim.keymap.set('v', '.', ':normal .<CR>', {})
 -- exit terminal mode
-vim.keymap.set('t', '<Leader><Esc>', '<C-><C-n>', {})
+vim.keymap.set('t', '<Leader><Esc>', [[<C-\><C-n>]], {})
 -- spell check
 vim.keymap.set('n', '<Leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
 -- sort selected lines
