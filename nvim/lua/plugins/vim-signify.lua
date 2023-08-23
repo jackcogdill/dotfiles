@@ -1,7 +1,7 @@
 -- signs for changes tracked by a version control system
 return {
   'mhinz/vim-signify',
-  event = 'BufReadPost',
+  event = 'BufReadPre',
   config = function()
     vim.g.signify_skip = {
       vcs = {
