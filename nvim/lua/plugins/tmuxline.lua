@@ -3,8 +3,8 @@ return {
   'edkolev/tmuxline.vim',
   cmd = 'Tmuxline',
   config = function()
+    vim.g.tmuxline_powerline_separators = false
     vim.cmd([[
-      let g:tmuxline_powerline_separators = 0
       let g:tmuxline_preset = {
             \ 'a'       : '#h:#S',
             \ 'win'     : '#W',

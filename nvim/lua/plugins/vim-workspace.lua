@@ -5,7 +5,7 @@ return {
     {
       '<Leader>w',
       function()
-        vim.cmd('ToggleWorkspace')
+        vim.cmd.ToggleWorkspace()
       end,
     },
   },
