@@ -1,7 +1,7 @@
 -- CiderLSP setup
 return {
   'neovim/nvim-lspconfig',
-  event = 'BufReadPost',
+  event = 'BufEnter',
   config = function()
     local lspconfig = require('lspconfig')
 
