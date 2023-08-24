@@ -1,5 +1,8 @@
 -- remove search highlighting and clear command line
-vim.keymap.set('n', '<Esc>', ':exe "noh <Bar> echo"<CR>', { silent = true })
+vim.keymap.set('n', '<Esc>', function()
+  vim.cmd.nohlsearch()
+  vim.cmd.echo()
+end, { silent = true })
 -- search selected text
 vim.keymap.set('v', '//', 'y/<C-R>"<CR>', {})
 -- redo macro
