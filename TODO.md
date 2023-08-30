@@ -10,6 +10,7 @@
 
 ## Vim
 
+-   [ ] Improve performance of recent files, or enable caching
 -   [ ] Create a Ctrl-P mapping that merges all the common fzf sources
 -   [x] Switch to lua-based plugins (e.g. lualine)
 -   [x] Migrate entire config to lua
