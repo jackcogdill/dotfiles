@@ -5,6 +5,16 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local handlers = {
+      ['textDocument/hover'] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        { border = 'rounded' }
+      ),
+      ['textDocument/signatureHelp'] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = 'rounded' }
+      ),
+    }
     local on_attach = function(client, bufnr)
       vim.api.nvim_buf_set_option(
         bufnr,
@@ -50,7 +60,7 @@ return {
     end
 
     if ok then
-      mod.config(capabilities, on_attach)
+      mod.config(capabilities, handlers, on_attach)
     end
   end,
 }
