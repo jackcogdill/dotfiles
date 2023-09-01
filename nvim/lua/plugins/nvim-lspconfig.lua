@@ -1,10 +1,9 @@
--- CiderLSP setup
+local ok, mod = pcall(require, 'local.mod.nvim-lspconfig')
+
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
-    local lspconfig = require('lspconfig')
-
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local on_attach = function(client, bufnr)
       vim.api.nvim_buf_set_option(
@@ -44,15 +43,14 @@ return {
           end,
         })
       end
+
+      if ok then
+        mod.on_attach(client, bufnr)
+      end
     end
 
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig.tsserver.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    if ok then
+      mod.config(capabilities, on_attach)
+    end
   end,
 }
