@@ -1,3 +1,5 @@
+local ok, mod = pcall(require, 'local.mod.rainbow')
+
 -- color nested parentheses
 return {
   'luochen1990/rainbow',
@@ -7,6 +9,8 @@ return {
       pattern = '*',
       command = 'RainbowToggleOn',
     })
-    pcall(require, 'local.rainbow')
+    if ok then
+      mod.config()
+    end
   end,
 }

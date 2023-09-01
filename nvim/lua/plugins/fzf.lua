@@ -1,4 +1,4 @@
-local ok, local_keys = pcall(require, 'local.fzf-keys')
+local ok, mod = pcall(require, 'local.mod.fzf')
 
 -- fuzzy search
 return {
@@ -8,7 +8,7 @@ return {
     vim.fn['fzf#install']()
   end,
   dependencies = { 'vim-rooter' },
-  keys = vim.tbl_values(vim.tbl_deep_extend('keep', ok and local_keys or {}, {
+  keys = vim.tbl_values(vim.tbl_deep_extend('keep', ok and mod.keys or {}, {
     files = {
       '<C-p>',
       function()

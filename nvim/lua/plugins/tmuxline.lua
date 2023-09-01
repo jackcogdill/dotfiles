@@ -1,3 +1,5 @@
+local ok, mod = pcall(require, 'local.mod.tmuxline')
+
 -- tmux status line
 return {
   'edkolev/tmuxline.vim',
@@ -18,6 +20,8 @@ return {
             \ },
             \ }
     ]])
-    pcall(require, 'local.tmuxline')
+    if ok then
+      mod.config()
+    end
   end,
 }
