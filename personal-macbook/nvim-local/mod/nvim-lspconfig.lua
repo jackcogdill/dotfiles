@@ -1,4 +1,5 @@
 return {
+  dependencies = {},
   on_attach = function(client, bufnr) end,
   config = function(capabilities, handlers, on_attach)
     local lspconfig = require('lspconfig')

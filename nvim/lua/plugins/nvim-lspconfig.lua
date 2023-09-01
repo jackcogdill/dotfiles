@@ -2,6 +2,9 @@ local ok, mod = pcall(require, 'local.mod.nvim-lspconfig')
 
 return {
   'neovim/nvim-lspconfig',
+  dependencies = vim.list_extend({
+    'hrsh7th/cmp-nvim-lsp',
+  }, ok and mod.dependencies or {}),
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
