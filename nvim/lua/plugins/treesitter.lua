@@ -18,7 +18,7 @@ return {
     -- compatibility with rainbow-parentheses
     vim.api.nvim_create_autocmd('BufEnter', {
       pattern = '*',
-      command = 'hi clear TSPunctBracket',
+      command = 'highlight clear TSPunctBracket',
     })
   end,
 }
