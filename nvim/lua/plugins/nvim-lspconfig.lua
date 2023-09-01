@@ -1,4 +1,5 @@
 local ok, mod = pcall(require, 'local.mod.nvim-lspconfig')
+local border = 'rounded'
 
 return {
   'neovim/nvim-lspconfig',
@@ -7,15 +8,19 @@ return {
   }, ok and mod.dependencies or {}),
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
+    -- ui
+    require('lspconfig.ui.windows').default_options.border = border
+    vim.cmd.highlight('link LspInfoBorder FloatBorder')
+
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local handlers = {
       ['textDocument/hover'] = vim.lsp.with(
         vim.lsp.handlers.hover,
-        { border = 'rounded' }
+        { border = border }
       ),
       ['textDocument/signatureHelp'] = vim.lsp.with(
         vim.lsp.handlers.signature_help,
-        { border = 'rounded' }
+        { border = border }
       ),
     }
     local on_attach = function(client, bufnr)
