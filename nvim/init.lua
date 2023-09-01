@@ -26,4 +26,7 @@ require('lazy').setup({
   install = {
     colorscheme = { 'everforest' },
   },
+  ui = {
+    border = 'rounded',
+  },
 })
