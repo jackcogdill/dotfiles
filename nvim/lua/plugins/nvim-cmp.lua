@@ -45,7 +45,9 @@ return {
     cmp.setup({
       formatting = {
         format = function(entry, vim_item)
+          local ui = vim.api.nvim_list_uis()[1]
           vim_item.menu = source_names[entry.source.name]
+          vim_item.abbr = vim_item.abbr:sub(0, ui.width / 2)
           return vim_item
         end,
       },
