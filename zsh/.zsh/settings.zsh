@@ -35,7 +35,7 @@ function preexec() {
   set_title 'ignore-escape' "$2"
 }
 
-autoload -z add-zsh-hook
+autoload -U add-zsh-hook
 add-zsh-hook precmd precmd
 add-zsh-hook preexec preexec
 
@@ -47,10 +47,10 @@ function setup-lscolors() {
 setup-lscolors
 
 # Edit command in editor
-autoload -z edit-command-line
+autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
 # Load completion engine
-autoload -Uz compinit
+autoload -U compinit
 compinit
