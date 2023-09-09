@@ -1,43 +1,36 @@
-# Environment vars
-# ================================
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-export GOPATH=$(go env GOPATH)
-# !! Keep this order. Use GNU ls for LS_COLORS to work
-export PATH="\
-/opt/homebrew/opt/coreutils/libexec/gnubin:\
-/opt/homebrew/bin:\
-${PATH}:\
-$GOPATH/bin:\
-$HOME/.cargo/bin:\
-/bin:\
-/sbin:\
-/usr/bin:\
-/usr/sbin:\
-/usr/local/bin:\
-/usr/local/sbin"
+PATH=$PATH:~/.cargo/bin
+PATH=$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin
+PATH=$PATH:/opt/homebrew/bin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/sbin
 
-# Aliases
-# ================================
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# Homebrew
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
 
-# Everything Else
-# ================================
 # NVM (Node Version Management)
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+[[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[[ -s "/usr/local/opt/nvm/etc/bash_completion" ]] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# Save/load named tmux layouts
+# Tmux
 TMUX_LAYOUTS="$HOME/.tmux/layouts.json"
+
 function savel() {
   [[ -f "$TMUX_LAYOUTS" ]] || echo "{}" > "$TMUX_LAYOUTS"
   local name="$1"
   local layout=$(tmux list-windows -F '#{?window_active,#{window_layout},}' | grep .)
   jq --arg name "$name" --arg layout "$layout" '.[$name] = $layout' "$TMUX_LAYOUTS" | sponge "$TMUX_LAYOUTS"
 }
+
 function loadl() {
   local layouts=(${(@f)$(jq --raw-output 'keys[]' $TMUX_LAYOUTS)})
   (COLUMNS=1
