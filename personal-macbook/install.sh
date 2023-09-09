@@ -2,7 +2,12 @@
 
 cd $(dirname "$0")
 
-# NeoVim
+# zsh
+pushd zsh >/dev/null
+stow --target ~/.zsh .zsh
+popd >/dev/null
+
+# neovim
 pushd nvim >/dev/null
 mkdir -p ~/.config/nvim/lua/local
 stow --target ~/.config/nvim/lua/local local
