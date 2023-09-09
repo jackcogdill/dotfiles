@@ -5,6 +5,7 @@ cd $(dirname "$0")
 # zsh
 pushd zsh >/dev/null
 stow --target ~/.zsh .zsh
+stow --target ~ local
 popd >/dev/null
 
 # neovim
