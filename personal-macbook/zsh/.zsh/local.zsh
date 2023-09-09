@@ -1,5 +1,5 @@
+PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH
 PATH=$PATH:~/.cargo/bin
-PATH=$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin
 PATH=$PATH:/opt/homebrew/bin
 PATH=$PATH:/bin
 PATH=$PATH:/sbin
@@ -9,6 +9,8 @@ PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+setup-lscolors # redo after updating path
 
 # Homebrew
 alias bubu="brew upgrade && brew cleanup && brew update && brew outdated"
