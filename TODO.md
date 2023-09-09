@@ -1,8 +1,8 @@
 ## Zsh
 
--   [ ] Split zsh config into discrete files
--   [ ] Use zsh_unplugged instead of zplug
--   [ ] Use vanilla prompt instead of p10k (or plugin with simpler config)
+-   [x] Split zsh config into discrete files
+-   [x] Use zsh_unplugged instead of zplug
+-   [x] Use vanilla prompt instead of p10k (or plugin with simpler config)
 
 ## Tmux
 
