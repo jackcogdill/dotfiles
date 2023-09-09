@@ -38,6 +38,9 @@ function preexec() {
 add-zsh-hook precmd precmd
 add-zsh-hook preexec preexec
 
+# LS_COLORS setup
+eval $(dircolors)
+
 # Zsh to use the same colors as ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
