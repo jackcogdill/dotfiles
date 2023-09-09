@@ -1,4 +1,4 @@
-PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH
+PATH=$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:/opt/homebrew/bin
 PATH=$PATH:/bin
