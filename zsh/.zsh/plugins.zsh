@@ -45,7 +45,7 @@ repos=(
 )
 plugin-clone $repos
 
-source $ZPLUGINDIR/ohmyzsh/lib/completion.zsh  # [tab] squares
+source $ZPLUGINDIR/ohmyzsh/lib/completion.zsh # [tab] squares
 source $ZPLUGINDIR/ohmyzsh/lib/directories.zsh
 source $ZPLUGINDIR/ohmyzsh/lib/history.zsh
 
