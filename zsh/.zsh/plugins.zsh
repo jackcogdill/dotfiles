@@ -38,7 +38,7 @@ function plugin-update {
 }
 
 repos=(
-  sindresorhus/pure
+  romkatv/powerlevel10k
   ohmyzsh/ohmyzsh
   zsh-users/zsh-autosuggestions
   zdharma-continuum/fast-syntax-highlighting
@@ -50,7 +50,7 @@ source $ZPLUGINDIR/ohmyzsh/lib/directories.zsh
 source $ZPLUGINDIR/ohmyzsh/lib/history.zsh
 
 plugins=(
-  pure
+  powerlevel10k
   zsh-autosuggestions
   fast-syntax-highlighting
   ohmyzsh/plugins/git
@@ -59,13 +59,6 @@ plugins=(
 )
 [[ -f /etc/debian_version ]] && plugins+=ohmyzsh/plugins/debian
 plugin-source $plugins
-
-# Pure
-# ----
-zstyle :prompt:pure:path color black
-zstyle :prompt:pure:prompt:success color white
-zstyle :prompt:pure:git:branch color green
-zstyle :prompt:pure:git:dirty color yellow
 
 # Autosuggestions
 # ---------------
@@ -82,3 +75,8 @@ function pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# p10k
+# ----
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
