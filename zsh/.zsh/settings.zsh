@@ -1,11 +1,6 @@
-# Libraries
-# ================================
 # Nerd-fonts
 source ~/.local/share/fonts/i_all.sh
 
-
-# Everything Else
-# ================================
 # Options
 setopt extendedglob
 

@@ -7,11 +7,6 @@ if [[ "$SHELL" != "$(which zsh)" ]]; then
   chsh -s "$(which zsh)"
 fi
 
-# Install zplug
-[ -d ~/.zplug ] || curl -sL --proto-redir -all,https \
-  https://raw.githubusercontent.com/zplug/installer/master/installer.zsh \
-  | zsh
-
 # Create symlinks
 packages=(
   git

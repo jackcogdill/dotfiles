@@ -1,41 +1,72 @@
-# zplug
-# ================================
-source ~/.zplug/init.zsh
+# Courtesy of https://github.com/mattmc3/zsh_unplugged
 
-# omz libs
-zplug "lib/completion", from:oh-my-zsh # [tab] squares
-zplug "lib/directories", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-
-# omz plugins
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/python", from:oh-my-zsh
-zplug "plugins/extract", from:oh-my-zsh
-[[ -f /etc/debian_version ]] && zplug "plugins/debian", from:oh-my-zsh
-
-# Other plugins
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions"
-zplug "trapd00r/LS_COLORS", \
-  hook-build:"dircolors -b LS_COLORS > c.zsh", \
-  use:c.zsh
-
-# Theme
-zplug "sindresorhus/pure", as:theme
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
+function plugin-clone {
+  local repo plugdir initfile initfiles=()
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+  for repo in $@; do
+    plugdir=$ZPLUGINDIR/${repo:t}
+    initfile=$plugdir/${repo:t}.plugin.zsh
+    if [[ ! -d $plugdir ]]; then
+      echo "Cloning $repo..."
+      git clone -q --depth 1 --recursive --shallow-submodules \
+        https://github.com/$repo $plugdir
     fi
-fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
+      (( $#initfiles )) && ln -sf $initfiles[1] $initfile
+    fi
+  done
+}
 
-zplug load
+function plugin-source {
+  local plugdir
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+  for plugdir in $@; do
+    [[ $plugdir = /* ]] || plugdir=$ZPLUGINDIR/$plugdir
+    fpath+=$plugdir
+    local initfile=$plugdir/${plugdir:t}.plugin.zsh
+    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+  done
+}
 
+function plugin-update {
+  ZPLUGINDIR=${ZPLUGINDIR:-$HOME/.config/zsh/plugins}
+  for d in $ZPLUGINDIR/*/.git(/); do
+    echo "Updating ${d:h:t}..."
+    command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+  done
+}
 
-# Plugins
-# ================================
+repos=(
+  sindresorhus/pure
+  ohmyzsh/ohmyzsh
+  zsh-users/zsh-autosuggestions
+  zdharma-continuum/fast-syntax-highlighting
+)
+plugin-clone $repos
+
+source $ZPLUGINDIR/ohmyzsh/lib/completion.zsh  # [tab] squares
+source $ZPLUGINDIR/ohmyzsh/lib/directories.zsh
+source $ZPLUGINDIR/ohmyzsh/lib/history.zsh
+
+plugins=(
+  pure
+  zsh-autosuggestions
+  fast-syntax-highlighting
+  ohmyzsh/plugins/git
+  ohmyzsh/plugins/python
+  ohmyzsh/plugins/extract
+)
+[[ -f /etc/debian_version ]] && plugins+=ohmyzsh/plugins/debian
+plugin-source $plugins
+
+# Pure
+# ----
+zstyle :prompt:pure:path color black
+zstyle :prompt:pure:prompt:success color white
+zstyle :prompt:pure:git:branch color green
+zstyle :prompt:pure:git:dirty color yellow
+
 # Autosuggestions
 # ---------------
 bindkey -M emacs '^[^M' autosuggest-execute # Alt + Enter
