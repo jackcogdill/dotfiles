@@ -1,11 +1,5 @@
 PATH=$PATH:/opt/homebrew/opt/coreutils/libexec/gnubin
 PATH=$PATH:~/.cargo/bin
-PATH=$PATH:/opt/homebrew/bin
-PATH=$PATH:/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/sbin
-PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
