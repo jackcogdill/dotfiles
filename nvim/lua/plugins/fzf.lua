@@ -46,11 +46,6 @@ return {
           return not string.match(file, '^/tmp/')
         end, list)
 
-        -- remove non-existent files
-        list = vim.tbl_filter(function(file)
-          return vim.loop.fs_stat(file)
-        end, list)
-
         vim.fn.FzfWrappedRun({
           source = list,
         })
