@@ -1,7 +1,7 @@
 -- indentation guides
 return {
   'lukas-reineke/indent-blankline.nvim',
-  version = '*',
+  version = '2', -- everforest does not support v3 yet
   event = 'VeryLazy',
   opts = {
     enabled = true,
