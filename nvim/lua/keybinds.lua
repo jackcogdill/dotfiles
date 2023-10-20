@@ -29,7 +29,7 @@ vim.keymap.set(
 -- toggle diffs
 vim.keymap.set(
   'n',
-  '<Leader>D',
+  '<M-d>',
   ":exe &diff == 0 ? 'windo diffthis' : 'diffoff!'<CR>",
   { silent = true }
 )
