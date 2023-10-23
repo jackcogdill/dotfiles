@@ -28,5 +28,6 @@ require('lazy').setup({
   },
   ui = {
     border = 'rounded',
+    title = ' Lazy ',
   },
 })
