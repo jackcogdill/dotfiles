@@ -4,5 +4,13 @@ return {
   version = '*',
   event = 'VeryLazy',
   main = 'ibl',
-  opts = {},
+  opts = {
+    indent = {
+      char = '│',
+    },
+    scope = {
+      show_start = false,
+      show_end = false,
+    },
+  },
 }
