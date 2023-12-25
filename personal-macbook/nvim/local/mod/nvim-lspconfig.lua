@@ -13,5 +13,10 @@ return {
       handlers = handlers,
       on_attach = on_attach,
     })
+    lspconfig.rust_analyzer.setup({
+      capabilities = capabilities,
+      handlers = handlers,
+      on_attach = on_attach,
+    })
   end,
 }
