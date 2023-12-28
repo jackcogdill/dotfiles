@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/bin/zsh
 
 cd $(dirname "$0")
+
+packages=(
+  lua-language-server
+)
+brew install $packages
 
 # zsh
 pushd zsh >/dev/null
