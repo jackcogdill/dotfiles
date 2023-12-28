@@ -41,7 +41,11 @@ add-zsh-hook preexec preexec
 
 function setup-lscolors() {
   (( $+commands[dircolors] )) || return
-  eval $(dircolors)
+  if [[ -f ~/.dir_colors ]]; then
+    eval $(dircolors ~/.dir_colors)
+  else
+    eval $(dircolors)
+  fi
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 }
 setup-lscolors
