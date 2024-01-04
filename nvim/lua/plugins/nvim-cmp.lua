@@ -37,7 +37,14 @@ return {
     local sources = vim.list_extend({
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'buffer' },
+      {
+        name = 'buffer',
+        option = {
+          get_bufnrs = function()
+            return vim.api.nvim_list_bufs()
+          end,
+        },
+      },
       { name = 'path' },
       { name = 'nvim_lua' },
     }, ok and mod.opts.sources or {})
