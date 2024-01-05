@@ -1,6 +1,7 @@
 source ~/.zsh/early.zsh
 source ~/.zsh/exports.zsh
 source ~/.zsh/aliases.zsh
+source ~/.zsh/commands.zsh
 source ~/.zsh/settings.zsh
 source ~/.zsh/plugins.zsh
 
