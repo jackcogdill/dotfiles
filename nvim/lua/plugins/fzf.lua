@@ -68,11 +68,11 @@ return {
     vim.fn['fzf#install']()
   end,
   dependencies = { 'vim-rooter' },
-  keys = vim.tbl_values(vim.tbl_deep_extend('keep', ok and mod.keys or {}, {
-    files = { '<C-p>', files, silent = true },
-    buffers = { '<C-n>', buffers, silent = true },
-    recent = { '<C-e>', recent, silent = true },
-  })),
+  keys = vim.list_extend({
+    { '<C-p>', files, silent = true },
+    { '<C-n>', buffers, silent = true },
+    { '<C-e>', recent, silent = true },
+  }, ok and mod.keys or {}),
   config = function()
     vim.g.fzf_layout = { down = '~25%' }
     vim.env.FZF_DEFAULT_COMMAND = [[
