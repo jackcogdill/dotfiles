@@ -1,5 +1,65 @@
 local ok, mod = pcall(require, 'local.mod.fzf')
 
+local function ordered_dedup(list)
+  local d = {}
+  return vim.tbl_filter(function(item)
+    if d[item] then
+      return false
+    end
+    d[item] = 1
+    return true
+  end, list)
+end
+
+local function get_buffers()
+  local numbers = {}
+  for i = 1, vim.fn.bufnr('$') do
+    table.insert(numbers, i)
+  end
+
+  local listed = vim.tbl_filter(vim.fn.buflisted, numbers)
+  local names = vim.tbl_map(vim.fn.bufname, listed)
+  local non_empty = vim.tbl_filter(function(name)
+    return string.len(name) > 0
+  end, names)
+
+  return non_empty
+end
+
+local function get_oldfiles()
+  local list = vim.v.oldfiles
+
+  -- custom filtering
+  if ok and mod.filters and mod.filters.oldfiles then
+    list = mod.filters.oldfiles(list)
+  end
+
+  -- remove tmp files (created by vim for merge conflicts)
+  list = vim.tbl_filter(function(file)
+    return not string.match(file, '^/tmp/')
+  end, list)
+
+  return list
+end
+
+local function recent()
+  local combined = vim.list_extend(get_oldfiles(), get_buffers())
+  local uniq = ordered_dedup(combined)
+  vim.fn.FzfWrappedRun({
+    source = uniq,
+  })
+end
+
+local function buffers()
+  vim.fn.FzfWrappedRun({
+    source = get_buffers(),
+  })
+end
+
+local function files()
+  vim.cmd('FZF ' .. vim.fn.FindRootDirectory())
+end
+
 -- fuzzy search
 return {
   'junegunn/fzf',
@@ -9,49 +69,9 @@ return {
   end,
   dependencies = { 'vim-rooter' },
   keys = vim.tbl_values(vim.tbl_deep_extend('keep', ok and mod.keys or {}, {
-    files = {
-      '<C-p>',
-      function()
-        vim.cmd('FZF ' .. vim.fn.FindRootDirectory())
-      end,
-      silent = true,
-    },
-    buffers = {
-      '<C-n>',
-      function()
-        local numbers = {}
-        for i = 1, vim.fn.bufnr('$') do
-          table.insert(numbers, i)
-        end
-
-        local listed = vim.tbl_filter(vim.fn.buflisted, numbers)
-        local names = vim.tbl_map(vim.fn.bufname, listed)
-        local non_empty = vim.tbl_filter(function(name)
-          return string.len(name) > 0
-        end, names)
-
-        vim.fn.FzfWrappedRun({
-          source = non_empty,
-        })
-      end,
-      silent = true,
-    },
-    recent = {
-      '<C-e>',
-      function()
-        local list = vim.v.oldfiles
-
-        -- remove tmp files (created by vim for merge conflicts)
-        list = vim.tbl_filter(function(file)
-          return not string.match(file, '^/tmp/')
-        end, list)
-
-        vim.fn.FzfWrappedRun({
-          source = list,
-        })
-      end,
-      silent = true,
-    },
+    files = { '<C-p>', files, silent = true },
+    buffers = { '<C-n>', buffers, silent = true },
+    recent = { '<C-e>', recent, silent = true },
   })),
   config = function()
     vim.g.fzf_layout = { down = '~25%' }
