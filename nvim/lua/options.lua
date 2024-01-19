@@ -8,7 +8,7 @@ vim.o.cursorline = true -- enable cursor line
 vim.o.visualbell = true -- visual bell instead of beeping
 vim.o.ignorecase = true -- ignore case in search patterns
 vim.o.smartcase = true -- consider case if uppercase present
-vim.o.shada = "!,'1000,<50,s10,h" -- remember 1000 recent files
+vim.o.shada = "!,'10000,<50,s10,h" -- configure shraed data (recent files, etc)
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- tabs
