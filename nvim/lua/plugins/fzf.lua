@@ -47,12 +47,14 @@ local function recent()
   local uniq = ordered_dedup(combined)
   vim.fn.FzfWrappedRun({
     source = uniq,
+    options = { '--header', '[Recent]' },
   })
 end
 
 local function buffers()
   vim.fn.FzfWrappedRun({
     source = get_buffers(),
+    options = { '--header', '[Buffers]' },
   })
 end
 
@@ -74,7 +76,14 @@ return {
     { '<C-e>', recent, silent = true },
   }, ok and mod.keys or {}),
   config = function()
-    vim.g.fzf_layout = { down = '~25%' }
+    vim.g.fzf_layout = {
+      window = { width = 0.9, height = 0.6 },
+    }
+    vim.g.fzf_colors = {
+      fg = { 'fg', 'NormalFloat' },
+      bg = { 'bg', 'NormalFloat' },
+      border = { 'fg', 'FloatBorder' },
+    }
     vim.env.FZF_DEFAULT_COMMAND = [[
       find . -type d \( -name node_modules -o -name .git -o -name .undodir \) -prune -o -print
     ]]
