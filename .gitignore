@@ -1,3 +1,4 @@
 nvim/lua/local
 nvim/lua/plugins/local-*
 zsh/.zsh/local.zsh
+zsh/.zsh/local-*
