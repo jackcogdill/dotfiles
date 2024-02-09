@@ -34,7 +34,8 @@ return {
       nvim_lua = '[Lua]',
     }, ok and mod.opts.formatting.source_names or {})
 
-    local sources = vim.list_extend({
+    -- Promote local sources (order matters)
+    local sources = vim.list_extend(ok and mod.opts.sources or {}, {
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       {
@@ -47,7 +48,7 @@ return {
       },
       { name = 'path' },
       { name = 'nvim_lua' },
-    }, ok and mod.opts.sources or {})
+    })
 
     cmp.setup({
       formatting = {
