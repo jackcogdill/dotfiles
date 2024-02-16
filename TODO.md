@@ -10,7 +10,7 @@
 
 ## Vim
 
--   [ ] Create a Ctrl-P mapping that merges all the common fzf sources
+-   [x] Create a Ctrl-P mapping that merges all the common fzf sources
 -   [x] Improve performance of recent files, or enable caching
 -   [x] Switch to lua-based plugins (e.g. lualine)
 -   [x] Migrate entire config to lua
