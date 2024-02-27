@@ -61,3 +61,6 @@ vim.keymap.set('n', '<Leader>]', ':silent :bn<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>y', '"*y', {})
 vim.keymap.set('n', '<Leader>p', '"*p', {})
 vim.keymap.set('n', '<Leader>P', '"*P', {})
+
+-- explore files
+vim.keymap.set('n', '<Leader>e', ':Explore<CR>', {})
