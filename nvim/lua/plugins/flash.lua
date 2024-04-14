@@ -7,5 +7,10 @@ return {
         label = 'DiffText',
       },
     },
+    modes = {
+      char = {
+        keys = { 'f', 'F', 't', 'T' },
+      },
+    },
   },
 }

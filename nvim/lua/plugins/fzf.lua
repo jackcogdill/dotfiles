@@ -72,7 +72,7 @@ return {
   dependencies = { 'vim-rooter' },
   keys = vim.list_extend({
     { '<C-p>', files, silent = true },
-    { '<C-n>', buffers, silent = true },
+    { '<C-b>', buffers, silent = true },
     { '<C-e>', recent, silent = true },
   }, ok and mod.keys or {}),
   config = function()
