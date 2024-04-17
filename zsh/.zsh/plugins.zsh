@@ -34,6 +34,7 @@ function plugin-update {
   for d in $ZPLUGINDIR/*/.git(/); do
     echo "Updating ${d:h:t}..."
     command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+    echo
   done
 }
 
