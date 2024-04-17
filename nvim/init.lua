@@ -4,6 +4,7 @@ require('keybinds')
 
 -- try loading local configs
 pcall(require, 'local.autocmds')
+pcall(require, 'local.keybinds')
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
