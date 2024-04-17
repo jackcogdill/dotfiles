@@ -1,13 +1,3 @@
--- toggle relative numbers based on focus
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave' }, {
-  pattern = '*',
-  command = 'silent if &number == 1 | set relativenumber | endif',
-})
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
-  pattern = '*',
-  command = 'silent set norelativenumber',
-})
-
 -- dynamic scroll limit
 vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter' }, {
   pattern = '*',
@@ -15,4 +5,7 @@ vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter' }, {
 })
 
 -- reload buffers if changed outside of vim
-vim.api.nvim_create_autocmd('FocusGained', { pattern = '*', command = 'checktime' })
+vim.api.nvim_create_autocmd(
+  'FocusGained',
+  { pattern = '*', command = 'checktime' }
+)

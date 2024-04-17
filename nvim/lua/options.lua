@@ -2,7 +2,6 @@ vim.o.mouse = '' -- disable mouse
 vim.o.showmode = false -- dedup mode status
 vim.o.termguicolors = true -- enable 24-bit RGB color
 vim.o.number = true -- numbered lines
-vim.o.relativenumber = true -- line numbers relative to cursor
 vim.o.wrap = false -- disable line wrapping
 vim.o.cursorline = true -- enable cursor line
 vim.o.visualbell = true -- visual bell instead of beeping
