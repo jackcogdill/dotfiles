@@ -8,6 +8,9 @@ return {
       },
     },
     modes = {
+      search = {
+        enabled = false,
+      },
       char = {
         keys = { 'f', 'F', 't', 'T', ';' },
       },
@@ -15,12 +18,20 @@ return {
   },
   keys = {
     {
-      '<c-s>',
-      mode = { 'c' },
+      's',
+      mode = { 'n', 'x', 'o' },
       function()
-        require('flash').toggle()
+        require('flash').jump()
       end,
-      desc = 'Toggle Flash Search',
+      desc = 'Flash',
+    },
+    {
+      'S',
+      mode = { 'n', 'x', 'o' },
+      function()
+        require('flash').treesitter()
+      end,
+      desc = 'Flash Treesitter',
     },
   },
 }
