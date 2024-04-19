@@ -9,7 +9,7 @@ return {
     },
     modes = {
       char = {
-        keys = { 'f', 'F', 't', 'T' },
+        keys = { 'f', 'F', 't', 'T', ';' },
       },
     },
   },
