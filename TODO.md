@@ -17,6 +17,7 @@
 -   [x] Merge lsp configs (same mappings) across personal and work
 -   [x] Consider migrating from deoplete to nvim-cmp
 -   [ ] Create fzf mapping for most recent N files
+-   [ ] Fix broken insert mode function help
 
 ## Install
 
