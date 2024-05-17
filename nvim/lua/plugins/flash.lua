@@ -8,9 +8,6 @@ return {
       },
     },
     modes = {
-      search = {
-        enabled = false,
-      },
       char = {
         keys = { 'f', 'F', 't', 'T', ';' },
       },
