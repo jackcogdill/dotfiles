@@ -20,10 +20,6 @@ done
 # Alacritty
 mkdir -p ~/.config/alacritty
 stow --target ~/.config/alacritty alacritty
-if [[ ! -d ~/.config/alacritty/themes ]]; then
-  mkdir -p ~/.config/alacritty/themes
-  git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
-fi
 
 # NeoVim
 mkdir -p ~/.config/nvim

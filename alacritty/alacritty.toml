@@ -1,5 +1,5 @@
 import = [
   "~/.config/alacritty/main.toml",
   "~/.config/alacritty/local.toml",
-  "~/.config/alacritty/themes/themes/everforest_dark.toml"
+  "~/.config/alacritty/everforest_dark_soft.toml"
 ]
