@@ -1,1 +1,5 @@
-import = ["/Users/jackcogdill/.config/alacritty/main.toml", "/Users/jackcogdill/.config/alacritty/local.toml"]
+import = [
+  "~/.config/alacritty/main.toml",
+  "~/.config/alacritty/local.toml",
+  "~/.config/alacritty/themes/themes/everforest_dark.toml"
+]
