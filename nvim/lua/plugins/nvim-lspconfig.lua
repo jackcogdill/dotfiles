@@ -24,12 +24,16 @@ return {
       ),
     }
     local on_attach = function(client, bufnr)
-      vim.api.nvim_buf_set_option(
-        bufnr,
+      vim.api.nvim_set_option_value(
         'formatexpr',
-        'v:lua.vim.lsp.formatexpr'
+        'v:lua.vim.lsp.formatexpr',
+        { buf = bufnr }
       )
-      vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+      vim.api.nvim_set_option_value(
+        'tagfunc',
+        'v:lua.vim.lsp.tagfunc',
+        { buf = bufnr }
+      )
 
       local opts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
