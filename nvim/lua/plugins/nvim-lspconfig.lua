@@ -52,17 +52,16 @@ return {
       vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
 
       if client.supports_method('textDocument/documentHighlight') then
-        -- TODO: b/349134491 - remove pcall wrappers
         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
           buffer = bufnr,
           callback = function()
-            pcall(vim.lsp.buf.document_highlight)
+            vim.lsp.buf.document_highlight()
           end,
         })
         vim.api.nvim_create_autocmd('CursorMoved', {
           buffer = bufnr,
           callback = function()
-            pcall(vim.lsp.util.buf_clear_references)
+            vim.lsp.util.buf_clear_references()
           end,
         })
       end
