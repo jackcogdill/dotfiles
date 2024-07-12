@@ -12,13 +12,8 @@ local function ordered_dedup(list)
 end
 
 local function get_buffers()
-  local numbers = {}
-  for i = 1, vim.fn.bufnr('$') do
-    table.insert(numbers, i)
-  end
-
-  local listed = vim.tbl_filter(vim.fn.buflisted, numbers)
-  local names = vim.tbl_map(vim.fn.bufname, listed)
+  local handles = vim.api.nvim_list_bufs()
+  local names = vim.tbl_map(vim.fn.bufname, handles)
   local non_empty = vim.tbl_filter(function(name)
     return string.len(name) > 0
   end, names)
