@@ -42,7 +42,10 @@ return {
         name = 'buffer',
         option = {
           get_bufnrs = function()
-            return vim.api.nvim_list_bufs()
+            return vim.tbl_filter(
+              vim.api.nvim_buf_is_loaded,
+              vim.api.nvim_list_bufs()
+            )
           end,
         },
       },
