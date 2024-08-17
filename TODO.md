@@ -17,7 +17,9 @@
 -   [x] Merge lsp configs (same mappings) across personal and work
 -   [x] Consider migrating from deoplete to nvim-cmp
 -   [x] Create fzf mapping for VCS latest commit
--   [ ] Fix cmp search (breaks after a while)
+-   [x] Fix cmp search (breaks after a while)
+-   [ ] Add keybind for /path/file#token to open path/file
+-   [ ] Order fzf by most recently opened
 
 ## Install
 
