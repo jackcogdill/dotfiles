@@ -16,16 +16,6 @@ return {
   config = function()
     local cmp = require('cmp')
 
-    -- If lsp offers a completion score, use it when sorting completion options
-    local function compare_by_completion_score(entry1, entry2)
-      if
-        entry1.completion_item.score ~= nil
-        and entry2.completion_item.score ~= nil
-      then
-        return entry1.completion_item.score > entry2.completion_item.score
-      end
-    end
-
     local source_names = vim.tbl_deep_extend('force', {
       nvim_lsp = '[LSP]',
       luasnip = '[LuaSnip]',
@@ -34,10 +24,10 @@ return {
       nvim_lua = '[Lua]',
     }, ok and mod.opts.formatting.source_names or {})
 
-    -- Promote local sources (order matters)
+    -- If priority is not specified, index is used (promotes earlier sources)
     local sources = vim.list_extend(ok and mod.opts.sources or {}, {
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
+      { name = 'nvim_lsp', priority = 200 },
+      { name = 'luasnip', priority = 100 },
       {
         name = 'buffer',
         option = {
@@ -81,7 +71,6 @@ return {
       sources = cmp.config.sources(sources),
       sorting = {
         comparators = {
-          compare_by_completion_score,
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,

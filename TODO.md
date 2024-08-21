@@ -18,7 +18,7 @@
 -   [x] Consider migrating from deoplete to nvim-cmp
 -   [x] Create fzf mapping for VCS latest commit
 -   [x] Fix cmp search (breaks after a while)
--   [ ] Add keybind for /path/file#token to open path/file
+-   [x] Add keybind for /path/file#token to open path/file
 -   [ ] Order fzf by most recently opened
 
 ## Install
