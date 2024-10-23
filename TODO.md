@@ -19,8 +19,8 @@
 -   [x] Create fzf mapping for VCS latest commit
 -   [x] Fix cmp search (breaks after a while)
 -   [x] Add keybind for /path/file#token to open path/file
+-   [x] Fix help file invisible text
 -   [ ] Order fzf by most recently opened
--   [ ] Fix help file invisible text
 
 ## Install
 

@@ -1,7 +1,6 @@
 -- incremental syntax parsing
 return {
   'nvim-treesitter/nvim-treesitter',
-  version = '*',
   build = ':TSUpdate',
   event = 'BufReadPost',
   opts = {
