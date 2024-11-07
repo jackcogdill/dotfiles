@@ -22,6 +22,7 @@
 -   [x] Fix help file invisible text
 -   [ ] Order fzf by most recently opened
 -   [ ] Add lsp status in statusline
+-   [ ] Replace asyncrun with lua plugin or vanilla api code
 
 ## Install
 
