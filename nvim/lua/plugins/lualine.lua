@@ -3,10 +3,11 @@ local ok, mod = pcall(require, 'local.mod.lualine')
 -- status line
 return {
   'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   lazy = false,
-  opts = vim.tbl_deep_extend('keep', ok and mod.opts or {}, {
+  opts = vim.tbl_deep_extend('force', {
     options = {
-      icons_enabled = false,
+      icons_enabled = true,
       component_separators = '|',
       section_separators = '',
       color = {
@@ -23,7 +24,7 @@ return {
         },
       },
       lualine_b = { 'filename' },
-      lualine_c = { 'branch' },
+      lualine_c = { 'branch', icon = '' },
       lualine_x = { 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
@@ -49,6 +50,9 @@ return {
             inactive = 'lualine_c_normal',
           },
           component_separators = { left = '', right = '' },
+          symbols = {
+            modified = '●',
+          },
         },
       },
       lualine_b = {},
@@ -57,5 +61,5 @@ return {
       lualine_y = {},
       lualine_z = {},
     },
-  }),
+  }, ok and mod.opts or {}),
 }

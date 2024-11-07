@@ -11,6 +11,7 @@ return {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind.nvim', -- icons
   }, ok and mod.dependencies or {}),
   event = 'VeryLazy',
   config = function()
@@ -43,14 +44,19 @@ return {
       { name = 'nvim_lua' },
     })
 
+    local lspkind = require('lspkind')
     cmp.setup({
       formatting = {
-        format = function(entry, vim_item)
-          local ui = vim.api.nvim_list_uis()[1]
-          vim_item.menu = source_names[entry.source.name]
-          vim_item.abbr = vim_item.abbr:sub(0, ui.width / 2)
-          return vim_item
-        end,
+        format = lspkind.cmp_format({
+          mode = 'symbol_text',
+          menu = source_names,
+          maxwidth = {
+            abbr = function()
+              return vim.o.columns / 2
+            end,
+          },
+          ellipsis_char = '…',
+        }),
       },
       snippet = {
         expand = function(args)
