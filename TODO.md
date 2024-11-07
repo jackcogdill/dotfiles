@@ -21,6 +21,7 @@
 -   [x] Add keybind for /path/file#token to open path/file
 -   [x] Fix help file invisible text
 -   [ ] Order fzf by most recently opened
+-   [ ] Add lsp status in statusline
 
 ## Install
 
