@@ -20,9 +20,9 @@
 -   [x] Fix cmp search (breaks after a while)
 -   [x] Add keybind for /path/file#token to open path/file
 -   [x] Fix help file invisible text
+-   [x] Replace asyncrun with lua plugin or vanilla api code
 -   [ ] Order fzf by most recently opened
 -   [ ] Add lsp status in statusline
--   [ ] Replace asyncrun with lua plugin or vanilla api code
 
 ## Install
 
