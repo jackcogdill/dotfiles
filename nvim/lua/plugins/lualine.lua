@@ -24,7 +24,7 @@ return {
         },
       },
       lualine_b = { 'filename' },
-      lualine_c = { 'branch', icon = '' },
+      lualine_c = { { 'branch', icon = '' } },
       lualine_x = { 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
