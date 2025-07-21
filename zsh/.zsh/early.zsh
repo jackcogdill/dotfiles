@@ -4,7 +4,12 @@ bindkey -e # Emacs
 # Auto tmux
 if [[ $- == *i* && -z "$TMUX" ]]; then
   [[ -n "$SSH_CONNECTION" ]] && local session="ssh" || local session="tmux"
-  tmux new -A -s "$session"
+  if tmux ls | grep -q "(attached)"; then
+    # create new session in the same group
+    tmux new -A -s "${session}-alt" -t "${session}"
+  else
+    tmux new -A -s "${session}"
+  fi
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
