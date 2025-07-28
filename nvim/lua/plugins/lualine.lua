@@ -25,7 +25,7 @@ return {
       },
       lualine_b = { 'filename' },
       lualine_c = { { 'branch', icon = '' } },
-      lualine_x = { 'filetype' },
+      lualine_x = { 'lsp_status', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
     },
