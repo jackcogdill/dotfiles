@@ -401,7 +401,7 @@ mods = "Control"
 [selection]
 save_to_clipboard = true
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/opt/homebrew/bin/zsh"
 
@@ -411,3 +411,5 @@ decorations = "buttonless"
 [window.padding]
 x = 30
 y = 40
+
+[terminal]
