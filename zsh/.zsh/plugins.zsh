@@ -63,8 +63,8 @@ plugin-source $plugins
 
 # Autosuggestions
 # ---------------
-bindkey -M emacs '^ ' autosuggest-execute # Alt + Enter
-bindkey -M vicmd '^ ' autosuggest-execute # Alt + Enter
+bindkey -M emacs '^ ' autosuggest-execute # Ctrl + Space
+bindkey -M vicmd '^ ' autosuggest-execute # Ctrl + Space
 
 # This speeds up pasting
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
