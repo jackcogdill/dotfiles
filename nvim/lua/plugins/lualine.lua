@@ -1,5 +1,15 @@
 local ok, mod = pcall(require, 'local.mod.lualine')
 
+local filename = {
+  'filename',
+  fmt = function(s)
+    if vim.bo.buftype == 'terminal' then
+      return vim.b.term_title
+    end
+    return s
+  end,
+}
+
 -- status line
 return {
   'nvim-lualine/lualine.nvim',
@@ -23,7 +33,7 @@ return {
           end,
         },
       },
-      lualine_b = { 'filename' },
+      lualine_b = { filename },
       lualine_c = { { 'branch', icon = '' } },
       lualine_x = { 'lsp_status', 'filetype' },
       lualine_y = { 'progress' },
@@ -32,7 +42,7 @@ return {
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename' },
+      lualine_c = { filename },
       lualine_x = { 'location' },
       lualine_y = {},
       lualine_z = {},
