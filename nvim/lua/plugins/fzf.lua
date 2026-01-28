@@ -12,8 +12,23 @@ local function ordered_dedup(list)
 end
 
 local function get_buffers()
-  local handles = vim.api.nvim_list_bufs()
-  local names = vim.tbl_map(vim.fn.bufname, handles)
+  local ids = vim.tbl_filter(function(id)
+    if vim.fn.buflisted(id) ~= 1 then
+      return false
+    end
+    -- ignore current buffer
+    if vim.api.nvim_get_current_buf() == id then
+      return false
+    end
+    return true
+  end, vim.api.nvim_list_bufs())
+
+  -- sort by recently used
+  table.sort(ids, function(a, b)
+    return vim.fn.getbufinfo(a)[1].lastused > vim.fn.getbufinfo(b)[1].lastused
+  end)
+
+  local names = vim.tbl_map(vim.fn.bufname, ids)
   local non_empty = vim.tbl_filter(function(name)
     return string.len(name) > 0
   end, names)
@@ -38,7 +53,7 @@ local function get_oldfiles()
 end
 
 local function recent()
-  local combined = vim.list_extend(get_oldfiles(), get_buffers())
+  local combined = vim.list_extend(get_buffers(), get_oldfiles())
   local uniq = ordered_dedup(combined)
   vim.fn.FzfWrappedRun({
     source = uniq,
@@ -66,9 +81,9 @@ return {
   end,
   dependencies = { 'vim-rooter' },
   keys = vim.list_extend({
-    { '<C-p>', files, silent = true },
+    { '<C-p>', files,   silent = true },
     { '<C-b>', buffers, silent = true },
-    { '<C-e>', recent, silent = true },
+    { '<C-e>', recent,  silent = true },
   }, ok and mod.keys or {}),
   config = function()
     vim.g.fzf_layout = {
