@@ -64,8 +64,3 @@ vim.keymap.set({ 'n', 'v' }, '<Leader>P', '"*P', {})
 
 -- explore files
 vim.keymap.set('n', '<Leader>e', ':Explore<CR>', {})
-
--- copy filepath
-vim.keymap.set('n', '<Leader>G', function()
-  vim.fn.setreg('', vim.fn.bufname())
-end, {})
