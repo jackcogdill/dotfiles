@@ -7,7 +7,7 @@ function _auto_tmux() {
 
   # session does not exist
   if ! 2>/dev/null tmux has -t "$session"; then
-    tmux new -t "$session"
+    tmux new -s "$session"
     return
   fi
 
